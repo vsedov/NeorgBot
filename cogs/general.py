@@ -1,6 +1,6 @@
 from discord.ext import commands
 
-class General(commands.Cog):
+class general(commands.Cog):
 
 	def __init__(self, bot):
 		self.bot = bot
@@ -11,4 +11,4 @@ class General(commands.Cog):
 			await message.add_reaction("<:sus:867395030988881921>")
 
 def setup(bot):
-    bot.add_cog(General(bot))
+    bot.add_cog(general(bot))
