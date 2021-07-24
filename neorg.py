@@ -7,7 +7,7 @@ import os
 
 client = commands.Bot(command_prefix=['n.', 'N.'])
 
-extensions = ['cogs.help', 'cogs.neorg_cmds', 'cogs.general']
+extensions = ['cogs.help', 'cogs.neorg_cmds', 'cogs.general', 'cogs.Nice']
 
 if __name__ == '__main__':
     for e in extensions:
