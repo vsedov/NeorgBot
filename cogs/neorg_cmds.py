@@ -60,16 +60,16 @@ class neorg_cmds(commands.Cog):
 	@commands.command()
 	async def wiki(self, ctx, *, query):
 		query = query.strip().lower().replace(' ', '-')
-		stuff = [wiki_pages[k] for k in wiki_pages.keys() if query in k]
-		for i in stuff:
+		wiki = [wiki_pages[k] for k in wiki_pages.keys() if query in k]
+		for i in wiki:
 			em = discord.Embed(description=i, colour=0x4878BE)
 			await ctx.send(embed=em)
 
 	@commands.command()
 	async def spec(self, ctx, *, query):
 		query = query.strip().lower().replace(' ', '-')
-		stuff = [spec_pages[k] for k in spec_pages.keys() if query in k]
-		for i in stuff:
+		spec = [spec_pages[k] for k in spec_pages.keys() if query in k]
+		for i in spec:
 			em = discord.Embed(description=i, colour=0x4878BE)
 			await ctx.send(embed=em)
 
