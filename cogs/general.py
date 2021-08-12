@@ -7,7 +7,7 @@ class general(commands.Cog):
 
 	@commands.Cog.listener()
 	async def on_message(self, message):
-		if 'sus' in message.content.lower().split():
+		if 'sus' in message.content.lower():
 			await message.add_reaction("<:sus:867395030988881921>")
 
 def setup(bot):
