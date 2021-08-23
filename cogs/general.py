@@ -20,7 +20,8 @@ class general(commands.Cog):
 			if msg.content != "":
 				bookmark = discord.Embed(description=msg.content, colour = 0x4878BE)
 				bookmark.set_author(name=author.name, icon_url=author.avatar_url)
-				await msg.author.send(embed=bookmark)
+				user = await self.bot.fetch_user(payload.user_id)
+				await user.send(embed=bookmark)
 
 def setup(bot):
     bot.add_cog(general(bot))
