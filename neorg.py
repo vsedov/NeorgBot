@@ -4,6 +4,7 @@ dotenv.load_dotenv()
 import discord
 from discord.ext import commands
 import os
+import hosting
 
 client = commands.Bot(command_prefix=['n.', 'N.'])
 
@@ -31,4 +32,5 @@ async def reload(ctx, cog):
         await ctx.send(ae)
         print(f'{cog} could not be loaded')
 
+hosting.keep_running()
 client.run(os.getenv('TOKEN'))
