@@ -54,7 +54,7 @@ class neorg_cmds(commands.Cog):
 			em = discord.Embed(description=i, colour=0x4878BE)
 			await ctx.send(embed=em)
 
-	@commands.command()
+	@commands.command(aliases=["norg"])
 	async def neorg(self, ctx):
 		"""Fetch the Neorg repository"""
 		await ctx.send("Neorg - https://github.com/vhyrro/neorg")
