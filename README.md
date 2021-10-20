@@ -1,6 +1,6 @@
 # neorg-discord-bot
 
-This is a work in progress discord bot for the neorg discord server made in javascript using [discord.js](https://github.com/discordjs/discord.js).
+This is a work in progress discord bot for the neorg discord server made in javascript using [the discord.js guide](https://github.com/discordjs/guide).
 
  - Neorg - https://github.com/nvim-neorg/neorg
 
