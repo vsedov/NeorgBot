@@ -1,5 +1,6 @@
-const { Client, Intents } = require('discord.js');
+const { Client, Collection, Intents } = require('discord.js')
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const fs = require('fs');
 require("dotenv").config()
 
 client.once('ready', () => {
@@ -7,13 +8,25 @@ client.once('ready', () => {
 });
 
 client.on('interactionCreate', async interaction => {
-	if (!interaction.isCommand()) return;
+    if (!interaction.isCommand()) return;
+    
+    const command = client.commands.get(interaction.commandName);
 
-	const { commandName } = interaction;
+    if (!command) return;
 
-	if (commandName === 'ping') {
-		await interaction.reply('Pong!');
-	}
-});
+    try {
+        await command.execute(interaction);
+    } catch (error) {
+        console.error(error);
+        await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+    }
+})
 
+client.commands = new Collection();
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('js'));
+
+for (const file of commandFiles) {
+    const command = require(`./commands/${file}`);
+    client.commands.set(command.data.name, command);
+}
 client.login(process.env.TOKEN);

@@ -7,6 +7,6 @@
     "dotenv": "^10.0.0"
   },
   "scripts": {
-	"start": "node ./deploy-commands.js && node index.js"
+    "start": "node ./deploy-commands.js && node index.js"
   }
 }
