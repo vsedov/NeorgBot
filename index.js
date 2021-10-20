@@ -3,10 +3,20 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const fs = require('fs');
 require("dotenv").config()
 
-client.once('ready', () => {
-	console.log('Ready!');
-});
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('js'));
 
+for (const file of eventFiles) {
+    const event = require(`./events/${file}`);
+    if (event.once) {
+        client.once(event.name, (...args) => event.execute(...args));
+    } else {
+        client.on(event.name, (...args) => event.execute(...args));
+    }
+}
+// client.once('ready', () => {
+// 	console.log('Ready!');
+// });
+// 
 client.on('interactionCreate', async interaction => {
     if (!interaction.isCommand()) return;
     
