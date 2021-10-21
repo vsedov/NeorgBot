@@ -2,7 +2,8 @@ const { Client, Collection } = require('discord.js')
 const client = new Client({
 	intents: [
 		"GUILDS",
-		"GUILD_MESSAGES"
+		"GUILD_MESSAGES",
+		"GUILD_MESSAGE_REACTIONS"
 	]
 });
 const fs = require('fs');
