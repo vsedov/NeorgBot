@@ -15,7 +15,7 @@ blank_line_before_class_docstring="False"
 blank_line_before_module_docstring="False"
 blank_line_before_nested_class_or_def="True"
 coalesce_brackets="True"
-column_limit="80"
+column_limit="90"
 continuation_align_style="SPACE"
 continuation_indent_width="4"
 dedent_closing_brackets="False"
@@ -60,3 +60,26 @@ split_penalty_for_added_line_split="30"
 split_penalty_import_names="0"
 split_penalty_logical_operator="300"
 use_tabs="False"
+
+[tool.interrogate]
+ignore-init-method = true
+ignore-init-module = false
+ignore-magic = false
+ignore-semiprivate = false
+ignore-private = false
+ignore-property-decorators = false
+ignore-module = true
+fail-under = 90
+exclude = ["setup.py", "docs", "build", "tests",  "_version.py", "versioneer.py"]
+ignore-regex = ["^get$", "^mock_.*", ".*BaseClass.*", "^fit$", "^transform$"]
+verbose = 1
+quiet = false
+whitelist-regex = []
+color = true
+
+[tool.vulture]
+exclude = ["cogs/"]
+ignore_decorators = ["@app.route", "@require_*", "@client.*"]
+make_whitelist = true
+min_confidence = 95
+sort_by_size = true

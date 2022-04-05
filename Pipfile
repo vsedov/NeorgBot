@@ -4,14 +4,21 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-discord = "==1.0.1"
 requests = "==2.24.0"
 bs4 = "==0.0.1"
-beautifulsoup4 = "==4.9.1"
-lxml = "==4.6.3"
-python-dotenv = "==0.17.0"
-Flask = "==1.1.2"
+beautifulsoup4 = "*"
+lxml = "*"
+python-dotenv = ""
+Flask = "*"
 pybuilder = "*"
+tqdm = "*"
+rich = "*"
+"discord.py" = "*"
+icecream = "*"
+interrogate = "*"
+pyinspect = "*"
+pynguin = "*"
+rapidfuzz = "*"
 
 [dev-packages]
 
