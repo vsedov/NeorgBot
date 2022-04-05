@@ -1,0 +1,26 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+requests = "==2.24.0"
+bs4 = "==0.0.1"
+beautifulsoup4 = "*"
+lxml = "*"
+python-dotenv = ""
+Flask = "*"
+pybuilder = "*"
+tqdm = "*"
+rich = "*"
+"discord.py" = "*"
+icecream = "*"
+interrogate = "*"
+pyinspect = "*"
+pynguin = "*"
+rapidfuzz = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"
