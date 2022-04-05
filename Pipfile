@@ -19,6 +19,8 @@ interrogate = "*"
 pyinspect = "*"
 pynguin = "*"
 rapidfuzz = "*"
+sentry-sdk = "*"
+pytest = "*"
 
 [dev-packages]
 

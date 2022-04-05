@@ -65,6 +65,9 @@ async def reload(ctx, cog):
         await ctx.send(ae)
         logging.warning(ic.format(f"{cog} could not be loaded"))
 
+
+
+
 if __name__ == "__main__":
     pi.install_traceback(enable_prompt=True)
     hosting.keep_running()
