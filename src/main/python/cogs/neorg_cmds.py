@@ -15,7 +15,7 @@ class neorg_cmds(commands.Cog):
     async def wiki(self, ctx, *, query):
         query = query.strip().lower().replace(' ', '-')
         neorg_wiki = {}
-        wiki_url = "https://github.com/vhyrro/neorg/wiki"
+        wiki_url = "https://github.com/nvim-neorg/neorg/wiki"
 
         stuff = BeautifulSoup(requests.get(wiki_url).text, 'lxml')
         lis = stuff.find_all(
@@ -39,8 +39,8 @@ class neorg_cmds(commands.Cog):
     @commands.command()
     async def spec(self, ctx, *, query):
         query = query.strip().lower().replace(' ', '-')
-        url = "https://raw.githubusercontent.com/vhyrro/neorg/main/docs/NFF-0.1-spec.md"
-        og_url = "https://github.com/vhyrro/neorg/blob/main/docs/NFF-0.1-spec.md"
+        url = "https://raw.githubusercontent.com/nvim-neorg/neorg/main/docs/NFF-0.1-spec.md"
+        og_url = "https://github.com/nvim-neorg/neorg/blob/main/docs/NFF-0.1-spec.md"
 
         soup = re.findall(r"\[(.+)\]\((.+)\)", requests.get(url).text[:1500])
         neorg_specs = {}
@@ -62,7 +62,7 @@ class neorg_cmds(commands.Cog):
     @commands.command(aliases=["norg"])
     async def neorg(self, ctx):
         """Fetch the Neorg repository"""
-        await ctx.send("Neorg - https://github.com/vhyrro/neorg")
+        await ctx.send("Neorg - https://github.com/nvim-neorg/neorg")
 
 def setup(bot):
     bot.add_cog(neorg_cmds(bot))
