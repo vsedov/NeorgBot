@@ -17,6 +17,7 @@ try:
     neorg.instance = Neorg.create()
     neorg.instance.load_cogs()
     neorg.instance.run(constants.TOKEN)
+
 except StartupError as e:
     message = "Unknown Startup Error Occurred."
     if isinstance(e.exception,

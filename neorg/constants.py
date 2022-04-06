@@ -1,18 +1,15 @@
 import os
 from typing import List
 
-try:
-    import dotenv
-    dotenv.load_dotenv()
-except ModuleNotFoundError:
-    pass
+__import__("dotenv").load_dotenv()
 
 class Neorg:
-    prefex: List[str] = ["n.", "N."]
+    prefex: List[str] = "n."
 
 MODERATION_ROLES = ["mod", "admin"]
 TOKEN = os.getenv("TOKEN")
-SENTRY = os.getenv("SENTRY")
+SENTRY = os.getenv("SENTRY_DSN")
+
 # Paths
 BOT_DIR = os.path.dirname(__file__)
 PROJECT_ROOT = os.path.abspath(os.path.join(BOT_DIR, os.pardir))

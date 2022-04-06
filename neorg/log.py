@@ -46,9 +46,8 @@ def _set_trace_loggers() -> None:
 # need to be called in __main__.py
 #  HACK(vsedov) (11:34:23 - 05/04/22): Not sure if this works
 def setup_sentry() -> None:
-    """ [TODO:description] """
     sentry_sdk.init(
-        dsn=constants.SENTRY,
+        dsn=f"https://{constants.SENTRY}",
         integrations=[
             LoggingIntegration(level=logging.DEBUG, event_level=logging.WARNING)
         ],
