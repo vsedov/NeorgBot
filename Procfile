@@ -1,1 +1,1 @@
-Worker: pip install sentry_sdk && python neorg
+Worker: python -m neorg
