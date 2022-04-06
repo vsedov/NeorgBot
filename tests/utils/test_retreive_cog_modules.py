@@ -25,11 +25,11 @@ class TestUtilCogClass(unittest.TestCase):
         frozen_set = list(frozenset(walk))
         self.assertGreater(len(frozen_set), 2)
         self.assertIn('neorg.cogs.help_channel.help', frozen_set)
-        self.assertIn('neorg.cogs.utils.neorg_cmds', frozen_set)
+        self.assertIn('neorg.cogs.neorg_wiki.neorg_cmds', frozen_set)
 
     def test_global_extension(self):
         ext = extensions.EXTENSIONS
         self.assertIn('neorg.cogs.help_channel.help', ext)
-        self.assertIn('neorg.cogs.utils.neorg_cmds', ext)
+        self.assertIn('neorg.cogs.neorg_wiki.neorg_cmds', ext)
         self.assertGreater(len(ext), 2)
         self.assertIsInstance(ext, frozenset)
