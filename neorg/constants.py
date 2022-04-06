@@ -12,6 +12,7 @@ class Neorg:
 
 MODERATION_ROLES = ["mod", "admin"]
 TOKEN = os.getenv("TOKEN")
+SENTRY = os.getenv("SENTRY")
 # Paths
 BOT_DIR = os.path.dirname(__file__)
 PROJECT_ROOT = os.path.abspath(os.path.join(BOT_DIR, os.pardir))

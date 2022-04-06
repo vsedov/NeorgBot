@@ -4,16 +4,14 @@
 #
 # File Name: log.py
 import logging
-import os
 from typing import Optional
-from icecream import ic
 
+import constants
+import sentry_sdk
 from rich.logging import RichHandler
 from sentry_sdk.integrations.logging import LoggingIntegration
-from sentry_sdk.integrations.redis import RedisIntegration
 
 TRACE_LEVEL = 5
-
 
 class CustomedLogger(logging.Logger):
 
@@ -24,18 +22,6 @@ class CustomedLogger(logging.Logger):
     def trace(self, msg, *args, **kwargs):
         if self.isEnabledFor(TRACE_LEVEL):
             self.log(TRACE_LEVEL, msg, *args, **kwargs)
-
-    def info(self, msg, *args, **kwargs):
-        self.log(logging.INFO,ic.format(msg), *args, **kwargs)
-
-    def warning(self, msg, *args, **kwargs):
-        self.log(logging.WARNING,ic.format(msg), *args, **kwargs)
-
-    def error(self, msg, *args, **kwargs):
-        self.log(logging.ERROR,ic.format(msg), *args, **kwargs)
-
-
-
 
 def get_logger(name: Optional[str] = None) -> CustomedLogger:
     return CustomedLogger(name)  # create a logger with the name of the module
@@ -60,13 +46,10 @@ def _set_trace_loggers() -> None:
 # need to be called in __main__.py
 #  HACK(vsedov) (11:34:23 - 05/04/22): Not sure if this works
 def setup_sentry() -> None:
-    sentry_logging = LoggingIntegration(
-        level=logging.INFO,  # Capture info and above as breadcrumbs
-        event_level=logging.ERROR,  # Send errors as events
-    )  # Send errors as events
-    sentry_logging.add_breadcrumb_filter(
-        lambda r: r.levelno == logging.INFO
-    )  # Don't send info as breadcrumbs (only as events)
+    """ [TODO:description] """
     sentry_sdk.init(
-        dsn=os.environ.get('SENTRY_DSN'),
-        integrations=[sentry_logging, RedisIntegration()])
+        dsn=constants.SENTRY,
+        integrations=[
+            LoggingIntegration(level=logging.DEBUG, event_level=logging.WARNING)
+        ],
+    )
