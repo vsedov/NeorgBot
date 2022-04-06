@@ -4,9 +4,13 @@ import discord
 import requests
 from bs4 import BeautifulSoup
 from discord.ext import commands
+from icecream import ic
 
+from neorg.log import get_logger
 
-class neorg_cmds(commands.Cog):
+log = get_logger(__name__)
+
+class NeorgCmd(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
@@ -22,16 +26,20 @@ class neorg_cmds(commands.Cog):
             "div", {"class": "Box-body wiki-custom-sidebar markdown-body"})[0]
 
         for li in lis.find_all('li'):
+            if li.a is None:
+                continue
+
             part = li.a['href']
+            #  TODO(vsedov) (13:39:53 - 06/04/22): remove hardcode
             neorg_wiki[part[37:].lower()] = part
 
         wiki = [neorg_wiki[k] for k in neorg_wiki.keys() if query in k.lower()]
+        log.debug(ic.format(wiki))
 
         if len(wiki) == 0:
             await ctx.send(
                 embed=discord.Embed(description="No Results Found!", colour=0x4878BE))
             return
-
         for i in wiki:
             em = discord.Embed(description=i, colour=0x4878BE)
             await ctx.send(embed=em)
@@ -65,4 +73,4 @@ class neorg_cmds(commands.Cog):
         await ctx.send("Neorg - https://github.com/nvim-neorg/neorg")
 
 def setup(bot):
-    bot.add_cog(neorg_cmds(bot))
+    bot.add_cog(NeorgCmd(bot))

@@ -4,12 +4,12 @@
 #
 # File Name: log.py
 import logging
-import os
 from typing import Optional
 
+from neorg import constants
+import sentry_sdk
 from rich.logging import RichHandler
 from sentry_sdk.integrations.logging import LoggingIntegration
-from sentry_sdk.integrations.redis import RedisIntegration
 
 TRACE_LEVEL = 5
 
@@ -46,13 +46,9 @@ def _set_trace_loggers() -> None:
 # need to be called in __main__.py
 #  HACK(vsedov) (11:34:23 - 05/04/22): Not sure if this works
 def setup_sentry() -> None:
-    sentry_logging = LoggingIntegration(
-        level=logging.INFO,  # Capture info and above as breadcrumbs
-        event_level=logging.ERROR,  # Send errors as events
-    )  # Send errors as events
-    sentry_logging.add_breadcrumb_filter(
-        lambda r: r.levelno == logging.INFO
-    )  # Don't send info as breadcrumbs (only as events)
     sentry_sdk.init(
-        dsn=os.environ.get('SENTRY_DSN'),
-        integrations=[sentry_logging, RedisIntegration()])
+        dsn=f"https://{constants.SENTRY}",
+        integrations=[
+            LoggingIntegration(level=logging.DEBUG, event_level=logging.WARNING)
+        ],
+    )

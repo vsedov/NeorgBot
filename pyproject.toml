@@ -1,6 +1,67 @@
-[build-system]
-requires = ["pybuilder>=0.12.0"]
-build-backend = "pybuilder.pep517"
+[tool.poetry]
+name = "NeorgBot"
+version = "1.1.0"
+description = "A Discord bot for Neorg Discord Server"
+authors = []
+license = "GNU General Public License v3.0"
+readme = "README.md"
+homepage = "https://github.com/TheChoudo/NeorgBot"
+keywords = ["discord", "discord-bot", "bot"]
+classifiers = [
+    "Topic :: Utilities",
+]
+include = ["CHANGELOG.md", "LICENSE", "README.md"]
+packages = [
+    { include = "neorg" }
+]
+
+[tool.poetry.dependencies]
+python = "3.10.2"
+Flask = "^2.1.1"
+rich = "^12.2.0"
+requests = "^2.27.1"
+beautifulsoup4 = "^4.10.0"
+icecream = "^2.1.2"
+rapidfuzz = "^2.0.7"
+python-dotenv = "^0.20.0"
+pyinspect = "^0.1.0"
+"discord.py" = "^1.7.3"
+lxml = "^4.8.0"
+gunicorn = "^20.1.0"
+PyNaCl = "^1.5.0"
+sentry-sdk = "^1.5.8"
+
+
+[tool.poetry.dev-dependencies]
+interrogate = "^1.5.0"
+pynguin = "^0.19.0"
+isort = "^5.10.1"
+yapf = "^0.32.0"
+vulture = "^2.3"
+coverage = "^6.3.2"
+flake8 = "^4.0.1"
+flake8-annotations = "^2.8.0"
+flake8-bugbear = "^22.3.23"
+flake8-string-format = "^0.3.0"
+flake8-isort = "^4.1.1"
+pep8-naming = "^0.12.1"
+pytest = "^7.1.1"
+pytest-cov = "^3.0.0"
+pytest-xdist = { version = "~=2.3.0", extras = ["psutil"] }
+taskipy = "~=1.7.0"
+
+[tool.taskipy.tasks]
+start = "python -m bot"
+lint = "pre-commit run --all-files"
+precommit = "pre-commit install"
+# build = "docker build -t ghcr.io/python-discord/bot:latest -f Dockerfile ."
+# push = "docker push ghcr.io/python-discord/bot:latest"
+test-nocov = "pytest -n auto"
+test = "pytest -n auto --cov-report= --cov --ff"
+retest = "pytest -n auto --cov-report= --cov --lf"
+html = "coverage html"
+report = "coverage report"
+isort = "isort ."
 
 [tool.yapf]
 align_closing_bracket_with_visual_indent = "False"
@@ -83,3 +144,38 @@ ignore_decorators = ["@app.route", "@require_*", "@client.*"]
 make_whitelist = true
 min_confidence = 95
 sort_by_size = true
+
+
+[tool.coverage.run]
+branch = true
+source_pkgs = ["bot"]
+source = ["tests"]
+
+[tool.isort]
+multi_line_output = 6
+order_by_type = false
+case_sensitive = true
+combine_as_imports = true
+line_length = 120
+atomic = true
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+minversion = 3.9.0
+envlist = py39, py310, pylint
+isolated_build = true
+[gh-actions]
+python =
+    3.9: py39
+    3.10: py310
+[testenv]
+setenv =
+    PYTHONPATH = {toxinidir}
+deps =
+    -r{toxinidir}/requirements.txt
+    -r{toxinidir}/requirements_dev.txt
+extras = test
+commands =
+    pytest --basetemp={envtmpdir} --no-cov
+"""

@@ -9,22 +9,27 @@ import re
 import weakref
 from collections import defaultdict
 
-import pyinspect as pi
 import requests
 from bs4 import BeautifulSoup
 from rapidfuzz import fuzz, process
 
 
 def weak_lru(maxsize=128, typed=False):
+    """ A weakref.WeakKeyDictionary with a limited size.
+    If maxsize is 0, the cache has no limit.
+    It also is a wrapper due to the fact that the cache is weak.
+    """
 
     def wrapper(func):
 
         @functools.lru_cache(maxsize, typed)
         def _func(_self, *args, **kwargs):
+            """ funct that is being wrapped"""
             return func(_self(), *args, **kwargs)
 
         @functools.wraps(func)
         def inner(self, *args, **kwargs):
+            """inner function that is called by the wrapper"""
             return _func(weakref.ref(self), *args, **kwargs)
 
         return inner
@@ -33,8 +38,11 @@ def weak_lru(maxsize=128, typed=False):
 
 class ReadAwesome:
 
-    def __init__(self, url: str) -> None:
-        self.soup = BeautifulSoup(requests.get(url).text, 'html.parser')
+    def __init__(self,) -> None:
+        self.soup = BeautifulSoup(
+            requests.get(
+                "https://raw.githubusercontent.com/rockerBOO/awesome-neovim/main/README.md"
+            ).text, 'html.parser')
 
     @weak_lru(maxsize=None)
     def get_from_header(self) -> dict:
@@ -117,13 +125,3 @@ class ReadAwesome:
             **_fuzzy_dict_search(item, fuzzy_list, 1),
             **_fuzzy_dict_search(item, fuuzzy_dict_search)
         }
-
-def main() -> None:
-    url = "https://raw.githubusercontent.com/rockerBOO/awesome-neovim/main/README.md"
-    read_awesome = ReadAwesome(url)
-
-    # ic(read_awesome.fuzzy(input("Search: ")))
-
-if __name__ == "__main__":
-    pi.install_traceback(enable_prompt=True)
-    main()
