@@ -852,7 +852,7 @@ jupyter = ["ipywidgets (>=7.5.1,<8.0.0)"]
 name = "sentry-sdk"
 version = "1.5.8"
 description = "Python client for Sentry (https://sentry.io)"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 
@@ -1044,7 +1044,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "3.10.2"
-content-hash = "e4b5342fd6b6597a10ccab95be273dc296dec77347dcd98c05f0f0d50499a0f2"
+content-hash = "a4bec966d7aff038e9076824fc33509e314b2de3f50089f1f4622ffb8ccc003d"
 
 [metadata.files]
 aiohttp = [
