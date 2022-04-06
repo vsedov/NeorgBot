@@ -28,6 +28,7 @@ pyinspect = "^0.1.0"
 "discord.py" = "^1.7.3"
 lxml = "^4.8.0"
 gunicorn = "^20.1.0"
+PyNaCl = "^1.5.0"
 
 
 [tool.poetry.dev-dependencies]

@@ -6,13 +6,13 @@ from bs4 import BeautifulSoup
 from discord.ext import commands
 
 
-class neorg_cmds(commands.Cog):
+class NeorgCmd(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
 
     @commands.command()
-    async def wiki(self, ctx, *, query):
+    async def wiki(self, ctx, *, query: str = "table"):
         query = query.strip().lower().replace(' ', '-')
         neorg_wiki = {}
         wiki_url = "https://github.com/nvim-neorg/neorg/wiki"
@@ -65,4 +65,4 @@ class neorg_cmds(commands.Cog):
         await ctx.send("Neorg - https://github.com/nvim-neorg/neorg")
 
 def setup(bot):
-    bot.add_cog(neorg_cmds(bot))
+    bot.add_cog(NeorgCmd(bot))
