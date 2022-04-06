@@ -1,3 +1,7 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.poetry]
 name = "NeorgBot"
 version = "1.1.0"
@@ -49,18 +53,21 @@ pytest = "^7.1.1"
 pytest-cov = "^3.0.0"
 pytest-xdist = { version = "~=2.3.0", extras = ["psutil"] }
 taskipy = "~=1.7.0"
+pdoc = "^11.0.0"
+commitizen = "^2.23.0"
 
 [tool.taskipy.tasks]
 start = "python -m neorg"
 lint = "pre-commit run --all-files"
 precommit = "pre-commit install"
-# build = "docker build -t ghcr.io/python-discord/bot:latest -f Dockerfile ."
+build = "docker build -t ghcr.io/python-discord/bot:latest -f Dockerfile ."
 # push = "docker push ghcr.io/python-discord/bot:latest"
 test-nocov = "pytest -n auto"
 test = "pytest -n auto --cov-report= --cov --ff"
 retest = "pytest -n auto --cov-report= --cov --lf"
 html = "coverage html"
 report = "coverage report"
+doc = "interrogate -c pyproject.toml"
 isort = "isort ."
 
 [tool.yapf]
@@ -125,10 +132,10 @@ use_tabs="False"
 [tool.interrogate]
 ignore-init-method = true
 ignore-init-module = false
-ignore-magic = false
+ignore-magic = true
 ignore-semiprivate = false
-ignore-private = false
-ignore-property-decorators = false
+ignore-private = true
+ignore-property-decorators = true
 ignore-module = true
 fail-under = 90
 exclude = ["setup.py", "docs", "build", "tests",  "_version.py", "versioneer.py"]
@@ -147,9 +154,15 @@ sort_by_size = true
 
 
 [tool.coverage.run]
+parallel = true
 branch = true
-source_pkgs = ["bot"]
-source = ["tests"]
+source = ["neorg"]
+omit = ["**/__main__.py"]
+
+[tool.coverage.report]
+show_missing = true
+exclude_lines = ["pragma: no cover"]
+fail_under = 70
 
 [tool.isort]
 multi_line_output = 6
@@ -159,23 +172,16 @@ combine_as_imports = true
 line_length = 120
 atomic = true
 
-[tool.tox]
-legacy_tox_ini = """
-[tox]
-minversion = 3.9.0
-envlist = py39, py310, pylint
-isolated_build = true
-[gh-actions]
-python =
-    3.9: py39
-    3.10: py310
-[testenv]
-setenv =
-    PYTHONPATH = {toxinidir}
-deps =
-    -r{toxinidir}/requirements.txt
-    -r{toxinidir}/requirements_dev.txt
-extras = test
-commands =
-    pytest --basetemp={envtmpdir} --no-cov
-"""
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = ""
+version_files = []
+tag_format = ""
+update_changelog_on_bump = false
+annotated_tag = false
+bump_message = ""
+changelog_file = ""
+changelog_incremental = false
+changelog_start_rev = ""
+customize = {}
+use_shortcuts = false
