@@ -15,13 +15,14 @@ include = ["CHANGELOG.md", "LICENSE", "README.md"]
 [tool.poetry.dependencies]
 python = "3.10"
 Flask = "^2.1.1"
-"discord.py" = {url = "https://github.com/Rapptz/discord.py/archive/45d498c1b76deaf3b394d17ccf56112fa691d160.zip"}
 rich = "^12.2.0"
 requests = "^2.27.1"
 beautifulsoup4 = "^4.10.0"
 icecream = "^2.1.2"
 rapidfuzz = "^2.0.7"
 python-dotenv = "^0.20.0"
+pyinspect = "^0.1.0"
+"discord.py" = "^1.7.3"
 
 
 [tool.poetry.dev-dependencies]
@@ -171,8 +172,4 @@ deps =
 extras = test
 commands =
     pytest --basetemp={envtmpdir} --no-cov
-[testenv:pylint]
-deps = pylint
-commands =
-    pylint src --rcfile=pyproject.toml
 """

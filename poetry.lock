@@ -88,6 +88,17 @@ html5lib = ["html5lib"]
 lxml = ["lxml"]
 
 [[package]]
+name = "bs4"
+version = "0.0.1"
+description = "Dummy package for Beautiful Soup"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+beautifulsoup4 = "*"
+
+[[package]]
 name = "bytecode"
 version = "0.13.0"
 description = "Python module to generate and modify bytecode"
@@ -168,23 +179,19 @@ toml = ["tomli"]
 
 [[package]]
 name = "discord.py"
-version = "2.0.0a0"
+version = "1.7.3"
 description = "A Python wrapper for the Discord API"
 category = "main"
 optional = false
-python-versions = ">=3.8.0"
+python-versions = ">=3.5.3"
 
 [package.dependencies]
 aiohttp = ">=3.6.0,<3.8.0"
 
 [package.extras]
-docs = ["sphinx (==4.0.2)", "sphinxcontrib-trio (==1.1.2)", "sphinxcontrib-websupport"]
-speed = ["orjson (>=3.5.4)"]
+docs = ["sphinx (==3.0.3)", "sphinxcontrib-trio (==1.1.2)", "sphinxcontrib-websupport"]
 voice = ["PyNaCl (>=1.3.0,<1.5)"]
 
-[package.source]
-type = "url"
-url = "https://github.com/Rapptz/discord.py/archive/45d498c1b76deaf3b394d17ccf56112fa691d160.zip"
 [[package]]
 name = "execnet"
 version = "1.9.0"
@@ -299,6 +306,17 @@ Werkzeug = ">=2.0"
 [package.extras]
 async = ["asgiref (>=3.2)"]
 dotenv = ["python-dotenv"]
+
+[[package]]
+name = "google"
+version = "3.0.0"
+description = "Python bindings to the Google search engine."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+beautifulsoup4 = "*"
 
 [[package]]
 name = "icecream"
@@ -477,6 +495,14 @@ extra = ["lxml (>=4.6)", "pygraphviz (>=1.9)", "pydot (>=1.4.2)"]
 test = ["pytest (>=7.0)", "pytest-cov (>=3.0)", "codecov (>=2.1)"]
 
 [[package]]
+name = "numpy"
+version = "1.22.3"
+description = "NumPy is the fundamental package for array computing with Python."
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[[package]]
 name = "ordered-set"
 version = "4.1.0"
 description = "An OrderedSet is a custom MutableSet that remembers its order, so that every"
@@ -575,6 +601,25 @@ description = "Pygments is a syntax highlighting package written in Python."
 category = "main"
 optional = false
 python-versions = ">=3.5"
+
+[[package]]
+name = "pyinspect"
+version = "0.1.0"
+description = "Find and inspect python functions"
+category = "main"
+optional = false
+python-versions = ">=3.6,"
+
+[package.dependencies]
+bs4 = "*"
+click = "*"
+google = "*"
+numpy = "*"
+requests = "*"
+rich = ">=9.2.0"
+
+[package.extras]
+dev = ["coverage-badge", "click"]
 
 [[package]]
 name = "pynguin"
@@ -937,7 +982,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "3.10"
-content-hash = "6934f32710c81efe3d3a6e0f52d20aec5ce7dda4cab3317aa60ac5b178993b76"
+content-hash = "1c169bc0082859f4205b01f3ae82bbdd33ae42713d846d07516d6581398156d7"
 
 [metadata.files]
 aiohttp = [
@@ -1001,6 +1046,9 @@ attrs = [
 beautifulsoup4 = [
     {file = "beautifulsoup4-4.10.0-py3-none-any.whl", hash = "sha256:9a315ce70049920ea4572a4055bc4bd700c940521d36fc858205ad4fcde149bf"},
     {file = "beautifulsoup4-4.10.0.tar.gz", hash = "sha256:c23ad23c521d818955a4151a67d81580319d4bf548d3d49f4223ae041ff98891"},
+]
+bs4 = [
+    {file = "bs4-0.0.1.tar.gz", hash = "sha256:36ecea1fd7cc5c0c6e4a1ff075df26d50da647b75376626cc186e2212886dd3a"},
 ]
 bytecode = [
     {file = "bytecode-0.13.0-py3-none-any.whl", hash = "sha256:e69f92e7d27f99d5d7d76e6a824bd3d9ff857c72b59927aaf87e1a620f67fe50"},
@@ -1073,7 +1121,10 @@ coverage = [
     {file = "coverage-6.3.2-pp36.pp37.pp38-none-any.whl", hash = "sha256:18d520c6860515a771708937d2f78f63cc47ab3b80cb78e86573b0a760161faf"},
     {file = "coverage-6.3.2.tar.gz", hash = "sha256:03e2a7826086b91ef345ff18742ee9fc47a6839ccd517061ef8fa1976e652ce9"},
 ]
-"discord.py" = []
+"discord.py" = [
+    {file = "discord.py-1.7.3-py3-none-any.whl", hash = "sha256:c6f64db136de0e18e090f6752ea68bdd4ab0a61b82dfe7acecefa22d6477bb0c"},
+    {file = "discord.py-1.7.3.tar.gz", hash = "sha256:462cd0fe307aef8b29cbfa8dd613e548ae4b2cb581d46da9ac0d46fb6ea19408"},
+]
 execnet = [
     {file = "execnet-1.9.0-py2.py3-none-any.whl", hash = "sha256:a295f7cc774947aac58dde7fdc85f4aa00c42adf5d8f5468fc630c1acf30a142"},
     {file = "execnet-1.9.0.tar.gz", hash = "sha256:8f694f3ba9cc92cab508b152dcfe322153975c29bda272e2fd7f3f00f36e47c5"},
@@ -1109,6 +1160,10 @@ flake8-string-format = [
 flask = [
     {file = "Flask-2.1.1-py3-none-any.whl", hash = "sha256:8a4cf32d904cf5621db9f0c9fbcd7efabf3003f22a04e4d0ce790c7137ec5264"},
     {file = "Flask-2.1.1.tar.gz", hash = "sha256:a8c9bd3e558ec99646d177a9739c41df1ded0629480b4c8d2975412f3c9519c8"},
+]
+google = [
+    {file = "google-3.0.0-py2.py3-none-any.whl", hash = "sha256:889cf695f84e4ae2c55fbc0cfdaf4c1e729417fa52ab1db0485202ba173e4935"},
+    {file = "google-3.0.0.tar.gz", hash = "sha256:143530122ee5130509ad5e989f0512f7cb218b2d4eddbafbad40fd10e8d8ccbe"},
 ]
 icecream = [
     {file = "icecream-2.1.2-py2.py3-none-any.whl", hash = "sha256:04b9cea4d9931cf6960db0430ebf11fa34464ce7152e384ddf50f96d25b201b4"},
@@ -1358,6 +1413,28 @@ networkx = [
     {file = "networkx-2.7.1-py3-none-any.whl", hash = "sha256:011e85d277c89681e8fa661cf5ff0743443445049b0b68789ad55ef09340c6e0"},
     {file = "networkx-2.7.1.tar.gz", hash = "sha256:d1194ba753e5eed07cdecd1d23c5cd7a3c772099bd8dbd2fea366788cf4de7ba"},
 ]
+numpy = [
+    {file = "numpy-1.22.3-cp310-cp310-macosx_10_14_x86_64.whl", hash = "sha256:92bfa69cfbdf7dfc3040978ad09a48091143cffb778ec3b03fa170c494118d75"},
+    {file = "numpy-1.22.3-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:8251ed96f38b47b4295b1ae51631de7ffa8260b5b087808ef09a39a9d66c97ab"},
+    {file = "numpy-1.22.3-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:48a3aecd3b997bf452a2dedb11f4e79bc5bfd21a1d4cc760e703c31d57c84b3e"},
+    {file = "numpy-1.22.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:a3bae1a2ed00e90b3ba5f7bd0a7c7999b55d609e0c54ceb2b076a25e345fa9f4"},
+    {file = "numpy-1.22.3-cp310-cp310-win32.whl", hash = "sha256:f950f8845b480cffe522913d35567e29dd381b0dc7e4ce6a4a9f9156417d2430"},
+    {file = "numpy-1.22.3-cp310-cp310-win_amd64.whl", hash = "sha256:08d9b008d0156c70dc392bb3ab3abb6e7a711383c3247b410b39962263576cd4"},
+    {file = "numpy-1.22.3-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:201b4d0552831f7250a08d3b38de0d989d6f6e4658b709a02a73c524ccc6ffce"},
+    {file = "numpy-1.22.3-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:f8c1f39caad2c896bc0018f699882b345b2a63708008be29b1f355ebf6f933fe"},
+    {file = "numpy-1.22.3-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:568dfd16224abddafb1cbcce2ff14f522abe037268514dd7e42c6776a1c3f8e5"},
+    {file = "numpy-1.22.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:3ca688e1b9b95d80250bca34b11a05e389b1420d00e87a0d12dc45f131f704a1"},
+    {file = "numpy-1.22.3-cp38-cp38-win32.whl", hash = "sha256:e7927a589df200c5e23c57970bafbd0cd322459aa7b1ff73b7c2e84d6e3eae62"},
+    {file = "numpy-1.22.3-cp38-cp38-win_amd64.whl", hash = "sha256:07a8c89a04997625236c5ecb7afe35a02af3896c8aa01890a849913a2309c676"},
+    {file = "numpy-1.22.3-cp39-cp39-macosx_10_14_x86_64.whl", hash = "sha256:2c10a93606e0b4b95c9b04b77dc349b398fdfbda382d2a39ba5a822f669a0123"},
+    {file = "numpy-1.22.3-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:fade0d4f4d292b6f39951b6836d7a3c7ef5b2347f3c420cd9820a1d90d794802"},
+    {file = "numpy-1.22.3-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:5bfb1bb598e8229c2d5d48db1860bcf4311337864ea3efdbe1171fb0c5da515d"},
+    {file = "numpy-1.22.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:97098b95aa4e418529099c26558eeb8486e66bd1e53a6b606d684d0c3616b168"},
+    {file = "numpy-1.22.3-cp39-cp39-win32.whl", hash = "sha256:fdf3c08bce27132395d3c3ba1503cac12e17282358cb4bddc25cc46b0aca07aa"},
+    {file = "numpy-1.22.3-cp39-cp39-win_amd64.whl", hash = "sha256:639b54cdf6aa4f82fe37ebf70401bbb74b8508fddcf4797f9fe59615b8c5813a"},
+    {file = "numpy-1.22.3-pp38-pypy38_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c34ea7e9d13a70bf2ab64a2532fe149a9aced424cd05a2c4ba662fd989e3e45f"},
+    {file = "numpy-1.22.3.zip", hash = "sha256:dbc7601a3b7472d559dc7b933b18b4b66f9aa7452c120e87dfb33d02008c8a18"},
+]
 ordered-set = [
     {file = "ordered-set-4.1.0.tar.gz", hash = "sha256:694a8e44c87657c59292ede72891eb91d34131f6531463aab3009191c77364a8"},
     {file = "ordered_set-4.1.0-py3-none-any.whl", hash = "sha256:046e1132c71fcf3330438a539928932caf51ddbc582496833e23de611de14562"},
@@ -1427,6 +1504,10 @@ pyflakes = [
 pygments = [
     {file = "Pygments-2.11.2-py3-none-any.whl", hash = "sha256:44238f1b60a76d78fc8ca0528ee429702aae011c265fe6a8dd8b63049ae41c65"},
     {file = "Pygments-2.11.2.tar.gz", hash = "sha256:4e426f72023d88d03b2fa258de560726ce890ff3b630f88c21cbb8b2503b8c6a"},
+]
+pyinspect = [
+    {file = "pyinspect-0.1.0-py3-none-any.whl", hash = "sha256:31a2137d5bb56a57d350c53597173720429ffcc8ad186bb38aeadd6cd793384e"},
+    {file = "pyinspect-0.1.0.tar.gz", hash = "sha256:84aac5e45d8a387ab8deaf30bfd1d382db9fba435f9befa410625ebc4e711f93"},
 ]
 pynguin = [
     {file = "pynguin-0.19.0-py3-none-any.whl", hash = "sha256:d1709ecd28911e96d0a5bf599c33ba9462becc6579b75ef347ddfb1aa4068302"},
