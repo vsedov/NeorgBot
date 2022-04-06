@@ -6,10 +6,13 @@
 import logging
 from typing import Optional
 
-from neorg import constants
 import sentry_sdk
 from rich.logging import RichHandler
+from sentry_sdk.integrations.executing import ExecutingIntegration
 from sentry_sdk.integrations.logging import LoggingIntegration
+from sentry_sdk.integrations.pure_eval import PureEvalIntegration
+
+from neorg import constants
 
 TRACE_LEVEL = 5
 
@@ -48,7 +51,13 @@ def _set_trace_loggers() -> None:
 def setup_sentry() -> None:
     sentry_sdk.init(
         dsn=f"https://{constants.SENTRY}",
+        auto_session_tracking=True,
+        traces_sample_rate=1.0,
         integrations=[
-            LoggingIntegration(level=logging.DEBUG, event_level=logging.WARNING)
+            LoggingIntegration(level=logging.DEBUG, event_level=logging.WARNING),
+            PureEvalIntegration(),
+            ExecutingIntegration()
         ],
     )
+
+    sentry_sdk.capture_exception()
