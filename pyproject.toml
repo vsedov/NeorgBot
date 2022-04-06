@@ -1,6 +1,60 @@
-[build-system]
-requires = ["pybuilder>=0.12.0"]
-build-backend = "pybuilder.pep517"
+[tool.poetry]
+name = "NeorgBot"
+version = "1.1.0"
+description = "A Discord bot for Neorg Discord Server"
+authors = []
+license = "GNU General Public License v3.0"
+readme = "README.md"
+homepage = "https://github.com/TheChoudo/NeorgBot"
+keywords = ["discord", "discord-bot", "bot"]
+classifiers = [
+    "Topic :: Utilities",
+]
+include = ["CHANGELOG.md", "LICENSE", "README.md"]
+
+[tool.poetry.dependencies]
+python = "3.10"
+Flask = "^2.1.1"
+"discord.py" = {url = "https://github.com/Rapptz/discord.py/archive/45d498c1b76deaf3b394d17ccf56112fa691d160.zip"}
+rich = "^12.2.0"
+requests = "^2.27.1"
+beautifulsoup4 = "^4.10.0"
+icecream = "^2.1.2"
+rapidfuzz = "^2.0.7"
+python-dotenv = "^0.20.0"
+
+
+[tool.poetry.dev-dependencies]
+interrogate = "^1.5.0"
+pynguin = "^0.19.0"
+isort = "^5.10.1"
+yapf = "^0.32.0"
+vulture = "^2.3"
+coverage = "^6.3.2"
+flake8 = "^4.0.1"
+flake8-annotations = "^2.8.0"
+flake8-bugbear = "^22.3.23"
+flake8-string-format = "^0.3.0"
+flake8-isort = "^4.1.1"
+pep8-naming = "^0.12.1"
+pytest = "^7.1.1"
+pytest-cov = "^3.0.0"
+pytest-xdist = { version = "~=2.3.0", extras = ["psutil"] }
+taskipy = "~=1.7.0"
+sentry-sdk = "^1.5.8"
+
+[tool.taskipy.tasks]
+start = "python -m bot"
+lint = "pre-commit run --all-files"
+precommit = "pre-commit install"
+# build = "docker build -t ghcr.io/python-discord/bot:latest -f Dockerfile ."
+# push = "docker push ghcr.io/python-discord/bot:latest"
+test-nocov = "pytest -n auto"
+test = "pytest -n auto --cov-report= --cov --ff"
+retest = "pytest -n auto --cov-report= --cov --lf"
+html = "coverage html"
+report = "coverage report"
+isort = "isort ."
 
 [tool.yapf]
 align_closing_bracket_with_visual_indent = "False"
@@ -83,3 +137,37 @@ ignore_decorators = ["@app.route", "@require_*", "@client.*"]
 make_whitelist = true
 min_confidence = 95
 sort_by_size = true
+
+
+[tool.coverage.run]
+branch = true
+source_pkgs = ["bot"]
+source = ["tests"]
+
+[tool.isort]
+multi_line_output = 6
+order_by_type = false
+case_sensitive = true
+combine_as_imports = true
+line_length = 120
+atomic = true
+
+[tool.flake8]
+max-line-length=120
+docstring-convention=all
+import-order-style=pycharm
+application_import_names=neorg,tests
+exclude=.cache,.venv,.git,constants.py
+ignore=
+    B311,W503,E226,S311,T000,E731
+    # Missing Docstrings
+    D100,D104,D105,D107,
+    # Docstring Whitespace
+    D203,D212,D214,D215,D107
+    # Docstring Quotes
+    D301,D302,
+    # Docstring Content
+    D400,D401,D402,D404,D405,D406,D407,D408,D409,D410,D411,D412,D413,D414,D416,D417
+    # Type Annotations
+    ANN002,ANN003,ANN101,ANN102,ANN204,ANN206
+per-file-ignores=tests/*:D,ANN

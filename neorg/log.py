@@ -6,12 +6,14 @@
 import logging
 import os
 from typing import Optional
+from icecream import ic
 
 from rich.logging import RichHandler
 from sentry_sdk.integrations.logging import LoggingIntegration
 from sentry_sdk.integrations.redis import RedisIntegration
 
 TRACE_LEVEL = 5
+
 
 class CustomedLogger(logging.Logger):
 
@@ -22,6 +24,18 @@ class CustomedLogger(logging.Logger):
     def trace(self, msg, *args, **kwargs):
         if self.isEnabledFor(TRACE_LEVEL):
             self.log(TRACE_LEVEL, msg, *args, **kwargs)
+
+    def info(self, msg, *args, **kwargs):
+        self.log(logging.INFO,ic.format(msg), *args, **kwargs)
+
+    def warning(self, msg, *args, **kwargs):
+        self.log(logging.WARNING,ic.format(msg), *args, **kwargs)
+
+    def error(self, msg, *args, **kwargs):
+        self.log(logging.ERROR,ic.format(msg), *args, **kwargs)
+
+
+
 
 def get_logger(name: Optional[str] = None) -> CustomedLogger:
     return CustomedLogger(name)  # create a logger with the name of the module
