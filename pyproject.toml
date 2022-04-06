@@ -13,7 +13,7 @@ classifiers = [
 include = ["CHANGELOG.md", "LICENSE", "README.md"]
 
 [tool.poetry.dependencies]
-python = "3.10"
+python = "3.10.2"
 Flask = "^2.1.1"
 rich = "^12.2.0"
 requests = "^2.27.1"

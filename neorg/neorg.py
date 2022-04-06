@@ -33,6 +33,36 @@ class Neorg(commands.Bot):
 
         super().__init__(*args, **kwargs)
 
+        #  HACK(vsedov) (12:04:49 - 06/04/22): Put these into utils package no commands should be on
+        #  initalisation
+        @self.command(name="shutdown")
+        async def shutdown(ctx) -> None:
+            """Shutdown the bot."""
+            await ctx.send(
+                embed=discord.Embed(
+                    description="Shutting down...", colour=discord.Color.red()))
+            await self.logout()
+            await self.close()
+            await self.wait_closed()
+            log.info("Bot is shut down")
+
+        @self.command(aliases=['r'])
+        async def reload(self, ctx, cog):
+            if not cog:
+                await ctx.send('Specify the cog to reload!')
+                return
+            try:
+                self.unload_extension(f'cogs.{cog}')
+                self.load_extension(f'cogs.{cog}')
+                await ctx.send(
+                    embed=discord.Embed(
+                        description=f"Cog **{cog}** reloaded", colour=discord.Color.red())
+                )
+                # this is a hack to reload the cog without restarting the bot
+            except Exception as ae:
+                await ctx.send(ae)
+                logging.warning(ic.format(f"{cog} could not be loaded"))
+
     @classmethod
     def create(cls) -> "Neorg":
         """Create and return an instance of a Bot."""
@@ -43,15 +73,12 @@ class Neorg(commands.Bot):
         intents.invites = False
         intents.webhooks = False
         intents.integrations = False
-
         return cls(
             loop=loop,
             command_prefix=commands.when_mentioned_or(constants.Neorg.prefex),
             activity=discord.Game(name=f"Commands: {constants.Neorg.prefex}help"),
             case_insensitive=True,
             max_messages=10_000,
-            allowed_mentions=discord.AllowedMentions(
-                everyone=False, roles=constants.MODERATION_ROLES),
             intents=intents,
         )
 
@@ -76,19 +103,3 @@ class Neorg(commands.Bot):
         await self.change_presence(
             status=discord.Status.online, activity=discord.Game('the prefix n. | n.help'))
         log.info("Bot is ready")
-
-    @commands.command(name="reload")
-    async def reload(self, ctx, cog):
-        if not cog:
-            await ctx.send('Specify the cog to reload!')
-            return
-        try:
-            self.unload_extension(f'cogs.{cog}')
-            self.load_extension(f'cogs.{cog}')
-            await ctx.send(
-                embed=discord.Embed(
-                    description=f"Cog **{cog}** reloaded", colour=discord.Color.red()))
-            # this is a hack to reload the cog without restarting the bot
-        except Exception as ae:
-            await ctx.send(ae)
-            logging.warning(ic.format(f"{cog} could not be loaded"))
