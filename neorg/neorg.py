@@ -7,11 +7,12 @@ import asyncio
 import logging
 import warnings
 
-import constants
 import discord
 from discord.ext import commands
 from icecream import ic
-from log import get_logger
+
+from neorg import constants
+from neorg.log import get_logger
 
 log = get_logger("norg")
 LOCALHOST = "127.0.0.1"
@@ -33,8 +34,6 @@ class Neorg(commands.Bot):
 
         super().__init__(*args, **kwargs)
 
-        #  HACK(vsedov) (12:04:49 - 06/04/22): Put these into utils package no commands should be on
-        #  initalisation
         @self.command(name="shutdown")
         async def shutdown(ctx) -> None:
             """Shutdown the bot."""
@@ -84,7 +83,7 @@ class Neorg(commands.Bot):
 
     def load_cogs(self) -> None:
         """Load all cogs."""
-        from utils.extensions import EXTENSIONS
+        from neorg.utils.extensions import EXTENSIONS
         print(EXTENSIONS)
         for extension in EXTENSIONS:
             try:

@@ -6,7 +6,7 @@
 import logging
 from typing import Optional
 
-import constants
+from neorg import constants
 import sentry_sdk
 from rich.logging import RichHandler
 from sentry_sdk.integrations.logging import LoggingIntegration

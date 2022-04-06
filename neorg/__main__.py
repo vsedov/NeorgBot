@@ -5,11 +5,10 @@
 # File Name: __main__.py
 
 import aiohttp
-import constants
-from log import get_logger, setup_sentry
 
-import neorg
-from neorg import Neorg, StartupError
+from neorg import neorg
+from neorg.log import get_logger, setup_sentry
+from neorg.neorg import Neorg, StartupError, constants
 
 setup_sentry()
 

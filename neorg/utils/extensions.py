@@ -3,7 +3,7 @@ import inspect
 import pkgutil
 from typing import Iterator, NoReturn
 
-import cogs
+from neorg import cogs
 
 
 def unqualify(name: str) -> str:
