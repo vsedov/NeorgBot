@@ -11,6 +11,9 @@ classifiers = [
     "Topic :: Utilities",
 ]
 include = ["CHANGELOG.md", "LICENSE", "README.md"]
+packages = [
+    { include = "neorg" }
+]
 
 [tool.poetry.dependencies]
 python = "3.10.2"
