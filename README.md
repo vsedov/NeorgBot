@@ -1,4 +1,4 @@
-# NeorgBot [![License](https://img.shields.io/github/license/TheChoudo/NeorgBot.svg)](https://github.com/TheChoudo/NeorgBot/blob/master/LICENSE)
+# NeorgBot [![](https://img.shields.io/github/license/TheChoudo/NeorgBot.svg)](https://github.com/TheChoudo/NeorgBot/blob/master/LICENSE) [![Coverage](https://github.com/vsedov/NeorgBot/blob/master/docs/_static/interrogate_badge.svg)](https://github.com/vsedov/NeorgBot/blob/master/docs/_static/interrogate_badge.svg)
 
 This is a bot for the Neorg discord server, to be used for searching through the neorg wiki and spec; many other quality of life features e.g. searching through youtube videos.
 
