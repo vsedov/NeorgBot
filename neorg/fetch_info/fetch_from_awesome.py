@@ -13,7 +13,6 @@ import requests
 from bs4 import BeautifulSoup
 from rapidfuzz import fuzz, process
 
-
 def weak_lru(maxsize=128, typed=False):
     """ A weakref.WeakKeyDictionary with a limited size.
     If maxsize is 0, the cache has no limit.

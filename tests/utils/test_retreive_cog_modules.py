@@ -8,7 +8,6 @@ import unittest
 
 from neorg.utils import extensions
 
-
 class TestUtilCogClass(unittest.TestCase):
 
     def test_unqualify(self):

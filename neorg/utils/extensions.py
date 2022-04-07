@@ -5,7 +5,6 @@ from typing import Iterator, NoReturn
 
 from neorg import cogs
 
-
 def unqualify(name: str) -> str:
     """Return an unqualified name given a qualified module/package `name`."""
     return name.rsplit(".", maxsplit=1)[-1]

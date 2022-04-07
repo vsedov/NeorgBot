@@ -4,7 +4,6 @@ from datetime import datetime as dt
 import discord
 from discord.ext import commands
 
-
 class Help(commands.HelpCommand):
     """Interactive instance for the bot help commands"""
 

@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 
-
 class General(commands.Cog):
     """General Commansd and event inspection"""
 

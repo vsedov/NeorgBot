@@ -1,10 +1,10 @@
 import re
-
-import discord
 import requests
 from bs4 import BeautifulSoup
-from discord.ext import commands
 from icecream import ic
+
+import discord
+from discord.ext import commands
 
 from neorg.log import get_logger
 
