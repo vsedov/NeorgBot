@@ -6,6 +6,7 @@ from discord.ext import commands
 
 
 class Help(commands.HelpCommand):
+    """Interactive instance for the bot help commands"""
 
     def __init__(self, **options):
         super().__init__(verify_checks=True, **options)
@@ -22,6 +23,7 @@ class Help(commands.HelpCommand):
         return embed
 
     def command_not_found(self, string: str) -> str:
+        """Function to override the default command not found message"""
         return f'Command or category `{self.clean_prefix}{string}` not found. Try again...'
 
     def subcommand_not_found(self, command, string) -> str:
@@ -32,15 +34,18 @@ class Help(commands.HelpCommand):
 
     @staticmethod
     def no_category() -> str:
+        """Returns the default category name"""
         return 'No Category'
 
     def get_opening_note(self) -> str:
+        """Returns the opening note for the help command"""
         return 'A discord bot.\n'\
                 f'Use **`{self.clean_prefix}help "command name"`** for more info on a command\n'\
                 f'You can also use **`{self.clean_prefix}help "category name"`** for more info on a category\n'
 
     @staticmethod
     def command_or_group(*obj):
+        """Returns a list of commands or groups"""
         names = []
         for command in obj:
             if isinstance(command, commands.Group):
@@ -49,7 +54,7 @@ class Help(commands.HelpCommand):
                 names.append(f'{command.name}')
         return names
 
-    def full_command_path(self, command, include_prefix: bool = False):
+    def full_command_path(self, command, include_prefix: bool = False) -> str:
         string = f'{command.qualified_name} {command.signature}'
 
         if any(command.aliases):
@@ -62,6 +67,7 @@ class Help(commands.HelpCommand):
         return string
 
     async def send_bot_help(self, mapping) -> None:
+        """Sends the help command for the bot"""
         embed = self.embedify(
             title='**General Help**', description=self.get_opening_note())
 

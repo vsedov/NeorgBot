@@ -14,6 +14,7 @@ def walk_extensions() -> Iterator[str]:
     """Yield extension names from the bot.exts subpackage."""
 
     def on_error(name: str) -> NoReturn:
+        """An error handler for `pkgutil.walk_packages`."""
         raise ImportError(name=name)  # pragma: no cover
 
     for module in pkgutil.walk_packages(cogs.__path__, f"{cogs.__name__}.",

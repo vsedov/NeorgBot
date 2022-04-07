@@ -11,12 +11,27 @@ from neorg.log import get_logger
 log = get_logger(__name__)
 
 class NeorgCmd(commands.Cog):
+    """
+    NeorgCmd custom call to inspect neorg wiki, Using beautiful soup to webscrap
+    Neorgs github wiki page to retreive links
+    """
 
     def __init__(self, bot):
         self.bot = bot
 
     @commands.command()
     async def wiki(self, ctx, *, query):
+        """Neorg Wiki search handle to search neorg wiki for query
+        n.wiki <query>
+
+        Parameters
+        ----------
+        ctx : discord.ext.commands.Context
+            discord context object allowing access to the message object
+        query : Query taken from message after command
+            a query to search the wiki to be search through
+
+        """
         query = query.strip().lower().replace(' ', '-')
         neorg_wiki = {}
         wiki_url = "https://github.com/nvim-neorg/neorg/wiki"
@@ -46,6 +61,10 @@ class NeorgCmd(commands.Cog):
 
     @commands.command()
     async def spec(self, ctx, *, query):
+        """Spec search handle to search neorg spec for query
+        n.spec <query>
+        Similar to n.wiki but for spec files
+        """
         query = query.strip().lower().replace(' ', '-')
         url = "https://raw.githubusercontent.com/nvim-neorg/neorg/main/docs/NFF-0.1-spec.md"
         og_url = "https://github.com/nvim-neorg/neorg/blob/main/docs/NFF-0.1-spec.md"

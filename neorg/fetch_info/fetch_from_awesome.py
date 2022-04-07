@@ -37,6 +37,7 @@ def weak_lru(maxsize=128, typed=False):
     return wrapper
 
 class ReadAwesome:
+    """Read Awesome neovim github page to retrieve all the plugins"""
 
     def __init__(self,) -> None:
         self.soup = BeautifulSoup(
