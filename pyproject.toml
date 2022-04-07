@@ -163,13 +163,13 @@ show_missing = true
 exclude_lines = ["pragma: no cover"]
 fail_under = 70
 
-# [tool.isort]
-# multi_line_output = 6
-# order_by_type = false
-# case_sensitive = true
-# combine_as_imports = true
-# line_length = 120
-# atomic = true
+[tool.isort]
+multi_line_output = 6
+order_by_type = false
+case_sensitive = true
+combine_as_imports = true
+line_length = 120
+atomic = true
 
 [tool.commitizen]
 name = "cz_conventional_commits"

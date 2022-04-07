@@ -36,3 +36,9 @@ repos:
         language: system
         types: [python]
         require_serial: true
+  - repo: https://github.com/econchick/interrogate
+    rev: 1.5.0  # or master if you're bold
+    hooks:
+      - id: interrogate
+        args: [-vv, --config=pyproject.toml, --generate-badge, "./docs/_static/"]
+        pass_filenames: false
