@@ -21,17 +21,14 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "3.10.2"
-Flask = "^2.1.1"
 rich = "^12.2.0"
 requests = "^2.27.1"
 beautifulsoup4 = "^4.10.0"
 icecream = "^2.1.2"
 rapidfuzz = "^2.0.7"
 python-dotenv = "^0.20.0"
-pyinspect = "^0.1.0"
 "discord.py" = "^1.7.3"
 lxml = "^4.8.0"
-gunicorn = "^20.1.0"
 PyNaCl = "^1.5.0"
 sentry-sdk = "^1.5.8"
 pure-eval = "^0.2.2"
