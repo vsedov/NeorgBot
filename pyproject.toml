@@ -77,7 +77,7 @@ allow_split_before_default_or_named_assigns="False"
 allow_split_before_dict_value="False"
 arithmetic_precedence_indication="True"
 blank_lines_around_top_level_definition="2"
-blank_lines_between_top_level_imports_and_variables="2"
+# blank_lines_between_top_level_imports_and_variables="2"
 blank_line_before_class_docstring="False"
 blank_line_before_module_docstring="False"
 blank_line_before_nested_class_or_def="True"
@@ -124,7 +124,7 @@ split_penalty_bitwise_operator="300"
 split_penalty_comprehension="2100"
 split_penalty_excess_character="7000"
 split_penalty_for_added_line_split="30"
-split_penalty_import_names="0"
+# split_penalty_import_names="0"
 split_penalty_logical_operator="300"
 use_tabs="False"
 
@@ -163,13 +163,13 @@ show_missing = true
 exclude_lines = ["pragma: no cover"]
 fail_under = 70
 
-[tool.isort]
-multi_line_output = 6
-order_by_type = false
-case_sensitive = true
-combine_as_imports = true
-line_length = 120
-atomic = true
+# [tool.isort]
+# multi_line_output = 6
+# order_by_type = false
+# case_sensitive = true
+# combine_as_imports = true
+# line_length = 120
+# atomic = true
 
 [tool.commitizen]
 name = "cz_conventional_commits"
