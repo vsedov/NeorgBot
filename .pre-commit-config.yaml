@@ -1,7 +1,7 @@
 repos:
   # Defaults
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.5.0
+    rev: v4.2.0
     hooks:
       - id: check-merge-conflict
       - id: check-toml
@@ -24,7 +24,7 @@ repos:
 
   # isor Checks
   - repo: https://github.com/pycqa/isort
-    rev: 5.8.0
+    rev: 5.10.1
     hooks:
       - id: isort
         name: isort (python)
@@ -47,7 +47,7 @@ repos:
         pass_filenames: false
   # Git commit is valid
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: master
+    rev: v2.23.0
     hooks:
       - id: commitizen
         stages: [commit-msg]
