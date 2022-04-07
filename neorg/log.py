@@ -23,13 +23,28 @@ class CustomedLogger(logging.Logger):
         self.addHandler(RichHandler())
 
     def trace(self, msg, *args, **kwargs):
+        """Trace Level message Custom for this logger"""
         if self.isEnabledFor(TRACE_LEVEL):
             self.log(TRACE_LEVEL, msg, *args, **kwargs)
 
 def get_logger(name: Optional[str] = None) -> CustomedLogger:
+    """Return a logger with the given name. Which tends to be done by
+    get_logger(__name__) in most cases.
+
+    Parameters
+    ----------
+    name : Optional[str]
+        Name of instance / module
+
+    Returns
+    -------
+    CustomedLogger
+        CustomerLoger
+    """
     return CustomedLogger(name)  # create a logger with the name of the module
 
 def setup() -> None:
+    """ setup file for logger - initalises level, format  and its own trace """
     logging.TRACE = TRACE_LEVEL
     logging.addLevelName(TRACE_LEVEL, "TRACE")
     logging.setLoggerClass(CustomedLogger)
@@ -42,13 +57,13 @@ def setup() -> None:
     _set_trace_loggers()
 
 def _set_trace_loggers() -> None:
+    """ set the loggers to trace level """
     level_filter = logging.Filter()
     if level_filter.filter(logging.makeLogRecord({'levelno': TRACE_LEVEL})):
         get_logger().setLevel(TRACE_LEVEL)
 
-# need to be called in __main__.py
-#  HACK(vsedov) (11:34:23 - 05/04/22): Not sure if this works
 def setup_sentry() -> None:
+    """ God Mode logger, helps find issues that are not caught by the logger """
     sentry_sdk.init(
         dsn=f"https://{constants.SENTRY}",
         auto_session_tracking=True,
