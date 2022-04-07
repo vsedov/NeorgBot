@@ -1,14 +1,15 @@
 import re
-import requests
-from bs4 import BeautifulSoup
-from icecream import ic
 
 import discord
+import requests
+from bs4 import BeautifulSoup
 from discord.ext import commands
+from icecream import ic
 
 from neorg.log import get_logger
 
 log = get_logger(__name__)
+
 
 class NeorgCmd(commands.Cog):
     """
@@ -37,8 +38,7 @@ class NeorgCmd(commands.Cog):
         wiki_url = "https://github.com/nvim-neorg/neorg/wiki"
 
         stuff = BeautifulSoup(requests.get(wiki_url).text, 'lxml')
-        lis = stuff.find_all(
-            "div", {"class": "Box-body wiki-custom-sidebar markdown-body"})[0]
+        lis = stuff.find_all("div", {"class": "Box-body wiki-custom-sidebar markdown-body"})[0]
 
         for li in lis.find_all('li'):
             if li.a is None:
@@ -52,8 +52,7 @@ class NeorgCmd(commands.Cog):
         log.debug(ic.format(wiki))
 
         if len(wiki) == 0:
-            await ctx.send(
-                embed=discord.Embed(description="No Results Found!", colour=0x4878BE))
+            await ctx.send(embed=discord.Embed(description="No Results Found!", colour=0x4878BE))
             return
         for i in wiki:
             em = discord.Embed(description=i, colour=0x4878BE)
@@ -78,8 +77,7 @@ class NeorgCmd(commands.Cog):
         spec = [neorg_specs[k] for k in neorg_specs.keys() if query in k.lower()]
 
         if len(spec) == 0:
-            await ctx.send(
-                embed=discord.Embed(description="No Results Found!", colour=0x4878BE))
+            await ctx.send(embed=discord.Embed(description="No Results Found!", colour=0x4878BE))
             return
 
         for i in spec:
@@ -90,6 +88,7 @@ class NeorgCmd(commands.Cog):
     async def neorg(self, ctx):
         """Fetch the Neorg repository"""
         await ctx.send("Neorg - https://github.com/nvim-neorg/neorg")
+
 
 def setup(bot):
     bot.add_cog(NeorgCmd(bot))

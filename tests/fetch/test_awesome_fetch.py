@@ -2,6 +2,7 @@ import unittest
 
 from neorg.fetch_info.fetch_from_awesome import ReadAwesome, weak_lru
 
+
 class TestMessages(unittest.TestCase):
 
     def test_fetch_info_lsp(self):
