@@ -8,10 +8,12 @@ from typing import List
 
 __import__("dotenv").load_dotenv()
 
+
 class Neorg:
     """Neorg Guild confgis"""
     #  TODO(vsedov) (05:09:25 - 07/04/22): Change this to load multiple prefixes
     prefex: List[str] = "n."
+
 
 # Mod roles
 MODERATION_ROLES = ["mod", "admin"]

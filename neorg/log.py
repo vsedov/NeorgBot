@@ -16,16 +16,19 @@ from neorg import constants
 
 TRACE_LEVEL = 5
 
-class CustomedLogger(logging.Logger):
 
-    def __init__(self, name, level=logging.NOTSET):
+class CustomedLogger(logging.Logger):
+    """Custom Logger, initialized with rich handler"""
+
+    def __init__(self, name: Optional[str], level: logging = logging.NOTSET):
         super().__init__(name, level)
         self.addHandler(RichHandler())
 
-    def trace(self, msg, *args, **kwargs):
+    def trace(self, msg: Optional[str], *args, **kwargs) -> None:
         """Trace Level message Custom for this logger"""
         if self.isEnabledFor(TRACE_LEVEL):
             self.log(TRACE_LEVEL, msg, *args, **kwargs)
+
 
 def get_logger(name: Optional[str] = None) -> CustomedLogger:
     """Return a logger with the given name. Which tends to be done by
@@ -43,6 +46,7 @@ def get_logger(name: Optional[str] = None) -> CustomedLogger:
     """
     return CustomedLogger(name)  # create a logger with the name of the module
 
+
 def setup() -> None:
     """ setup file for logger - initalises level, format  and its own trace """
     logging.TRACE = TRACE_LEVEL
@@ -56,11 +60,13 @@ def setup() -> None:
     root_log.setLevel(logging.INFO)
     _set_trace_loggers()
 
+
 def _set_trace_loggers() -> None:
     """ set the loggers to trace level """
     level_filter = logging.Filter()
     if level_filter.filter(logging.makeLogRecord({'levelno': TRACE_LEVEL})):
         get_logger().setLevel(TRACE_LEVEL)
+
 
 def setup_sentry() -> None:
     """ God Mode logger, helps find issues that are not caught by the logger """

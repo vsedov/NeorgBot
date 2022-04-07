@@ -19,8 +19,7 @@ try:
 
 except StartupError as e:
     message = "Unknown Startup Error Occurred."
-    if isinstance(e.exception,
-                  (aiohttp.ClientConnectorError, aiohttp.ServerDisconnectedError)):
+    if isinstance(e.exception, (aiohttp.ClientConnectorError, aiohttp.ServerDisconnectedError)):
         message = "Could not connect to site API. Is it running?"
     elif isinstance(e.exception, OSError):
         message = "Could not connect to Redis. Is it running?"

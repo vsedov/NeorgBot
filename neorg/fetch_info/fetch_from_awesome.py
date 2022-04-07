@@ -14,21 +14,22 @@ from bs4 import BeautifulSoup
 from rapidfuzz import fuzz, process
 
 
-def weak_lru(maxsize=128, typed=False):
+def weak_lru(maxsize: int = 128, typed: bool = False) -> callable:
     """ A weakref.WeakKeyDictionary with a limited size.
     If maxsize is 0, the cache has no limit.
     It also is a wrapper due to the fact that the cache is weak.
     """
 
-    def wrapper(func):
+    def wrapper(func: callable) -> callable:
+        """ The wrapper function."""
 
         @functools.lru_cache(maxsize, typed)
-        def _func(_self, *args, **kwargs):
+        def _func(_self: callable, *args, **kwargs) -> callable:
             """ funct that is being wrapped"""
             return func(_self(), *args, **kwargs)
 
         @functools.wraps(func)
-        def inner(self, *args, **kwargs):
+        def inner(self: callable, *args, **kwargs) -> callable:
             """inner function that is called by the wrapper"""
             return _func(weakref.ref(self), *args, **kwargs)
 
@@ -36,14 +37,14 @@ def weak_lru(maxsize=128, typed=False):
 
     return wrapper
 
+
 class ReadAwesome:
     """Read Awesome neovim github page to retrieve all the plugins"""
 
     def __init__(self,) -> None:
         self.soup = BeautifulSoup(
-            requests.get(
-                "https://raw.githubusercontent.com/rockerBOO/awesome-neovim/main/README.md"
-            ).text, 'html.parser')
+            requests.get("https://raw.githubusercontent.com/rockerBOO/awesome-neovim/main/README.md").text,
+            'html.parser')
 
     @weak_lru(maxsize=None)
     def get_from_header(self) -> dict:
@@ -83,8 +84,7 @@ class ReadAwesome:
             return a dictionary of {name: {'link': link, 'desc': description}}
         """
         dict_set = self.get_from_header()
-        fuzzy_list = process.extract(
-            item, dict_set.keys(), scorer=fuzz.token_set_ratio, limit=len(dict_set))
+        fuzzy_list = process.extract(item, dict_set.keys(), scorer=fuzz.token_set_ratio, limit=len(dict_set))
 
         fuuzzy_dict_search = process.extract(
             item, ({name: desc['desc']
@@ -118,8 +118,7 @@ class ReadAwesome:
                 name: desc['desc']
                 for name, desc, in dict_set.items()
                 for i in range(len(fuzz_list))
-                if fuzz_list[i][0] == (
-                    name if search_item == 1 else desc['desc']) and fuzz_list[i][1] > 80
+                if fuzz_list[i][0] == (name if search_item == 1 else desc['desc']) and fuzz_list[i][1] > 80
             }
 
         return {

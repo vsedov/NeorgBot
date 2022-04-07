@@ -1,3 +1,4 @@
+# flake8: noqa
 import discord
 from discord.ext import commands
 
@@ -24,8 +25,7 @@ class General(commands.Cog):
             The payload of the event.
         """
         if payload.emoji.name in '📑🔖':
-            msg = await self.bot.get_channel(payload.channel_id
-                                            ).fetch_message(payload.message_id)
+            msg = await self.bot.get_channel(payload.channel_id).fetch_message(payload.message_id)
             author = msg.author
 
             if msg.content != "":
@@ -33,6 +33,7 @@ class General(commands.Cog):
                 bookmark.set_author(name=author.name, icon_url=author.avatar_url)
                 user = await self.bot.fetch_user(payload.user_id)
                 await user.send(embed=bookmark)
+
 
 def setup(bot):
     bot.add_cog(General(bot))

@@ -14,11 +14,8 @@ class TestUtilCogClass(unittest.TestCase):
     def test_unqualify(self):
         # test a unqualified name given a qualified module/packagename
         self.assertEqual(extensions.unqualify('neorg.utils.extensions'), 'extensions')
-        self.assertEqual(
-            extensions.unqualify('neorg.utils.extensions.unqualify'), 'unqualify')
-        self.assertEqual(
-            extensions.unqualify('neorg.utils.extensions.unqualify.unqualify'),
-            'unqualify')
+        self.assertEqual(extensions.unqualify('neorg.utils.extensions.unqualify'), 'unqualify')
+        self.assertEqual(extensions.unqualify('neorg.utils.extensions.unqualify.unqualify'), 'unqualify')
 
     def test_walk_extensions(self):
         walk = extensions.walk_extensions()

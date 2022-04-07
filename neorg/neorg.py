@@ -8,7 +8,7 @@ import logging
 import warnings
 
 import discord
-from discord.ext import commands
+from discord.ext import Context, commands
 from icecream import ic
 from sentry_sdk import push_scope
 
@@ -18,6 +18,7 @@ from neorg.log import get_logger
 log = get_logger("norg")
 LOCALHOST = "127.0.0.1"
 
+
 class StartupError(Exception):
     """Exception class for startup errors."""
 
@@ -25,7 +26,11 @@ class StartupError(Exception):
         super().__init__()
         self.exception = base
 
+
 class Neorg(commands.Bot):
+    """
+    Neorg events, these are called when the bot is ready and initalisation class
+    """
 
     def __init__(self, *args, **kwargs):
         if "connector" in kwargs:
@@ -36,18 +41,16 @@ class Neorg(commands.Bot):
         super().__init__(*args, **kwargs)
 
         @self.command(name="shutdown")
-        async def shutdown(ctx) -> None:
+        async def shutdown(ctx: Context) -> None:
             """Shutdown the bot."""
-            await ctx.send(
-                embed=discord.Embed(
-                    description="Shutting down...", colour=discord.Color.red()))
+            await ctx.send(embed=discord.Embed(description="Shutting down...", colour=discord.Color.red()))
             await self.logout()
             await self.close()
             await self.wait_closed()
             log.info("Bot is shut down")
 
         @self.command(aliases=['r'])
-        async def reload(self, ctx, cog):
+        async def reload(self, ctx: Context, cog) -> None:  # noqa ignore
             """Reload a cog without restarting the bot."""
             if not cog:
                 await ctx.send('Specify the cog to reload!')
@@ -55,10 +58,7 @@ class Neorg(commands.Bot):
             try:
                 self.unload_extension(f'cogs.{cog}')
                 self.load_extension(f'cogs.{cog}')
-                await ctx.send(
-                    embed=discord.Embed(
-                        description=f"Cog **{cog}** reloaded", colour=discord.Color.red())
-                )
+                await ctx.send(embed=discord.Embed(description=f"Cog **{cog}** reloaded", colour=discord.Color.red()))
                 # this is a hack to reload the cog without restarting the bot
             except Exception as ae:
                 await ctx.send(ae)
@@ -102,8 +102,7 @@ class Neorg(commands.Bot):
         """Wait until the bot is ready."""
         await super().wait_till_ready()
         log.info("Bot is ready")
-        await self.change_presence(
-            status=discord.Status.online, activity=discord.Game('the prefix n. | n.help'))
+        await self.change_presence(status=discord.Status.online, activity=discord.Game('the prefix n. | n.help'))
         log.info("Bot is ready")
 
     async def on_error(self, event: str, *args, **kwargs) -> None:

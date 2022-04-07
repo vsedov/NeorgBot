@@ -10,8 +10,7 @@ class TestMessages(unittest.TestCase):
         # format message first
         for name, desc in message_lsp.items():
             # check if either name or desc contains lsp
-            self.assertTrue(
-                name.lower().find('lsp') != -1 or desc.lower().find('lsp') != -1)
+            self.assertTrue(name.lower().find('lsp') != -1 or desc.lower().find('lsp') != -1)
 
         self.assertGreater(len(message_lsp), 2)
 
