@@ -136,7 +136,7 @@ ignore-semiprivate = false
 ignore-private = true
 ignore-property-decorators = true
 ignore-module = true
-fail-under = 70
+fail-under = 100
 exclude = ["setup.py", "docs", "build", "tests",  "_version.py", "versioneer.py"]
 ignore-regex = ["^get$", "^mock_.*", ".*BaseClass.*", "^fit$", "^transform$", "^setup"]
 verbose = 1
@@ -148,7 +148,7 @@ color = true
 exclude = ["cogs/"]
 ignore_decorators = ["@app.route", "@require_*", "@client.*"]
 make_whitelist = true
-min_confidence = 95
+min_confidence = 75
 sort_by_size = true
 
 

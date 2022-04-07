@@ -8,7 +8,7 @@ import logging
 import warnings
 
 import discord
-from discord.ext import Context, commands
+from discord.ext import commands
 from icecream import ic
 from sentry_sdk import push_scope
 
@@ -41,7 +41,7 @@ class Neorg(commands.Bot):
         super().__init__(*args, **kwargs)
 
         @self.command(name="shutdown")
-        async def shutdown(ctx: Context) -> None:
+        async def shutdown(ctx: commands.Context) -> None:
             """Shutdown the bot."""
             await ctx.send(embed=discord.Embed(description="Shutting down...", colour=discord.Color.red()))
             await self.logout()
@@ -50,7 +50,7 @@ class Neorg(commands.Bot):
             log.info("Bot is shut down")
 
         @self.command(aliases=['r'])
-        async def reload(self, ctx: Context, cog) -> None:  # noqa ignore
+        async def reload(self, ctx: commands.Context, cog) -> None:  # noqa ignore
             """Reload a cog without restarting the bot."""
             if not cog:
                 await ctx.send('Specify the cog to reload!')
@@ -86,7 +86,7 @@ class Neorg(commands.Bot):
     def load_cogs(self) -> None:
         """Load all cogs."""
         from neorg.utils.extensions import EXTENSIONS
-        print(EXTENSIONS)
+        log.info(ic.format(EXTENSIONS))
         for extension in EXTENSIONS:
             try:
                 self.load_extension(extension)
