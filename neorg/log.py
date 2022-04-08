@@ -17,7 +17,7 @@ from neorg import constants
 TRACE_LEVEL = 5
 
 
-class CustomedLogger(logging.Logger):
+class CustomLogger(logging.Logger):
     """Custom Logger, initialized with rich handler"""
 
     def __init__(self, name: Optional[str], level: logging = logging.NOTSET):
@@ -30,7 +30,7 @@ class CustomedLogger(logging.Logger):
             self.log(TRACE_LEVEL, msg, *args, **kwargs)
 
 
-def get_logger(name: Optional[str] = None) -> CustomedLogger:
+def get_logger(name: Optional[str] = None) -> CustomLogger:
     """Return a logger with the given name. Which tends to be done by
     get_logger(__name__) in most cases.
 
@@ -41,17 +41,17 @@ def get_logger(name: Optional[str] = None) -> CustomedLogger:
 
     Returns
     -------
-    CustomedLogger
+    CustomLoggerLogger
         CustomerLoger
     """
-    return CustomedLogger(name)  # create a logger with the name of the module
+    return CustomLogger(name)  # create a logger with the name of the module
 
 
 def setup() -> None:
     """ setup file for logger - initalises level, format  and its own trace """
     logging.TRACE = TRACE_LEVEL
     logging.addLevelName(TRACE_LEVEL, "TRACE")
-    logging.setLoggerClass(CustomedLogger)
+    logging.setLoggerClass(CustomLogger)
 
     root_log = get_logger()
 
