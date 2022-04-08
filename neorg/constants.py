@@ -14,12 +14,14 @@ class Neorg:
     prefex: list[str] = "n."
 
 
+USE_SENTRY: bool = True
+
 # Mod roles
 MODERATION_ROLES: list[str] = ["mod", "admin"]
 
 # Keys
 TOKEN: "env" = os.getenv("TOKEN")
-SENTRY: "env" = os.getenv("SENTRY_DSN")
+SENTRY: "env" = os.getenv("SENTRY_DSN") if USE_SENTRY else None
 
 # paths
 BOT_DIR: str = os.path.dirname(__file__)
