@@ -15,7 +15,7 @@ class TestLogClass(unittest.TestCase):
     def setUpClass(cls):
         cls.log = get_logger(__name__)
 
-    def test_case_0(self):
+    def test_auto_gen_0(self):
         bool_0 = False
         customed_logger_0 = module_0.get_logger()
         assert customed_logger_0.filters == []
@@ -29,7 +29,7 @@ class TestLogClass(unittest.TestCase):
         var_0 = customed_logger_0.trace(bool_0)
         assert var_0 is None
 
-    def test_case_1(self):
+    def test_auto_gen_1(self):
         module_0.setup()
         assert module_0.TRACE_LEVEL == 5
 
@@ -77,3 +77,18 @@ class TestLogClass(unittest.TestCase):
         self.assertEqual(self.log.handlers, old_handlers)
         self.assertEqual(self.log.level, old_level)
         self.assertEqual(self.log.propagate, old_propagate)
+
+    def test_capture_log_handler(self):
+        """Test if LoggingTestCase.captureLogHandler captures the log messages."""
+        self.log.info('Test message')
+        self.assertEqual(len(self.log.handlers), 1)
+
+        # self.log.handlers[0].buffer does not exist
+        def capture_handler(handler):
+            handler.buffer = []
+            handler.buffer.append('Test message')
+            return handler
+
+        handle = capture_handler(self.log.handlers[0])
+        self.log.info('Test message')
+        self.assertEqual(handle.buffer, ['Test message'])
