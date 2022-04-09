@@ -13,7 +13,7 @@ Start by cloning the repository with `git clone https://github.com/vsedov/NeorgB
 
 <ins>**2. Configuring the dependencies:**</ins>
 
-1. Install [poetry](https://github.com/python-poetry/poetry) by following the [instructions](https://github.com/python-poetry/poetry#installation).
+1. Install [poetry](https://github.com/python-poetry/poetry) by following the [instructions](https://python-poetry.org/docs/master/#installing-with-the-official-installer).
 2. Create an environment with `poetry env use python`.
 3. Run `poetry update` to install the dependencies listed in the [pyproject.toml](https://github.com/vsedov/NeorgBot/blob/master/pyproject.toml) file.
 3. After installation of the dependencies, run the bot with `poetry run task start`.
