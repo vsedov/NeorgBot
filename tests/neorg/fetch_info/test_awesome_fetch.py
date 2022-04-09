@@ -1,3 +1,8 @@
+#! /usr/bin/env python3
+# -*- coding: utf-8 -*-
+# vim:fenc=utf-8
+#
+# File Name: test_awesome_fetch.py
 import unittest
 
 from neorg.fetch_info.fetch_from_awesome import ReadAwesome, weak_lru

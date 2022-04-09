@@ -82,18 +82,18 @@ class CustomMock:
     """ChildMockType allows use to only define __init__ and __call__."""
     child_mock_type = unittest.mock.MagicMock
     discord_id = itertools.count(0)
-    """This is an overidable value, based on different specs of the mock"""
+    """This is an overidable value, based on different specs of the mock."""
     spec_set = None  # only defined for instances
 
-    def __init__(self, custom_name: str, **kwargs):
-        custom_name = custom_name or "None"
-        super().__init__(name=custom_name, **kwargs)
-        if custom_name:
-            self.name = custom_name
+    def __init__(self, **kwargs):
+        name = kwargs.pop('name', None)  # `name` has special meaning for Mock classes, so we need to set it manually.
+        super().__init__(spec_set=self.spec_set, **kwargs)
+        if name:
+            self.name = name
 
 
 class MockRole(CustomMock, unittest.mock.Mock):
-    """Mock SubClass to mock discord.Role Class,"""
+    """Mock SubClass to mock discord.Role Class."""
 
     spec_set = role_instance
 
@@ -101,17 +101,29 @@ class MockRole(CustomMock, unittest.mock.Mock):
         default_kwargs = {
             'id': next(self.discord_id),
             'name': 'role',
-            'pos': 1,
-            'colour': discord.Color(0x4878BE),
-            'permissions': discord.permissions()
+            'position': 1,
+            'colour': discord.Colour(0xdeadbf),
+            'permissions': discord.Permissions(),
         }
         # update default_kwargs with kwargs
         super().__init__(**ChainMap(default_kwargs, kwargs))
+
         if isinstance(self.colour, int):
             self.colour = discord.Colour(self.colour)
 
         if isinstance(self.permissions, int):
             self.permissions = discord.Permissions(self.permissions)
+
+        if 'mention' not in kwargs:
+            self.mention = f'&{self.name}'
+
+    def __lt__(self, other):
+        """Simplified position-based comparisons similar to those of `discord.Role`."""
+        return self.position < other.position
+
+    def __ge__(self, other):
+        """Simplified position-based comparisons similar to those of `discord.Role`."""
+        return self.position >= other.position
 
 
 class MockMember(CustomMock, unittest.mock.Mock):
@@ -126,23 +138,18 @@ class MockMember(CustomMock, unittest.mock.Mock):
             'joined_at': '2020-01-01T00:00:00.000000+00:00',
             'bot': False,
             'pending': False,
-            'self_deaf': False,
-            'self_mute': False,
-            'voice': None,
-            'user': None
         }
-        super().__init__(**ChainMap(default_kwargs, kwargs))
-        self.roles = [MockRole(name="@everyone", pos=1, id=1)]
+        super().__init__(**ChainMap(kwargs, default_kwargs))
+        self.roles = [MockRole(name="@everyone", position=1, id=0)]
         if roles:
             self.roles.extend(roles)
 
+        if roles:
+            self.roles.extend(roles)
+        self.top_role = max(self.roles)
+
         if 'mention' not in kwargs:
             self.mention = f"@{self.name}"
-
-    def get_max_role(self) -> MockRole:
-        if self.roles:
-            return max(self.roles)
-        return None
 
 
 class MockGuild(CustomMock, unittest.mock.Mock):
@@ -152,7 +159,7 @@ class MockGuild(CustomMock, unittest.mock.Mock):
 
     guild = MockGuild()
     isinstance(discord.guild, guild)
-    to be true,
+    to be true.
     """
 
     spec_set = guild_instance
@@ -163,7 +170,7 @@ class MockGuild(CustomMock, unittest.mock.Mock):
             'members': []
         }
         super().__init__(**default_kwargs, **kwargs)
-        self.roles = [MockRole(name="@everyone", pos=1, id=1)]
+        self.roles = [MockRole(name="@everyone", position=1, id=1)]
 
         if roles:
             self.roles.extend(roles)
@@ -186,14 +193,16 @@ class MockUser(CustomMock, unittest.mock.Mock):
             'verified': False,
         }
         super().__init__(**ChainMap(default_kwargs, kwargs))
+        if 'mention' not in kwargs:
+            self.mention = f"@{self.name}"
 
 
 class MockBot(CustomMock, unittest.mock.MagicMock):
     """
-    Magic mock subclass for our neorg bot
+    Magic mock subclass for our neorg bot.
 
     """
-    spec_set = Neorg(command_prefix=unittest.mock.MagickMock(), loop=unittest.mock.MagicMock())
+    spec_set = Neorg(command_prefix=unittest.mock.MagicMock(), loop=unittest.mock.MagicMock())
 
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)

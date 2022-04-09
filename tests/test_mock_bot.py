@@ -12,12 +12,17 @@ from tests import MockBot
 
 class NeorgDiscordTest(unittest.TestCase):
 
-    def default_role(self):
+    def test_role_instance(self):
+        """Check if instance replicates Role."""
         role = MockBot.MockRole()
-        # THIS WORKS
         self.assertIsInstance(role, discord.Role)
 
+    def test_member_instance(self):
+        """Check if instance replicates discord.Members."""
+        member = MockBot.MockMember()
+        self.assertIsInstance(member, discord.Member)
 
-class NeorgObjectTest(unittest.TestCase):
-    """Test objects, i.e creating user role and guild values"""
-    pass
+    def test_guild_instance(self):
+        """Check if instance replicates Guild."""
+        guild = MockBot.MockGuild()
+        self.assertIsInstance(guild, discord.Guild)
