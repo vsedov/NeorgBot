@@ -155,13 +155,15 @@ sort_by_size = true
 [tool.coverage.run]
 parallel = true
 branch = true
-source = ["neorg"]
+source_pkgs = ["neorg"]
+source = ["tests"]
 omit = ["**/__main__.py"]
 
 [tool.coverage.report]
 show_missing = true
-exclude_lines = ["pragma: no cover"]
 fail_under = 70
+precision = 2
+exclude_lines = ["pragma: no cover", "pass"]
 
 [tool.isort]
 multi_line_output = 6
