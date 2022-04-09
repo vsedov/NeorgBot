@@ -3,6 +3,7 @@
 # vim:fenc=utf-8
 #
 # File Name: MockBot.py
+import collections
 import itertools
 import logging
 import unittest.mock
@@ -10,6 +11,7 @@ from collections import ChainMap, defaultdict
 from typing import Optional
 
 import discord
+from discord.ext.commands import Context
 
 from neorg.neorg import Neorg
 
@@ -41,6 +43,40 @@ MEMBER_DATA = {
     'user': 'aloof',
     'roles': [1]
 }  # Mock Guild,, think of it as a basis for what data we will be testing
+CHANNEL_DATA = {
+    'id': 1,
+    'type': 'TextChannel',
+    'name': 'channel',
+    'parent_id': 1234567890,
+    'topic': 'topic',
+    'position': 1,
+    'nsfw': False,
+    'last_message_id': 1,
+}
+# Create a Message instance to get a realistic MagicMock of `discord.Message`
+MESSAGE_DATA = {
+    'id': 1,
+    'webhook_id': 320923845094090044,
+    'attachments': [],
+    'embeds': [],
+    'application': 'Python Discord',
+    'activity': 'mocking',
+    'channel': unittest.mock.MagicMock(),
+    'edited_timestamp': '2019-10-14T15:33:48+00:00',
+    'type': 'message',
+    'pinned': False,
+    'mention_everyone': False,
+    'tts': None,
+    'content': 'content',
+    'nonce': None,
+}
+
+EMEMOJI_DATA = {
+    'require_colons': True,
+    'managed': True,
+    'id': 1,
+    'name': 'hyperlemon'
+}
 guild_instance = discord.Guild(data=GUILD_DATA, state=unittest.mock.MagicMock())
 
 # test role set with our test guild data
@@ -65,6 +101,14 @@ user_instance = discord.User(
                         'verified': False,
                     })).get)),
     state=unittest.mock.MagicMock())
+
+state = unittest.mock.MagicMock()
+guild = unittest.mock.MagicMock()
+text_channel_instance = discord.TextChannel(state=state, guild=guild, data=CHANNEL_DATA)
+
+state = unittest.mock.MagicMock()
+channel = unittest.mock.MagicMock()
+message_instance = discord.Message(state=state, channel=channel, data=MESSAGE_DATA)
 
 
 def manage_loggers():
@@ -208,3 +252,96 @@ class MockBot(CustomMock, unittest.mock.MagicMock):
         super().__init__(**kwargs)
         # replicate what we had before for the loop set
         self.loop = kwargs.get('loop', self.spec_set)
+
+
+class MockTextChannel(CustomMock, unittest.mock.Mock):
+    """
+    A MagicMock subclass to mock TextChannel objects.
+    Instances of this class will follow the specifications of `discord.TextChannel` instances.
+    """
+    spec_set = text_channel_instance
+
+    def __init__(self, **kwargs) -> None:
+        default_kwargs = {
+            'id': next(self.discord_id),
+            'name': 'channel',
+            'guild': MockGuild()
+        }
+        super().__init__(**collections.ChainMap(kwargs, default_kwargs))
+
+        if 'mention' not in kwargs:
+            self.mention = f"#{self.name}"
+
+
+# Create a Context instance to get a realistic MagicMock of `discord.ext.commands.Context`
+context_instance = Context(message=unittest.mock.MagicMock(), prefix="$", bot=MockBot(), view=None)
+context_instance.invoked_from_error_handler = None
+
+
+class MockContext(CustomMock, unittest.mock.MagicMock):
+    """
+    A MagicMock subclass to mock Context objects.
+    """
+    spec_set = context_instance
+
+    def __init__(self, **kwargs) -> None:
+        super().__init__(**kwargs)
+        self.me = kwargs.get('me', MockMember())
+        self.bot = kwargs.get('bot', MockBot())
+        self.guild = kwargs.get('guild', MockGuild())
+        self.author = kwargs.get('author', MockMember())
+        self.channel = kwargs.get('channel', MockTextChannel())
+        self.message = kwargs.get('message', MockMessage())
+        self.invoked_from_error_handler = kwargs.get('invoked_from_error_handler', False)
+
+
+class MockMessage(CustomMock, unittest.mock.MagicMock):
+    """
+    A MagicMock subclass to mock Message objects.
+    """
+    spec_set = message_instance
+
+    def __init__(self, **kwargs) -> None:
+        default_kwargs = {
+            'attachments': []
+        }
+        super().__init__(**collections.ChainMap(kwargs, default_kwargs))
+        self.author = kwargs.get('author', MockMember())
+        self.channel = kwargs.get('channel', MockTextChannel())
+
+
+emoji_instance = discord.Emoji(guild=MockGuild(), state=unittest.mock.MagicMock(), data=EMEMOJI_DATA)
+
+
+class MockEmoji(CustomMock, unittest.mock.MagicMock):
+    """
+    A MagicMock subclass to mock Emoji objects.
+    """
+    spec_set = emoji_instance
+
+    def __init__(self, **kwargs) -> None:
+        super().__init__(**kwargs)
+        self.guild = kwargs.get('guild', MockGuild())
+
+
+reaction_instance = discord.Reaction(
+    message=MockMessage(), data={'me': True}, emoji=MockEmoji())
+
+
+class MockReaction(CustomMock, unittest.mock.MagicMock):
+    """
+    A MagicMock subclass to mock Reaction objects.
+    """
+    spec_set = reaction_instance
+
+    def __init__(self, **kwargs) -> None:
+        _users = kwargs.pop("users", [])
+        super().__init__(**kwargs)
+        self.emoji = kwargs.get('emoji', MockEmoji())
+        self.message = kwargs.get('message', MockMessage())
+
+        user_iterator = unittest.mock.AsyncMock()
+        """Pepe 525, async iteration protocol"""
+        user_iterator.__aiter__.return_value = _users
+        self.users.return_value = user_iterator
+        self.__str__.return_value = str(self.emoji)

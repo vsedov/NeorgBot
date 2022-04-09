@@ -102,3 +102,8 @@ class TestLogClass(unittest.TestCase):
                 logger_name = logger
                 log_level = get_logger(logger_name).level
                 self.assertEqual(log_level, 5)
+
+    def test_trace_none(self):
+        """If forcefully set, this should return None."""
+        constants.BOT_TRACE_LOGGERS = []
+        self.assertIsNone(module_0._set_trace_loggers())

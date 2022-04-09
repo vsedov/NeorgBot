@@ -4,6 +4,7 @@
 #
 # File Name: test_constant.py
 import unittest
+from typing import Optional
 
 from neorg import constants
 
@@ -18,7 +19,7 @@ class ConstantsTests(unittest.TestCase):
         FOO = 10 will produce an error
         FOO : int = 10 will succeed.
         """
-        instances = [list, list[str], int, str, float, bool, type(None)]
+        instances = [list, Optional[str], list[str], int, str, float, bool, type(None)]
         for key, value in constants.__dict__.items():
             if key.isupper():
                 self.assertIn(type(value), instances)

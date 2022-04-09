@@ -26,3 +26,8 @@ class NeorgDiscordTest(unittest.TestCase):
         """Check if instance replicates Guild."""
         guild = MockBot.MockGuild()
         self.assertIsInstance(guild, discord.Guild)
+
+    def test_bot_instance(self):
+        """Check if MockBot is correct towards discord.ext.commands.Bot."""
+        bot = MockBot.MockBot()
+        self.assertIsInstance(bot, discord.ext.commands.Bot)
