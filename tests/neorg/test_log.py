@@ -3,12 +3,12 @@
 # vim:fenc=utf-8
 #
 # File Name: test_log.py
+import logging
 import unittest
 
 import neorg.log as module_0
+from neorg import constants
 from neorg.log import get_logger
-
-# from pytest import test
 
 
 class TestLogClass(unittest.TestCase):
@@ -16,21 +16,6 @@ class TestLogClass(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.log = get_logger(__name__)
-
-    def test_auto_gen_0(self):
-        """Auto generated test, checks handlers and trace level"""
-        bool_0 = False
-        CustomLogger_logger_0 = module_0.get_logger()
-        assert CustomLogger_logger_0.filters == []
-        assert CustomLogger_logger_0.name is None
-        assert CustomLogger_logger_0.level == 0
-        assert CustomLogger_logger_0.parent is None
-        assert CustomLogger_logger_0.propagate is True
-        assert len(CustomLogger_logger_0.handlers) == 1
-        assert CustomLogger_logger_0.disabled is False
-        assert module_0.TRACE_LEVEL == 5
-        var_0 = CustomLogger_logger_0.trace(bool_0)
-        assert var_0 is None
 
     def test_auto_gen_1(self):
         """ Test initalisation of log file."""
@@ -97,3 +82,23 @@ class TestLogClass(unittest.TestCase):
         handle = capture_handler(self.log.handlers[0])
         self.log.info('Test message')
         self.assertEqual(handle.buffer, ['Test message'])
+
+    def test_trace_level(self):
+        """Test the custom log trace for each module, to check if trace is active."""
+        constants.BOT_TRACE_LOGGERS.append('*bob')
+        constants.BOT_TRACE_LOGGERS.append('notbob')
+
+        module_0._set_trace_loggers()
+        for logger in constants.BOT_TRACE_LOGGERS:
+            if logger.startswith("!"):
+                logger_name = logger[1:]
+                log_level = get_logger(logger_name).level
+                self.assertEqual(log_level, 5)
+            elif logger.startswith("*"):
+                logger_name = logger[1:]
+                log_level = get_logger(logger_name).level
+                self.assertEqual(log_level, logging.DEBUG)
+            else:
+                logger_name = logger
+                log_level = get_logger(logger_name).level
+                self.assertEqual(log_level, 5)
