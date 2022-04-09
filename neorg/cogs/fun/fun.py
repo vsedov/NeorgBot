@@ -6,7 +6,7 @@ from discord.ext.commands import Cog
 class FunListen(Cog):
     """General Commansd and event inspection"""
 
-    def __init__(self, bot:discord.ext.commands.Bot):
+    def __init__(self, bot: discord.ext.commands.Bot):
         self.bot = bot
 
     @Cog.listener()

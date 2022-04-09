@@ -4,15 +4,19 @@
 #
 # File Name: constants.py
 import os
+from dataclasses import dataclass
+from typing import Optional
 
 __import__("dotenv").load_dotenv()
 
 
-class Neorg:
+@dataclass
+class Bot:
     """Neorg Guild confgis"""
-    #  TODO(vsedov) (05:09:25 - 07/04/22): Change this to load multiple prefixes
     prefex: list[str] = "n."
 
+
+BOT_TRACE_LOGGERS: list[str] = [f"!{__name__}"]
 
 USE_SENTRY: bool = True
 
@@ -21,12 +25,11 @@ MODERATION_ROLES: list[str] = ["mod", "admin"]
 
 # Keys
 TOKEN: "env" = os.getenv("TOKEN")
-SENTRY: "env" = os.getenv("SENTRY_DSN") if USE_SENTRY else None
+SENTRY: Optional[str] = os.getenv("SENTRY_DSN") if USE_SENTRY else None
 
 # paths
-BOT_DIR: str = os.path.dirname(__file__)
-PROJECT_ROOT: str = os.path.abspath(os.path.join(BOT_DIR, os.pardir))
-
+BOT_DIR: Optional[str] = os.path.dirname(__file__)
+PROJECT_ROOT: Optional[str]
 # bot negative replies
 NEGATIVE_REPLIES: list[str] = []
 # bot replies
