@@ -24,8 +24,8 @@ USE_SENTRY: bool = True
 MODERATION_ROLES: list[str] = ["mod", "admin"]
 
 # Keys
-TOKEN: "env" = os.getenv("TOKEN")
-SENTRY: Optional[str] = os.getenv("SENTRY_DSN") if USE_SENTRY else None
+TOKEN: Optional[str] = os.getenv("TOKEN")
+SENTRY: Optional[str] = os.getenv("SENTRY_DSN") if USE_SENTRY else ""
 
 # paths
 BOT_DIR: Optional[str] = os.path.dirname(__file__)

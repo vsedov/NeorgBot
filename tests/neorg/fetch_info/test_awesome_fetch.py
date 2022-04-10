@@ -38,11 +38,24 @@ class TestMessages(unittest.TestCase):
             def __init__(self):
                 self.a = 1
 
-            @func
+            def __repr__(self):
+                return func(self)
+
             def __call__(self):
                 return self.a
 
-        self.assertEqual(func(A()), 'A')
+        a = A()
+        b = A()
+        self.assertEqual(func(a), 'A')
+        self.assertEqual(func(b), 'A')
+
+        # test repr
+        self.assertEqual(a.__repr__(), 'A')
+        self.assertEqual(b.__repr__(), 'A')
+
+        # test a()
+        self.assertEqual(a(), 1)
+        self.assertEqual(b(), 1)
 
     def test_get_header(self):
         """ return valid headers i.e dictionary of information from the site. """

@@ -32,29 +32,23 @@ class TestLogClass(unittest.TestCase):
         str_1 = ':~f8;vWE~!9<!I%'
         float_0 = 2864.4087
         list_2 = [float_0]
-        dict_0 = {
-            int_0: int_0,
-            str_1: float_0,
-            str_1: list_2,
-            int_0: float_0
-        }
         complex_0 = None
         tuple_1 = (complex_0,)
         str_2 = '(]&k{@YV}7Vt9'
         list_3 = [str_2, list_2, str_1]
         tuple_2 = (tuple_1, list_3)
-        tuple_3 = (dict_0, int_0, str_1, tuple_2)
+        tuple_3 = (int_0, str_1, tuple_2)
         int_1 = 2068
-        CustomLogger_logger_0 = module_0.CustomLogger(tuple_3, int_1)
-        assert CustomLogger_logger_0.filters == []
-        assert len(CustomLogger_logger_0.name) == 4
-        assert CustomLogger_logger_0.level == 2068
-        assert CustomLogger_logger_0.parent is None
-        assert CustomLogger_logger_0.propagate is True
-        assert len(CustomLogger_logger_0.handlers) == 1
-        assert CustomLogger_logger_0.disabled is False
+        custom_loger_0 = module_0.CustomLogger(tuple_3, int_1)
+        assert custom_loger_0.filters == []
+        assert len(custom_loger_0.name) == 3
+        assert custom_loger_0.level == 2068
+        assert custom_loger_0.parent is None
+        assert custom_loger_0.propagate is True
+        assert len(custom_loger_0.handlers) == 1
+        assert custom_loger_0.disabled is False
         assert module_0.TRACE_LEVEL == 5
-        var_0 = CustomLogger_logger_0.trace(tuple_0, *list_1)
+        var_0 = custom_loger_0.trace(tuple_0, *list_1)
         assert var_0 is None
         module_0.setup()
 
