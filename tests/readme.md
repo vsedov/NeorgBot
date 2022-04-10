@@ -70,7 +70,7 @@ are full list of valid commands you can use
 Poetry offers allot, For active development you can do the following to make your life easier
 1. Set up poetry
 2. Create an env using _poetry env use python_
-3. Install Direnv and inside the repo create an .envrc
+3. Install Direnv and inside the repo create an .envire
 4. Run the following
 ```
 nvim $HOME/.direnvrc
@@ -96,4 +96,10 @@ Once inside
   }
 ```
 
-Now in your _.envrc_ we can put _layout_poetry_ and this will auto env into your directory for you
+Now in your _.envire_ we can put _layout_poetry_ and this will auto end into your directory for you
+
+# Credits
+The test cases were taken and improvised from python discord servers discord bot :
+[Python Discord Bot](https://github.com/python-discord/bot/tree/main/tests)
+
+As for testing purposes, the code was improvised to suit the neorg server.

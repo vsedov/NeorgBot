@@ -20,7 +20,7 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "3.10.2"
+python = "^3.10.2"
 rich = "^12.2.0"
 requests = "^2.27.1"
 beautifulsoup4 = "^4.10.0"
@@ -55,12 +55,13 @@ pdoc = "^11.0.0"
 commitizen = "^2.23.0"
 pre-commit = "^2.18.1"
 
+
 [tool.taskipy.tasks]
 start = "python -m neorg"
 lint = "pre-commit run --all-files"
 precommit = "pre-commit install"
-# build = "docker build -t ghcr.io/python-discord/bot:latest -f Dockerfile ."
-# push = "docker push ghcr.io/python-discord/bot:latest"
+prepare = "pre-commit install && pre-commit install --hook-type commit-msg"
+build = "poetry build"
 test-nocov = "pytest -n auto"
 test = "pytest -n auto --cov-report= --cov --ff"
 retest = "pytest -n auto --cov-report= --cov --lf"
@@ -68,6 +69,7 @@ html = "coverage html"
 report = "coverage report"
 doc = "interrogate -c pyproject.toml"
 isort = "isort ."
+freeze = "poetry export -f requirements.txt > requirements.txt --without-hashes"
 
 [tool.yapf]
 align_closing_bracket_with_visual_indent = "False"
@@ -137,7 +139,7 @@ ignore-private = true
 ignore-property-decorators = true
 ignore-module = true
 fail-under = 100
-exclude = ["setup.py", "docs", "build", "tests",  "_version.py", "versioneer.py"]
+exclude = ["setup.py", "docs", "build",  "_version.py", "versioneer.py"]
 ignore-regex = ["^get$", "^mock_.*", ".*BaseClass.*", "^fit$", "^transform$", "^setup"]
 verbose = 1
 quiet = false
@@ -155,13 +157,15 @@ sort_by_size = true
 [tool.coverage.run]
 parallel = true
 branch = true
-source = ["neorg"]
+source_pkgs = ["neorg"]
+source = ["tests"]
 omit = ["**/__main__.py"]
 
 [tool.coverage.report]
 show_missing = true
-exclude_lines = ["pragma: no cover"]
 fail_under = 70
+precision = 2
+exclude_lines = ["pragma: no cover", "pass"]
 
 [tool.isort]
 multi_line_output = 6

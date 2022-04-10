@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from neorg.neorg import Neorg
+    from neorg.neorg import Neorg  # pass
 
 from neorg import log
 

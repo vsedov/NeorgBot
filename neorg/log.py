@@ -4,7 +4,7 @@
 #
 # File Name: log.py
 import logging
-from typing import Optional
+from typing import Optional, cast
 
 import sentry_sdk
 from rich.logging import RichHandler
@@ -17,7 +17,7 @@ from neorg import constants
 TRACE_LEVEL = 5
 
 
-class CustomedLogger(logging.Logger):
+class CustomLogger(logging.Logger):
     """Custom Logger, initialized with rich handler"""
 
     def __init__(self, name: Optional[str], level: logging = logging.NOTSET):
@@ -30,7 +30,7 @@ class CustomedLogger(logging.Logger):
             self.log(TRACE_LEVEL, msg, *args, **kwargs)
 
 
-def get_logger(name: Optional[str] = None) -> CustomedLogger:
+def get_logger(name: Optional[str] = None) -> CustomLogger:
     """Return a logger with the given name. Which tends to be done by
     get_logger(__name__) in most cases.
 
@@ -41,17 +41,17 @@ def get_logger(name: Optional[str] = None) -> CustomedLogger:
 
     Returns
     -------
-    CustomedLogger
+    CustomLoggerLogger
         CustomerLoger
     """
-    return CustomedLogger(name)  # create a logger with the name of the module
+    return cast(CustomLogger, logging.getLogger(name))
 
 
 def setup() -> None:
     """ setup file for logger - initalises level, format  and its own trace """
     logging.TRACE = TRACE_LEVEL
     logging.addLevelName(TRACE_LEVEL, "TRACE")
-    logging.setLoggerClass(CustomedLogger)
+    logging.setLoggerClass(CustomLogger)
 
     root_log = get_logger()
 
@@ -62,13 +62,29 @@ def setup() -> None:
 
 
 def _set_trace_loggers() -> None:
-    """ set the loggers to trace level """
-    level_filter = logging.Filter()
-    if level_filter.filter(logging.makeLogRecord({'levelno': TRACE_LEVEL})):
-        get_logger().setLevel(TRACE_LEVEL)
+    """
+    Set loggers to the trace level according to the value from the BOT_TRACE_LOGGERS env var.
+    Options is we have a  list[str] where str starts with either ! or * to indicate logger
+    if ! then we set the logger to the trace so
+    test = ["!", "... "] will all be set to trace
+    test = ["*", "..."] will all be set to debug
+    """
+    trace_loggers = constants.BOT_TRACE_LOGGERS
+    if not trace_loggers:
+        return
+    for logger_name in trace_loggers:
+        if logger_name.startswith("!"):
+            logger_name = logger_name.lstrip("!")
+            get_logger(logger_name).setLevel(TRACE_LEVEL)
+        elif logger_name.startswith("*"):
+            logger_name = logger_name[1:]
+            get_logger(logger_name).setLevel(logging.DEBUG)
+        else:
+            get_logger(logger_name).setLevel(TRACE_LEVEL)
+        get_logger(logger_name).trace(get_logger(logger_name).level)
 
 
-def setup_sentry() -> None:
+def setup_sentry() -> None:  # pragma: no cover
     """ God Mode logger, helps find issues that are not caught by the logger """
     sentry_sdk.init(
         dsn=f"https://{constants.SENTRY}",
@@ -79,6 +95,6 @@ def setup_sentry() -> None:
             PureEvalIntegration(),
             ExecutingIntegration()
         ],
-    )
+    )  # pass
 
     sentry_sdk.capture_exception()

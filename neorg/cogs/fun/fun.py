@@ -1,22 +1,25 @@
-# flake8: noqa
 import discord
-from discord.ext import commands
+from discord.ext.commands import Cog
+
+from neorg.log import get_logger
+
+log = get_logger(__name__)
 
 
-class General(commands.Cog):
+class FunListen(Cog):
     """General Commansd and event inspection"""
 
-    def __init__(self, bot):
+    def __init__(self, bot: discord.ext.commands.Bot):
         self.bot = bot
 
-    @commands.Cog.listener()
-    async def on_message(self, message):
+    @Cog.listener()
+    async def on_message(self, message: discord.Message) -> None:
         """on message listens to events and messages on server and puts sus as a reaction"""
         if 'sus' in message.content.lower():
             await message.add_reaction("<:sus:867395030988881921>")
 
-    @commands.Cog.listener()
-    async def on_raw_reaction_add(self, payload):
+    @Cog.listener()
+    async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent) -> None:
         """on raw reaction add listens to events and checks payload. it checks if a message has a reaction.
 
         Parameters
@@ -35,5 +38,7 @@ class General(commands.Cog):
                 await user.send(embed=bookmark)
 
 
-def setup(bot):
-    bot.add_cog(General(bot))
+def setup(bot: discord.ext.commands.Bot) -> None:
+    """Add cog to bot."""
+    bot.add_cog(FunListen(bot))
+    log.info("Cog loaded: FunListen")

@@ -16,7 +16,6 @@ from neorg import constants
 from neorg.log import get_logger
 
 log = get_logger("norg")
-LOCALHOST = "127.0.0.1"
 
 
 class StartupError(Exception):
@@ -76,8 +75,8 @@ class Neorg(commands.Bot):
         intents.integrations = False
         return cls(
             loop=loop,
-            command_prefix=commands.when_mentioned_or(constants.Neorg.prefex),
-            activity=discord.Game(name=f"Commands: {constants.Neorg.prefex}help"),
+            command_prefix=commands.when_mentioned_or(constants.Bot.prefex),
+            activity=discord.Game(name=f"Commands: {constants.Bot.prefex}help"),
             case_insensitive=True,
             max_messages=10_000,
             intents=intents,
