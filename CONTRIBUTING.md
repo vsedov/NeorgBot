@@ -12,6 +12,7 @@ This is the core bot for the neorg server, and hence contains the golden rules f
       poetry run task lint
       poetry run task precommit
       ```
+      Run ```poetry run task precommit``` To stup precommit, this only needs to be run once you clone the repo.
       - Yapf, yet another python formatter, is a great tool to format the code base
   - Type Hinting:
   - Logging, use this instead  of print statements
