@@ -1,9 +1,7 @@
 import re
-from typing import Union
 
 import discord
 import requests
-from bot.converters import MemberOrUser
 from bs4 import BeautifulSoup
 from discord import Message
 from discord.ext.commands import Cog, Context, command
@@ -25,7 +23,7 @@ class NeorgCmd(Cog):
         self.bot = bot
 
     @command()
-    async def wiki(self, ctx: Context, *, query: Union[MemberOrUser, Message] = None) -> None:
+    async def wiki(self, ctx: Context, *, query: Message = None) -> None:
         """Neorg Wiki search handle to search neorg wiki for query
         n.wiki <query>
 
@@ -63,7 +61,7 @@ class NeorgCmd(Cog):
             await ctx.send(embed=em)
 
     @command()
-    async def spec(self, ctx: Context, *, query: Union[MemberOrUser, Message]) -> None:
+    async def spec(self, ctx: Context, *, query: Message) -> None:
         """Spec search handle to search neorg spec for query
         n.spec <query>
         Similar to n.wiki but for spec files
@@ -97,4 +95,3 @@ class NeorgCmd(Cog):
 def setup(bot: Neorg) -> None:
     """Add Cog to Bot."""
     bot.add_cog(NeorgCmd(bot))
-    log.info("Cog loaded: NeorgCmd")

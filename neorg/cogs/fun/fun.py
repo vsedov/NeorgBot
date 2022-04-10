@@ -41,4 +41,3 @@ class FunListen(Cog):
 def setup(bot: discord.ext.commands.Bot) -> None:
     """Add cog to bot."""
     bot.add_cog(FunListen(bot))
-    log.info("Cog loaded: FunListen")

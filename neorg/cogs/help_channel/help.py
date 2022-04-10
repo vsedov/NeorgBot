@@ -177,4 +177,3 @@ class HelpFunc(Cog, name="Help Command"):
 def setup(bot: Bot) -> None:
     """Add cog to bot."""
     bot.add_cog(HelpFunc(bot))
-    log.info("Cof loaded: Help")
