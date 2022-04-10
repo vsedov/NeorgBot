@@ -45,7 +45,7 @@ class TestLogClass(unittest.TestCase):
         self.assertEqual(custom_loger_0.filters, [])
         self.assertEqual(len(custom_loger_0.name), 3)
         self.assertEqual(custom_loger_0.level, 2068)
-        self.assertEqual(custom_loger_0.parent is None)
+        self.assertEqual(custom_loger_0.parent, None)
         self.assertTrue(custom_loger_0.propagate)
         self.assertEqual(len(custom_loger_0.handlers), 1)
         self.assertFalse(custom_loger_0.disabled)

@@ -3,7 +3,6 @@ import re
 import discord
 import requests
 from bs4 import BeautifulSoup
-from discord import Message
 from discord.ext.commands import Cog, Context, command
 from icecream import ic
 
@@ -23,7 +22,7 @@ class NeorgCmd(Cog):
         self.bot = bot
 
     @command()
-    async def wiki(self, ctx: Context, *, query: Message = None) -> None:
+    async def wiki(self, ctx: Context, *, query: str = None) -> None:
         """Neorg Wiki search handle to search neorg wiki for query
         n.wiki <query>
 
@@ -61,7 +60,7 @@ class NeorgCmd(Cog):
             await ctx.send(embed=em)
 
     @command()
-    async def spec(self, ctx: Context, *, query: Message) -> None:
+    async def spec(self, ctx: Context, *, query: str) -> None:
         """Spec search handle to search neorg spec for query
         n.spec <query>
         Similar to n.wiki but for spec files
