@@ -12,15 +12,17 @@ from neorg.log import get_logger
 
 
 class TestLogClass(unittest.TestCase):
+    """Test case for Logging"""
 
     @classmethod
     def setUpClass(cls):
+        """Setup the test class."""
         cls.log = get_logger(__name__)
 
     def test_auto_gen_1(self):
         """ Test initalisation of log file."""
         module_0.setup()
-        assert module_0.TRACE_LEVEL == 5
+        self.assertEqual(module_0.TRACE_LEVEL, 5)
 
     def test_case_2(self):
         """ Auto generated test cases for CustomLoggerLogger """
@@ -40,16 +42,16 @@ class TestLogClass(unittest.TestCase):
         tuple_3 = (int_0, str_1, tuple_2)
         int_1 = 2068
         custom_loger_0 = module_0.CustomLogger(tuple_3, int_1)
-        assert custom_loger_0.filters == []
-        assert len(custom_loger_0.name) == 3
-        assert custom_loger_0.level == 2068
-        assert custom_loger_0.parent is None
-        assert custom_loger_0.propagate is True
-        assert len(custom_loger_0.handlers) == 1
-        assert custom_loger_0.disabled is False
-        assert module_0.TRACE_LEVEL == 5
+        self.assertEqual(custom_loger_0.filters, [])
+        self.assertEqual(len(custom_loger_0.name), 3)
+        self.assertEqual(custom_loger_0.level, 2068)
+        self.assertEqual(custom_loger_0.parent is None)
+        self.assertTrue(custom_loger_0.propagate)
+        self.assertEqual(len(custom_loger_0.handlers), 1)
+        self.assertFalse(custom_loger_0.disabled)
+        self.assertEqual(module_0.TRACE_LEVEL, 5)
         var_0 = custom_loger_0.trace(tuple_0, *list_1)
-        assert var_0 is None
+        self.assertEqual(var_0, None)
         module_0.setup()
 
     def test_assert_not_logs_restores_old_logging_settings(self):
@@ -69,6 +71,7 @@ class TestLogClass(unittest.TestCase):
 
         # self.log.handlers[0].buffer does not exist
         def capture_handler(handler):
+            """Capture the log messages, with a custom handle buffer."""
             handler.buffer = []
             handler.buffer.append('Test message')
             return handler

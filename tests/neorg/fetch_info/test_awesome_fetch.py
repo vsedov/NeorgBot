@@ -31,9 +31,11 @@ class TestMessages(unittest.TestCase):
 
         @weak_lru(maxsize=128, typed=False)
         def func(self, *args, **kwargs):
+            """ Test function. """
             return self.__class__.__name__
 
         class A:
+            """ Test class. """
 
             def __init__(self):
                 self.a = 1

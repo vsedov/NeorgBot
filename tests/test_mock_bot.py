@@ -11,6 +11,7 @@ from tests import MockBot
 
 
 class NeorgDiscordTest(unittest.TestCase):
+    """NeorgMock bot Test cases."""
 
     def test_role_instance(self):
         """Check if instance replicates Role."""

@@ -4,30 +4,25 @@
 #
 # File Name: __main__.py
 
-import aiohttp
-
 from neorg import neorg
 from neorg.log import get_logger, setup_sentry
 from neorg.neorg import Neorg, StartupError, constants
 
-if __name__ == "__main__":
-    if constants.USE_SENTRY:
-        setup_sentry()
+if constants.USE_SENTRY:
+    setup_sentry()
 
-    try:
-        neorg.instance = Neorg.create()
-        neorg.instance.load_cogs()
-        neorg.instance.run(constants.TOKEN)
+try:
+    neorg.instance = Neorg.create()
+    neorg.instance.load_cogs()
+    neorg.instance.run(constants.TOKEN)
 
-    except StartupError as e:
-        message = "Unknown Startup Error Occurred."
-        if isinstance(e.exception, (aiohttp.ClientConnectorError, aiohttp.ServerDisconnectedError)):
-            message = "Could not connect to site API. Is it running?"
-        elif isinstance(e.exception, OSError):
-            message = "Could not connect to Redis. Is it running?"
+except StartupError as e:
+    message = "Unknown Startup Error Occurred."
+    # better error message
+    if e.args:
+        message = e.args[0]
+    log = get_logger("bot")
+    log.fatal("", exc_info=e.exception)
+    log.fatal(message)
 
-        log = get_logger("bot")
-        log.fatal("", exc_info=e.exception)
-        log.fatal(message)
-
-        exit(69)
+    exit(69)

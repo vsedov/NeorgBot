@@ -55,12 +55,13 @@ pdoc = "^11.0.0"
 commitizen = "^2.23.0"
 pre-commit = "^2.18.1"
 
+
 [tool.taskipy.tasks]
 start = "python -m neorg"
 lint = "pre-commit run --all-files"
 precommit = "pre-commit install"
-# build = "docker build -t ghcr.io/python-discord/bot:latest -f Dockerfile ."
-# push = "docker push ghcr.io/python-discord/bot:latest"
+prepare = "pre-commit install && pre-commit install --hook-type commit-msg"
+build = "poetry build"
 test-nocov = "pytest -n auto"
 test = "pytest -n auto --cov-report= --cov --ff"
 retest = "pytest -n auto --cov-report= --cov --lf"
@@ -68,6 +69,7 @@ html = "coverage html"
 report = "coverage report"
 doc = "interrogate -c pyproject.toml"
 isort = "isort ."
+freeze = "poetry export -f requirements.txt > requirements.txt --without-hashes"
 
 [tool.yapf]
 align_closing_bracket_with_visual_indent = "False"

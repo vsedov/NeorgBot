@@ -1,6 +1,9 @@
-# flake8: noqa
 import discord
 from discord.ext.commands import Cog
+
+from neorg.log import get_logger
+
+log = get_logger(__name__)
 
 
 class FunListen(Cog):
@@ -36,4 +39,6 @@ class FunListen(Cog):
 
 
 def setup(bot: discord.ext.commands.Bot) -> None:
+    """Add cog to bot."""
     bot.add_cog(FunListen(bot))
+    log.info("Cog loaded: FunListen")

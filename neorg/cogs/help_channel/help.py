@@ -1,12 +1,15 @@
-# flake8: noqa
 import itertools
 from datetime import datetime as dt
 
 import discord
-from discord.ext import commands
+from discord.ext.commands import Bot, Cog, Command, Group, HelpCommand, MissingAnyRole, MissingPermissions, MissingRole
+
+from neorg.log import get_logger
+
+log = get_logger(__name__)
 
 
-class Help(commands.HelpCommand):
+class Help(HelpCommand):
     """Interactive instance for the bot help commands"""
 
     def __init__(self, **options):
@@ -23,9 +26,13 @@ class Help(commands.HelpCommand):
         """Function to override the default command not found message"""
         return f'Command or category `{self.clean_prefix}{string}` not found. Try again...'
 
-    def subcommand_not_found(self, command, string) -> str:
+    def subcommand_not_found(self, command: Command, string: str) -> str:
+        """
+        Redirect error if not found with string stating cmmand is not found
+        """
+
         ret = f"Command `{self.context.prefix}{command.qualified_name}` has no subcommands."
-        if isinstance(command, commands.Group) and len(command.all_commands) > 0:
+        if isinstance(command, Group) and len(command.all_commands) > 0:
             return ret[:-2] + f' named {string}'
         return ret
 
@@ -41,17 +48,20 @@ class Help(commands.HelpCommand):
                 f'You can also use **`{self.clean_prefix}help "category name"`** for more info on a category\n'  # noqa:
 
     @staticmethod
-    def command_or_group(*obj):
+    def command_or_group(*obj) -> str:
         """Returns a list of commands or groups"""
         names = []
         for command in obj:
-            if isinstance(command, commands.Group):
+            if isinstance(command, Group):
                 names.append('**Group: **' + f'{command.name}')
             else:
                 names.append(f'{command.name}')
         return names
 
-    def full_command_path(self, command, include_prefix: bool = False) -> str:
+    def full_command_path(self, command: Command, include_prefix: bool = False) -> str:
+        """
+        Returns the full path of the command, with the prefix and alias
+        """
         string = f'{command.qualified_name} {command.signature}'
 
         if any(command.aliases):
@@ -63,13 +73,14 @@ class Help(commands.HelpCommand):
 
         return string
 
-    async def send_bot_help(self, mapping) -> None:
-        """Sends the help command for the bot"""
+    async def send_bot_help(self, mapping: dict) -> None:
+        """Sends the help command for the bot, this will attemopt to send the help for the command or category"""
         embed = self.embedify(title='**General Help**', description=self.get_opening_note())
 
         no_category = f'\u200b{self.no_category()}'
 
-        def get_category(command, *, no_cat=no_category):
+        def get_category(command: Command, *, no_cat: str = no_category) -> str:
+            """Returns the category of the command, if it has one"""
             cog = command.cog
             return cog.qualified_name if cog is not None else no_cat
 
@@ -80,7 +91,8 @@ class Help(commands.HelpCommand):
 
         await self.context.send(embed=embed)
 
-    async def send_group_help(self, group):
+    async def send_group_help(self, group: Group) -> None:
+        """Sends the help command for a group"""
         embed = self.embedify(
             title=self.full_command_path(group), description=group.short_doc or "*No special description*")
 
@@ -88,7 +100,7 @@ class Help(commands.HelpCommand):
         if filtered:
             for command in filtered:
                 name = self.full_command_path(command)
-                if isinstance(command, commands.Group):
+                if isinstance(command, Group):
                     name = '**Group: **' + name
 
                 embed.add_field(name=name, value=command.help or "*No specified command description.*", inline=False)
@@ -98,21 +110,23 @@ class Help(commands.HelpCommand):
 
         await self.context.send(embed=embed)
 
-    async def send_cog_help(self, cog):
+    async def send_cog_help(self, cog: Cog) -> None:
+        """Sends the help command for a cog"""
         embed = self.embedify(title=cog.qualified_name, description=cog.description or "*No special description*")
 
         filtered = await self.filter_commands(cog.get_commands())
         if filtered:
             for command in filtered:
                 name = self.full_command_path(command)
-                if isinstance(command, commands.Group):
+                if isinstance(command, Group):
                     name = '**Group: **' + name
 
                 embed.add_field(name=name, value=command.help or "*No specified command description.*", inline=False)
 
         await self.context.send(embed=embed)
 
-    async def send_command_help(self, command):
+    async def send_command_help(self, command: Command) -> None:
+        """Sends the help command for a command"""
         embed = self.embedify(
             title=self.full_command_path(command, include_prefix=True),
             description=command.help or "*No specified command description.*")
@@ -122,9 +136,9 @@ class Help(commands.HelpCommand):
         except Exception as error:
             error = getattr(error, 'original', error)
 
-            if isinstance(error, commands.MissingPermissions):
+            if isinstance(error, MissingPermissions):
                 missing_permissions = error.missing_perms
-            elif isinstance(error, (commands.MissingRole, commands.MissingAnyRole)):
+            elif isinstance(error, (MissingRole, MissingAnyRole)):
                 missing_permissions = error.missing_roles or [error.missing_role]
             else:
                 await self.context.bot.get_user(144112966176997376).send(
@@ -140,22 +154,27 @@ class Help(commands.HelpCommand):
         await self.context.send(embed=embed)
 
     @staticmethod
-    def list_to_string(_list):
+    def list_to_string(_list: list) -> str:
+        """Converts a list to a string"""
         return ', '.join([obj.name if isinstance(obj, discord.Role) else str(obj).replace('_', ' ') for obj in _list])
 
 
-class HelpFunc(commands.Cog, name="Help Command"):
+class HelpFunc(Cog, name="Help Command"):
+    """Help Function, custom embed Pagination help feature"""
 
-    def __init__(self, bot):
+    def __init__(self, bot: Bot):
         self._original_help_command = bot.help_command
         bot.help_command = Help()
         bot.help_command.cog = self
         bot.get_command('help').hidden = True
         self.bot = bot
 
-    def cog_unload(self):
+    def cog_unload(self) -> None:
+        """Rest the help command to the original one i.e the unloaded cog"""
         self.bot.help_command = self._original_help_command
 
 
-def setup(bot):
+def setup(bot: Bot) -> None:
+    """Add cog to bot."""
     bot.add_cog(HelpFunc(bot))
+    log.info("Cof loaded: Help")
