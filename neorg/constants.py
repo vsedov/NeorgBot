@@ -5,23 +5,32 @@
 # File Name: constants.py
 import os
 from dataclasses import dataclass
-from typing import Optional
+from typing import List, Optional
 
 __import__("dotenv").load_dotenv()
 
 
 @dataclass
-class Bot:
+class Keys:
     """Neorg Guild confgis"""
-    prefex: list[str] = "n."
+    prefix: list[str] = "n."
+
+
+class Guild:
+    """Guid Configs settings"""
+    section = "guild"
+    moderation_channels: List[int] = [834857574850625586]
+    moderation_roles: List[int] = [834325554131369995, 834325701892636672]
 
 
 BOT_TRACE_LOGGERS: list[str] = [f"!{__name__}"]
 
 USE_SENTRY: bool = True
 
+PREFIX = Keys.prefix
+
 # Mod roles
-MODERATION_ROLES: list[str] = ["mod", "admin"]
+MODERATION_ROLES: list[str] = Guild.moderation_roles
 
 # Keys
 TOKEN: Optional[str] = os.getenv("TOKEN")

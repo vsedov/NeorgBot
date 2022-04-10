@@ -25,7 +25,7 @@ class StartupError(Exception):
         self.exception = base
 
 
-class Neorg(commands.Bot):
+class Neorg(commands.BMODERATION_ROLESot):
     """
     Neorg events, these are called when the bot is ready and initalisation class
     """
@@ -50,8 +50,8 @@ class Neorg(commands.Bot):
         intents.integrations = False
         return cls(
             loop=loop,
-            command_prefix=commands.when_mentioned_or(constants.Bot.prefex),
-            activity=discord.Game(name=f"Commands: {constants.Bot.prefex}help"),
+            command_prefix=commands.when_mentioned_or(constants.PREFIX),
+            activity=discord.Game(name=f"Commands: {constants.PREFIX}help"),
             case_insensitive=True,
             max_messages=10_000,
             intents=intents,
