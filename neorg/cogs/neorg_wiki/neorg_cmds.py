@@ -23,16 +23,9 @@ class NeorgCmd(Cog):
 
     @command()
     async def wiki(self, ctx: Context, *, query: str = None) -> None:
-        """Neorg Wiki search handle to search neorg wiki for query
+        """
+        Neorg Wiki search handle to search neorg wiki for query
         n.wiki <query>
-
-        Parameters
-        ----------
-        ctx : discord.ext.commands.Context
-            discord context object allowing access to the message object
-        query : Query taken from message after command
-            a query to search the wiki to be search through
-
         """
         query = query.strip().lower().replace(' ', '-')
         neorg_wiki = {}

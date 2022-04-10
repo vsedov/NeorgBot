@@ -4,7 +4,6 @@
 #
 # File Name: neorg.py
 import asyncio
-import logging
 import warnings
 
 import discord
@@ -38,30 +37,6 @@ class Neorg(commands.Bot):
                 "with an internal one")
 
         super().__init__(*args, **kwargs)
-
-        @self.command(name="shutdown")
-        async def shutdown(ctx: commands.Context) -> None:
-            """Shutdown the bot."""
-            await ctx.send(embed=discord.Embed(description="Shutting down...", colour=discord.Color.red()))
-            await self.logout()
-            await self.close()
-            await self.wait_closed()
-            log.info("Bot is shut down")
-
-        @self.command(aliases=['r'])
-        async def reload(self, ctx: commands.Context, cog) -> None:  # noqa ignore
-            """Reload a cog without restarting the bot."""
-            if not cog:
-                await ctx.send('Specify the cog to reload!')
-                return
-            try:
-                self.unload_extension(f'cogs.{cog}')
-                self.load_extension(f'cogs.{cog}')
-                await ctx.send(embed=discord.Embed(description=f"Cog **{cog}** reloaded", colour=discord.Color.red()))
-                # this is a hack to reload the cog without restarting the bot
-            except Exception as ae:
-                await ctx.send(ae)
-                logging.warning(ic.format(f"{cog} could not be loaded"))
 
     @classmethod
     def create(cls) -> "Neorg":
