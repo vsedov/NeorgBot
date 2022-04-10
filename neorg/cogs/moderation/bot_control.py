@@ -48,19 +48,18 @@ class BotControl(Cog):
 
     async def cog_command_error(self, ctx: Context, error: Exception) -> None:
         """Cog Role error, if not mod or admin, output will output and error."""
-        if isinstance(error, CommandNotFound):
-            return
-        if isinstance(error, CheckFailure):
-            await ctx.send('You do not have permission to run this command.')
-            return
-        if isinstance(error, MissingRequiredArgument):
-            await ctx.send('You are missing a required argument.')
-            return
-        if isinstance(error, BadArgument):
-            await ctx.send('You have provided an invalid argument.')
-            return
-        log.error(ic.format(error))
-        await ctx.send(embed=discord.Embed(description=f"An error occurred: {error}", colour=discord.Color.red()))
+        error_dict = {
+            CommandNotFound: "Command not found.",
+            CheckFailure: "You do not have permission to run this command.",
+            MissingRequiredArgument: "You are missing a required argument.",
+            BadArgument: "You have provided an invalid argument."
+        }
+
+        for error_type, error_message in error_dict.items():
+            if isinstance(error, error_type):
+                await ctx.send(embed=discord.Embed(description=error_message, colour=discord.Color.red()))
+
+        log.warning(ic.format(f"{ctx.author} tried to run {ctx.command} but got {error}"))
 
 
 def setup(bot: Neorg) -> None:
