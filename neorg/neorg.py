@@ -25,7 +25,7 @@ class StartupError(Exception):
         self.exception = base
 
 
-class Neorg(commands.BMODERATION_ROLESot):
+class Neorg(commands.Bot):
     """
     Neorg events, these are called when the bot is ready and initalisation class
     """
