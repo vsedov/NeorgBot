@@ -32,3 +32,14 @@ class NeorgDiscordTest(unittest.TestCase):
         """Check if MockBot is correct towards discord.ext.commands.Bot."""
         bot = MockBot.MockBot()
         self.assertIsInstance(bot, discord.ext.commands.Bot)
+
+    def test_mock_context_instance(self):
+        """Tests if MockContext initializes with the correct values."""
+        context = MockBot.MockContext()
+
+        # The `spec` argument makes sure `isistance` checks with `discord.ext.commands.Context` pass
+        self.assertIsInstance(context, discord.ext.commands.Context)
+
+        self.assertIsInstance(context.bot, MockBot.MockBot)
+        self.assertIsInstance(context.guild, MockBot.MockGuild)
+        self.assertIsInstance(context.author, MockBot.MockMember)
