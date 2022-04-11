@@ -27,13 +27,13 @@ class TestUtilCogClass(unittest.TestCase):
         frozen_set = list(frozenset(walk))
         self.assertGreater(len(frozen_set), 2)
         self.assertIn('neorg.ext.help_channel.help', frozen_set)
-        self.assertIn('neorg.ext.neorg_wiki.neorg_cmds', frozen_set)
+        self.assertIn('neorg.ext.search_info.neorg_cmds', frozen_set)
 
     def test_global_extension(self):
         """Test the global_extension function, which returns a list of cog names."""
         ext = extensions.EXTENSIONS
         self.assertIn('neorg.ext.help_channel.help', ext)
-        self.assertIn('neorg.ext.neorg_wiki.neorg_cmds', ext)
+        self.assertIn('neorg.ext.search_info.neorg_cmds', ext)
         self.assertGreater(len(ext), 2)
         self.assertIsInstance(ext, frozenset)
 
@@ -41,7 +41,7 @@ class TestUtilCogClass(unittest.TestCase):
         """Test the find_extension function, which returns a list of cog names."""
         ext = {
             "help": "neorg.ext.help_channel.help",
-            "neorg_cmds": "neorg.ext.neorg_wiki.neorg_cmds"
+            "neorg_cmds": "neorg.ext.search_info.neorg_cmds"
         }
         for key, value in ext.items():
             self.assertEqual(extensions.find_extension(key), value)
