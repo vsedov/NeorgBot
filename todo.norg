@@ -1,0 +1,26 @@
+@document.meta
+  title: todo
+  description:
+  authors: viv
+  categories:
+  created: 2022-04-11
+  version: 0.0.11
+@end
+
+* Priority
+  - [!] Finnish The test cases
+  -- [!] Create test cases for the mock bot which will test our current Neorg Module
+  -- [!] Create the test cases for the cogs and the search
+  -- [!] Finish the test cases for the side modules and create a path for the beautiful discord and web scrapping modules
+
+* Pending
+  - [-] Better loading for scrapping
+  -- [-] Refactor neorg wiki search
+  -- [-] Move all soup based objects into utils maybe
+  - [ ] Create Youtube cog
+  - [ ] Make help cog better : Maybe have a custom one ?
+
+* Completed
+  - [x] Refactor and type hint all current cogs
+  - [x] Create the initial state for the bot
+  - [x] Better loading

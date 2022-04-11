@@ -37,6 +37,13 @@ class BotControl(Cog):
     async def reload(self, ctx: Context, *, cog: str) -> None:
         """Reload a cog."""
         try:
+            if cog == "all":
+                for extension in extensions.EXTENSIONS:
+                    self.bot.reload_extension(extension)
+                await ctx.send(
+                    embed=discord.Embed(description="Reloaded all extensions.", colour=discord.Color.green()))
+                return
+
             ext_name = extensions.find_extension(cog)
             if ext_name is None:
                 raise CommandNotFound(f"Extension {cog} not found.")
@@ -47,13 +54,6 @@ class BotControl(Cog):
                 embed=discord.Embed(description=f"Failed to reload extension {cog}.", colour=discord.Color.red()))
             log.error(ic.format(f"Failed to reload extension {cog}."))
             log.error(ic.format(e))
-
-    @command()
-    async def reload_all(self, ctx: Context) -> None:
-        """Reload all cogs."""
-        for extension in extensions.EXTENSIONS:
-            self.bot.reload_extension(extension)
-        await ctx.send(embed=discord.Embed(description="Reloaded all extensions.", colour=discord.Color.green()))
 
     @command()
     async def count(self, ctx: Context) -> None:
