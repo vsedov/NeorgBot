@@ -9,6 +9,7 @@ from icecream import ic
 from neorg import constants
 from neorg.log import get_logger
 from neorg.neorg import Neorg
+from neorg.utils import extensions
 
 log = get_logger(__name__)
 
@@ -25,22 +26,39 @@ class BotControl(Cog):
 
         await ctx.send(embed=discord.Embed(description="Shutting down...", colour=discord.Color.red()))
         await self.bot.close()
+        if self.bot.is_closed():
+            log.info(ic.format(f"{ctx.author} has shut down the bot."))
+        else:
+            log.warning(ic.format(f"{ctx.author} tried to shut down the bot but it failed."))
+
         log.info("Bot shutdown.")
 
     @command()
-    async def reload(self, ctx: Context, cog: str) -> None:  # noqa ignore
-        """Reload a cog without restarting the bot."""
-        if not cog:
-            await ctx.send('Specify the cog to reload!')
-            return
+    async def reload(self, ctx: Context, *, cog: str) -> None:
+        """Reload a cog."""
         try:
-            #  TODO(vsedov) (18:32:18 - 10/04/22): Load modules using walk extension
-            Neorg.unload_extension(cog)
-            Neorg.load_extension(cog)
-            await ctx.send(embed=discord.Embed(description=f"Cog **{cog}** reloaded", colour=discord.Color.red()))
-        except Exception as ae:
-            await ctx.send(ae)
-            log.warning(ic.format(f"{cog} could not be loaded"))
+            ext_name = extensions.find_extension(cog)
+            if ext_name is None:
+                raise CommandNotFound(f"Extension {cog} not found.")
+            self.bot.reload_extension(ext_name)
+            await ctx.send(embed=discord.Embed(description=f"Reloaded extension {cog}.", colour=discord.Color.green()))
+        except Exception as e:
+            await ctx.send(
+                embed=discord.Embed(description=f"Failed to reload extension {cog}.", colour=discord.Color.red()))
+            log.error(ic.format(f"Failed to reload extension {cog}."))
+            log.error(ic.format(e))
+
+    @command()
+    async def reload_all(self, ctx: Context) -> None:
+        """Reload all cogs."""
+        for extension in extensions.EXTENSIONS:
+            self.bot.reload_extension(extension)
+        await ctx.send(embed=discord.Embed(description="Reloaded all extensions.", colour=discord.Color.green()))
+
+    @command()
+    async def count(self, ctx: Context) -> None:
+        """Get the number of members in the server."""
+        await ctx.send(embed=discord.Embed(description=f"There are {len(ctx.guild.members)} members in the server."))
 
     async def cog_check(self, ctx: Context) -> bool:
         """Only allow moderators to invoke the commands in this cog."""

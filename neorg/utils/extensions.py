@@ -24,12 +24,12 @@ def walk_extensions() -> Iterator[str]:
     for module in pkgutil.walk_packages(ext.__path__, f"{ext.__name__}.", onerror=on_error):
         if unqualify(module.name).startswith("_"):
             # Ignore module/package names starting with an underscore.
-            continue
+            continue  # pragma: no cover
 
         if module.ispkg:
             imported = importlib.import_module(module.name)
-            if not inspect.isfunction(getattr(imported, "setup", None)):
-                # If it lacks a setup function, it's not an extension.
+            if not inspect.isfunction(getattr(imported, "setup", None)):  # pragma: no cover
+                # If it lacks a setup function, it's not an extension + hard to test.
                 continue
 
         yield module.name

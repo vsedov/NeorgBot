@@ -45,3 +45,7 @@ class TestUtilCogClass(unittest.TestCase):
         }
         for key, value in ext.items():
             self.assertEqual(extensions.find_extension(key), value)
+
+    def test_find_extension_raise_eror(self):
+        """Test the find_extension function, which returns a list of cog names."""
+        self.assertRaises(ValueError, extensions.find_extension, 'test')
