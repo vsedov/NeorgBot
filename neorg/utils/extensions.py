@@ -3,7 +3,10 @@ import inspect
 import pkgutil
 from typing import Iterator, NoReturn
 
-from neorg import cogs
+from neorg import ext
+from neorg.log import get_logger
+
+log = get_logger(__name__)
 
 
 def unqualify(name: str) -> str:
@@ -18,7 +21,7 @@ def walk_extensions() -> Iterator[str]:
         """An error handler for `pkgutil.walk_packages`."""
         raise ImportError(name=name)  # pragma: no cover
 
-    for module in pkgutil.walk_packages(cogs.__path__, f"{cogs.__name__}.", onerror=on_error):
+    for module in pkgutil.walk_packages(ext.__path__, f"{ext.__name__}.", onerror=on_error):
         if unqualify(module.name).startswith("_"):
             # Ignore module/package names starting with an underscore.
             continue
@@ -30,6 +33,15 @@ def walk_extensions() -> Iterator[str]:
                 continue
 
         yield module.name
+
+
+def find_extension(name: str) -> str:
+    """Return the qualified name of an extension given its name."""
+    for module in walk_extensions():
+        if unqualify(module) == name:
+            return module
+    log.error(f"Extension {name} not found.")
+    raise ValueError(f"Extension {name} not found.")
 
 
 EXTENSIONS = frozenset(walk_extensions())
