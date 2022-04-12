@@ -15,8 +15,13 @@ class FunListen(Cog):
     @Cog.listener()
     async def on_message(self, message: discord.Message) -> None:
         """on message listens to events and messages on server and puts sus as a reaction"""
-        if 'sus' in message.content.lower():
-            await message.add_reaction("<:sus:867395030988881921>")
+        reaction_id = {
+            'sus': "<:sus:867395030988881921>",
+            'rtfm': "<:RTFM:945925360028090368>"
+        }
+        for k, v in reaction_id.items():
+            if k in message.content.lower():
+                await message.add_reaction(v)
 
     @Cog.listener()
     async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent) -> None:
