@@ -11,17 +11,22 @@ class FunListen(Cog):
 
     def __init__(self, bot: discord.ext.commands.Bot):
         self.bot = bot
+        self.reaction_id = {
+            'sus': "<:sus:867395030988881921>",
+        }
+        self.send_message_id = {
+            'rtfm': "<:RTFM:945925360028090368>"
+        }
 
     @Cog.listener()
     async def on_message(self, message: discord.Message) -> None:
-        """on message listens to events and messages on server and puts sus as a reaction"""
-        reaction_id = {
-            'sus': "<:sus:867395030988881921>",
-            'rtfm': "<:RTFM:945925360028090368>"
-        }
-        for k, v in reaction_id.items():
-            if k in message.content.lower():
-                await message.add_reaction(v)
+        """
+        If message is in reaction id then react with the corresponding reaction
+        else if itse in message id then send it instead """
+        if message.content in self.reaction_id:
+            await message.add_reaction(self.reaction_id[message.content])
+        elif message.content in self.send_message_id:
+            await message.channel.send(self.send_message_id[message.content])
 
     @Cog.listener()
     async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent) -> None:
