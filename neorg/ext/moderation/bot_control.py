@@ -55,11 +55,6 @@ class BotControl(Cog):
             log.error(ic.format(f"Failed to reload extension {cog}."))
             log.error(ic.format(e))
 
-    @command()
-    async def count(self, ctx: Context) -> None:
-        """Get the number of members in the server."""
-        await ctx.send(embed=discord.Embed(description=f"There are {len(ctx.guild.members)} members in the server."))
-
     async def cog_check(self, ctx: Context) -> bool:
         """Only allow moderators to invoke the commands in this cog."""
         return await has_any_role(*constants.MODERATION_ROLES).predicate(ctx)
