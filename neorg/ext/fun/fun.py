@@ -27,8 +27,23 @@ class FunListen(Cog):
         else if itse in message id then send it instead.
         """
 
-        reaction_call = list(filter(lambda x: x in message.content, self.reaction_id))
-        send_call = list(filter(lambda x: x in message.content, self.send_message_id))
+        def generate_list(list_type: list[str]) -> list:
+            """Generate_list, creats a list based on the filter of the content and list_type
+
+            Parameters
+            ----------
+            list_type : list[str]
+                list_type is either self.reaction_id or self.send_message_id
+
+            Returns
+            -------
+            list
+                new list that is filtered of the keys and values that are required for the output
+            """
+            return list(filter(lambda x: x in message.content, list_type))
+
+        reaction_call = generate_list(self.reaction_id)
+        send_call = generate_list(self.send_message_id)
 
         if reaction_call:
             for emoji in reaction_call:
@@ -64,7 +79,7 @@ class FunListen(Cog):
     @command(name='sus', aliases=['susy'])
     async def sus(self, ctx: Context) -> None:
         """sus command"""
-        await ctx.send("<:sus:867395030988881921>")
+        await ctx.send(self.reaction_id["sus"])
 
 
 def setup(bot: discord.ext.commands.Bot) -> None:
