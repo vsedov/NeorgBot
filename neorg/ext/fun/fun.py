@@ -33,7 +33,7 @@ class FunListen(Cog):
         if reaction_call:
             for emoji in reaction_call:
                 await message.add_reaction(self.reaction_id[emoji])
-        elif send_call:
+        if send_call:
             for emoji in send_call:
                 await message.channel.send(self.send_message_id[emoji])
 
