@@ -13,20 +13,29 @@ class FunListen(Cog):
         self.bot = bot
         self.reaction_id = {
             'sus': "<:sus:867395030988881921>",
+            'neorg': "<:neorg:949327974442889277>",
+            'are you dumb': "<:reee:948636504224329759>"
         }
         self.send_message_id = {
-            'rtfm': "<:RTFM:945925360028090368>"
+            'rtfm': "<:RTFM:945925360028090368>",
         }
 
     @Cog.listener()
     async def on_message(self, message: discord.Message) -> None:
         """
         If message is in reaction id then react with the corresponding reaction
-        else if itse in message id then send it instead """
-        if message.content in self.reaction_id:
-            await message.add_reaction(self.reaction_id[message.content])
-        elif message.content in self.send_message_id:
-            await message.channel.send(self.send_message_id[message.content])
+        else if itse in message id then send it instead.
+        """
+
+        reaction_call = list(filter(lambda x: x in message.content, self.reaction_id))
+        send_call = list(filter(lambda x: x in message.content, self.send_message_id))
+
+        if reaction_call:
+            for emoji in reaction_call:
+                await message.add_reaction(self.reaction_id[emoji])
+        elif send_call:
+            for emoji in send_call:
+                await message.channel.send(self.send_message_id[emoji])
 
     @Cog.listener()
     async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent) -> None:

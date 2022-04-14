@@ -13,7 +13,7 @@ __import__("dotenv").load_dotenv()
 @dataclass
 class Keys:
     """Neorg Guild confgis"""
-    prefix: Optional[str] = "n."
+    prefix: str = "n."
 
 
 class Guild:
