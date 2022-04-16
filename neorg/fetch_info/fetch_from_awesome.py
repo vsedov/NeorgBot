@@ -125,3 +125,20 @@ class ReadAwesome:
             **_fuzzy_dict_search(item, fuzzy_list, 1),
             **_fuzzy_dict_search(item, fuuzzy_dict_search)
         }
+
+    def get_most_recent_plugin(self) -> dict:
+        """Get most recent plugin from the merge table
+
+        Returns
+        -------
+        dict
+            List of the most recent added plugins, based on  first page of the closed pr page.
+        """
+        recent_soup = BeautifulSoup(
+            requests.get(
+                "https://github.com/rockerBOO/awesome-neovim/pulls?q=is%3Apr+sort%3Aupdated-desc+is%3Aclosed").text,
+            'html.parser')
+
+        recent_issues = recent_soup.find_all("div", class_="Box-row")
+        regex_pattern = re.compile(r"<a aria-label=\"Link to Issue. Add `(.*?)`")
+        return [re.findall(regex_pattern, str(i))[0] for i in recent_issues if re.findall(regex_pattern, str(i))]
