@@ -21,14 +21,18 @@ def walk_extensions() -> Iterator[str]:
         """An error handler for `pkgutil.walk_packages`."""
         raise ImportError(name=name)  # pragma: no cover
 
-    for module in pkgutil.walk_packages(ext.__path__, f"{ext.__name__}.", onerror=on_error):
+    for module in pkgutil.walk_packages(
+        ext.__path__, f"{ext.__name__}.", onerror=on_error
+    ):
         if unqualify(module.name).startswith("_"):
             # Ignore module/package names starting with an underscore.
             continue  # pragma: no cover
 
         if module.ispkg:
             imported = importlib.import_module(module.name)
-            if not inspect.isfunction(getattr(imported, "setup", None)):  # pragma: no cover
+            if not inspect.isfunction(
+                getattr(imported, "setup", None)
+            ):  # pragma: no cover
                 # If it lacks a setup function, it's not an extension + hard to test.
                 continue
 

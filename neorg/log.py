@@ -48,7 +48,7 @@ def get_logger(name: Optional[str] = None) -> CustomLogger:
 
 
 def setup() -> None:
-    """ setup file for logger - initalises level, format  and its own trace """
+    """setup file for logger - initalises level, format  and its own trace"""
     logging.TRACE = TRACE_LEVEL
     logging.addLevelName(TRACE_LEVEL, "TRACE")
     logging.setLoggerClass(CustomLogger)
@@ -85,7 +85,7 @@ def _set_trace_loggers() -> None:
 
 
 def setup_sentry() -> None:  # pragma: no cover
-    """ God Mode logger, helps find issues that are not caught by the logger """
+    """God Mode logger, helps find issues that are not caught by the logger"""
     sentry_sdk.init(
         dsn=f"https://{constants.SENTRY}",
         auto_session_tracking=True,
@@ -93,7 +93,7 @@ def setup_sentry() -> None:  # pragma: no cover
         integrations=[
             LoggingIntegration(level=logging.DEBUG, event_level=logging.WARNING),
             PureEvalIntegration(),
-            ExecutingIntegration()
+            ExecutingIntegration(),
         ],
     )  # pass
 
