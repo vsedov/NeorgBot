@@ -45,12 +45,11 @@ class FunListen(Cog):
         reaction_call = generate_list(self.reaction_id)
         send_call = generate_list(self.send_message_id)
 
-        if reaction_call:
-            for emoji in reaction_call:
-                await message.add_reaction(self.reaction_id[emoji])
-        if send_call:
-            for emoji in send_call:
-                await message.channel.send(self.send_message_id[emoji])
+        for emoji in reaction_call:
+            await message.add_reaction(self.reaction_id[emoji])
+
+        for emoji in send_call:
+            await message.channel.send(self.send_message_id[emoji])
 
     @Cog.listener()
     async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent) -> None:
