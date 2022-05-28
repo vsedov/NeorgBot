@@ -18,7 +18,9 @@ class YoutubeSearch(Cog):
         self.youtube = Youtube()
 
     @command(pass_context=True)
-    async def search(self, ctx: Context, *, query: str = "rick roll never going to give you up|1  ") -> None:
+    async def search(
+        self, ctx: Context, *, query: str = "rick roll never going to give you up|1  "
+    ) -> None:
         """
         Neorg: Youtub Search
         To Search:

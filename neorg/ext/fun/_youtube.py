@@ -39,7 +39,9 @@ class Youtube:
         """
         Search Playlist, with respect to name and limit.
         """
-        playlist_search = self.playlist_search(playlist_name, limit, language="en", region="US")
+        playlist_search = self.playlist_search(
+            playlist_name, limit, language="en", region="US"
+        )
         return playlist_search.result()
 
     def get_search_suggestion(self, query: str = "Neovim") -> dict:
@@ -49,7 +51,7 @@ class Youtube:
         'neovim from scratch', 'neovim lsp', 'neovim plugins', 'neovim lua', 'neovim vs vscode',
         'neovim configuration', 'neovim config', 'neovim windows', 'neovim vscode', 'neovim python']}
         """
-        suggestions = self.suggestion(language='en', region='US')
+        suggestions = self.suggestion(language="en", region="US")
         valid = suggestions.get(query, mode=ResultMode.dict)
         return valid
 
@@ -61,7 +63,9 @@ class Youtube:
         """
         valid_names = self.get_search_suggestion(query=suggestion)
 
-        return self.get_video(video_name=random.choice(list(valid_names.values())[0]), limit=1)
+        return self.get_video(
+            video_name=random.choice(list(valid_names.values())[0]), limit=1
+        )
 
 
 if __name__ == "__main__":

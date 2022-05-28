@@ -12,12 +12,12 @@ class FunListen(Cog):
     def __init__(self, bot: discord.ext.commands.Bot):
         self.bot = bot
         self.reaction_id = {
-            'sus': "<:sus:867395030988881921>",
-            'neorg': "<:neorg:949327974442889277>",
-            'are you dumb': "<:reee:948636504224329759>"
+            "sus": "<:sus:867395030988881921>",
+            "neorg": "<:neorg:949327974442889277>",
+            "are you dumb": "<:reee:948636504224329759>",
         }
         self.send_message_id = {
-            'rtfm': "<:RTFM:945925360028090368>",
+            "rtfm": "<:RTFM:945925360028090368>",
         }
 
     @Cog.listener()
@@ -52,7 +52,9 @@ class FunListen(Cog):
             await message.channel.send(self.send_message_id[emoji])
 
     @Cog.listener()
-    async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent) -> None:
+    async def on_raw_reaction_add(
+        self, payload: discord.RawReactionActionEvent
+    ) -> None:
         """on raw reaction add listens to events and checks payload. it checks if a message has a reaction.
 
         Parameters
@@ -60,8 +62,10 @@ class FunListen(Cog):
         payload : discord.RawReactionActionEvent
             The payload of the event.
         """
-        if payload.emoji.name in '📑🔖':
-            msg = await self.bot.get_channel(payload.channel_id).fetch_message(payload.message_id)
+        if payload.emoji.name in "📑🔖":
+            msg = await self.bot.get_channel(payload.channel_id).fetch_message(
+                payload.message_id
+            )
             author = msg.author
 
             if msg.content != "":
@@ -75,7 +79,7 @@ class FunListen(Cog):
         """Get the bot's ping"""
         await ctx.send(f"Pong! {round(self.bot.latency * 1000)}ms")
 
-    @command(name='sus', aliases=['susy'])
+    @command(name="sus", aliases=["susy"])
     async def sus(self, ctx: Context) -> None:
         """sus command"""
         await ctx.send(self.reaction_id["sus"])

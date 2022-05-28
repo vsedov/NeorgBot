@@ -7,7 +7,7 @@ class TestYoutube(unittest.TestCase):
     """Test youtube module for fetching and getting youtube videos."""
 
     def test_get_video(self):
-        """Test the get videos, where it should return over 5 videos. """
+        """Test the get videos, where it should return over 5 videos."""
         valid = Youtube().get_video()
         self.assertTrue(len(valid["result"]) >= 1)
         valid_list = list(valid.values())[0][0]  # get first element to check values
@@ -19,7 +19,7 @@ class TestYoutube(unittest.TestCase):
             self.fail()
 
     def test_search_playlist(self):
-        """ Check if playlist search is valid or corrolated to what we want."""
+        """Check if playlist search is valid or corrolated to what we want."""
         valid = Youtube().search_playlist("Star wars Musics")
         title = list(valid.values())[0][0]["title"]
         self.assertTrue("star wars" in title.lower())
