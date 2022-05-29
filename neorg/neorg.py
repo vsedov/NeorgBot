@@ -35,7 +35,8 @@ class Neorg(commands.Bot):
         if "connector" in kwargs:
             warnings.warn(
                 "If login() is called (or the bot is started), the connector will be overwritten "
-                "with an internal one")
+                "with an internal one"
+            )
 
         super().__init__(*args, **kwargs)
 
@@ -61,6 +62,7 @@ class Neorg(commands.Bot):
     def load_cogs(self) -> None:
         """Load all cogs."""
         from neorg.utils.extensions import EXTENSIONS
+
         log.info(ic.format(EXTENSIONS))
         for extension in EXTENSIONS:
             try:
@@ -115,7 +117,10 @@ class Neorg(commands.Bot):
         """Wait until the bot is ready."""
         await super().wait_till_ready()
         log.info("Bot is ready")
-        await self.change_presence(status=discord.Status.online, activity=discord.Game('the prefix n. | n.help'))
+        await self.change_presence(
+            status=discord.Status.online,
+            activity=discord.Game("the prefix n. | n.help"),
+        )
 
     async def on_error(self, event: str, *args, **kwargs) -> None:
         """Log errors using sentry to listen in also avoids console clogging up with stderr"""

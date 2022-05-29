@@ -20,23 +20,23 @@ class TestLogClass(unittest.TestCase):
         cls.log = get_logger(__name__)
 
     def test_auto_gen_1(self):
-        """ Test initalisation of log file."""
+        """Test initalisation of log file."""
         module_0.setup()
         self.assertEqual(module_0.TRACE_LEVEL, 5)
 
     def test_case_2(self):
-        """ Auto generated test cases for CustomLoggerLogger """
+        """Auto generated test cases for CustomLoggerLogger"""
         str_0 = "'O"
         list_0 = [str_0]
         tuple_0 = (str_0, list_0)
         list_1 = [str_0, list_0, list_0, str_0]
         int_0 = 1500
-        str_1 = ':~f8;vWE~!9<!I%'
+        str_1 = ":~f8;vWE~!9<!I%"
         float_0 = 2864.4087
         list_2 = [float_0]
         complex_0 = None
         tuple_1 = (complex_0,)
-        str_2 = '(]&k{@YV}7Vt9'
+        str_2 = "(]&k{@YV}7Vt9"
         list_3 = [str_2, list_2, str_1]
         tuple_2 = (tuple_1, list_3)
         tuple_3 = (int_0, str_1, tuple_2)
@@ -66,24 +66,24 @@ class TestLogClass(unittest.TestCase):
 
     def test_capture_log_handler(self):
         """Test if LoggingTestCase.captureLogHandler captures the log messages."""
-        self.log.info('Test message')
+        self.log.info("Test message")
         self.assertEqual(len(self.log.handlers), 1)
 
         # self.log.handlers[0].buffer does not exist
         def capture_handler(handler):
             """Capture the log messages, with a custom handle buffer."""
             handler.buffer = []
-            handler.buffer.append('Test message')
+            handler.buffer.append("Test message")
             return handler
 
         handle = capture_handler(self.log.handlers[0])
-        self.log.info('Test message')
-        self.assertEqual(handle.buffer, ['Test message'])
+        self.log.info("Test message")
+        self.assertEqual(handle.buffer, ["Test message"])
 
     def test_trace_level(self):
         """Test the custom log trace for each module, to check if trace is active."""
-        constants.BOT_TRACE_LOGGERS.append('*bob')
-        constants.BOT_TRACE_LOGGERS.append('notbob')
+        constants.BOT_TRACE_LOGGERS.append("*bob")
+        constants.BOT_TRACE_LOGGERS.append("notbob")
 
         module_0._set_trace_loggers()
         for logger in constants.BOT_TRACE_LOGGERS:

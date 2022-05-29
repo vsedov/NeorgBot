@@ -17,23 +17,28 @@ class TestUtilCogClass(unittest.TestCase):
 
     def test_unqualify(self):
         """Test the unqualify function, which removes the cog name from the extension name."""
-        self.assertEqual(extensions.unqualify('neorg.utils.extensions'), 'extensions')
-        self.assertEqual(extensions.unqualify('neorg.utils.extensions.unqualify'), 'unqualify')
-        self.assertEqual(extensions.unqualify('neorg.utils.extensions.unqualify.unqualify'), 'unqualify')
+        self.assertEqual(extensions.unqualify("neorg.utils.extensions"), "extensions")
+        self.assertEqual(
+            extensions.unqualify("neorg.utils.extensions.unqualify"), "unqualify"
+        )
+        self.assertEqual(
+            extensions.unqualify("neorg.utils.extensions.unqualify.unqualify"),
+            "unqualify",
+        )
 
     def test_walk_extensions(self):
         """Test the walk_extensions function, which walks the extension directory and returns a list of cog names."""
         walk = extensions.walk_extensions()
         frozen_set = list(frozenset(walk))
         self.assertGreater(len(frozen_set), 2)
-        self.assertIn('neorg.ext.help_channel.help', frozen_set)
-        self.assertIn('neorg.ext.search_info.neorg_cmds', frozen_set)
+        self.assertIn("neorg.ext.help_channel.help", frozen_set)
+        self.assertIn("neorg.ext.search_info.neorg_cmds", frozen_set)
 
     def test_global_extension(self):
         """Test the global_extension function, which returns a list of cog names."""
         ext = extensions.EXTENSIONS
-        self.assertIn('neorg.ext.help_channel.help', ext)
-        self.assertIn('neorg.ext.search_info.neorg_cmds', ext)
+        self.assertIn("neorg.ext.help_channel.help", ext)
+        self.assertIn("neorg.ext.search_info.neorg_cmds", ext)
         self.assertGreater(len(ext), 2)
         self.assertIsInstance(ext, frozenset)
 
@@ -41,11 +46,11 @@ class TestUtilCogClass(unittest.TestCase):
         """Test the find_extension function, which returns a list of cog names."""
         ext = {
             "help": "neorg.ext.help_channel.help",
-            "neorg_cmds": "neorg.ext.search_info.neorg_cmds"
+            "neorg_cmds": "neorg.ext.search_info.neorg_cmds",
         }
         for key, value in ext.items():
             self.assertEqual(extensions.find_extension(key), value)
 
     def test_find_extension_raise_eror(self):
         """Test the find_extension function, which returns a list of cog names."""
-        self.assertRaises(ValueError, extensions.find_extension, 'test')
+        self.assertRaises(ValueError, extensions.find_extension, "test")

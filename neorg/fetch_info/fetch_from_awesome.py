@@ -15,17 +15,17 @@ from rapidfuzz import fuzz, process
 
 
 def weak_lru(maxsize: int = 128, typed: bool = False) -> callable:
-    """ A weakref.WeakKeyDictionary with a limited size.
+    """A weakref.WeakKeyDictionary with a limited size.
     If maxsize is 0, the cache has no limit.
     It also is a wrapper due to the fact that the cache is weak.
     """
 
     def wrapper(func: callable) -> callable:
-        """ The wrapper function."""
+        """The wrapper function."""
 
         @functools.lru_cache(maxsize, typed)
         def _func(_self: callable, *args, **kwargs) -> callable:
-            """ funct that is being wrapped"""
+            """funct that is being wrapped"""
             return func(_self(), *args, **kwargs)
 
         @functools.wraps(func)
@@ -41,10 +41,15 @@ def weak_lru(maxsize: int = 128, typed: bool = False) -> callable:
 class ReadAwesome:
     """Read Awesome neovim github page to retrieve all the plugins"""
 
-    def __init__(self,) -> None:
+    def __init__(
+        self,
+    ) -> None:
         self.soup = BeautifulSoup(
-            requests.get("https://raw.githubusercontent.com/rockerBOO/awesome-neovim/main/README.md").text,
-            'html.parser')
+            requests.get(
+                "https://raw.githubusercontent.com/rockerBOO/awesome-neovim/main/README.md"
+            ).text,
+            "html.parser",
+        )
 
     @weak_lru(maxsize=None)
     def get_from_header(self) -> dict:
@@ -56,17 +61,16 @@ class ReadAwesome:
             return a dictionary of {name: {'link': link, 'desc': description}}
         """
         names = defaultdict(dict)
-        pattern = re.compile(r"- \[(.*?)\]\((.*?)\)\s*(.*?)\.", re.DOTALL | re.MULTILINE)
+        pattern = re.compile(
+            r"- \[(.*?)\]\((.*?)\)\s*(.*?)\.", re.DOTALL | re.MULTILINE
+        )
         # regex matching for [user/repo](link) description .
         name_url = pattern.findall(self.soup.text)
         for j in name_url:
             name = j[0]
             # check if name contains /
-            if '/' in name:
-                names[name] = {
-                    'link': j[1],
-                    'desc': j[2]
-                }
+            if "/" in name:
+                names[name] = {"link": j[1], "desc": j[2]}
             continue
         return names
 
@@ -84,18 +88,23 @@ class ReadAwesome:
             return a dictionary of {name: {'link': link, 'desc': description}}
         """
         dict_set = self.get_from_header()
-        fuzzy_list = process.extract(item, dict_set.keys(), scorer=fuzz.token_set_ratio, limit=len(dict_set))
+        fuzzy_list = process.extract(
+            item, dict_set.keys(), scorer=fuzz.token_set_ratio, limit=len(dict_set)
+        )
 
         fuuzzy_dict_search = process.extract(
-            item, ({name: desc['desc']
-                    for name, desc in dict_set.items()}).values(),
+            item,
+            ({name: desc["desc"] for name, desc in dict_set.items()}).values(),
             scorer=fuzz.token_set_ratio,
-            limit=len(dict_set))
+            limit=len(dict_set),
+        )
 
         # __import__('pdb').set_trace()
 
         # reduce return repeating code
-        def _fuzzy_dict_search(item: dict, fuzz_list: dict, search_item: int = 0) -> dict:
+        def _fuzzy_dict_search(
+            item: dict, fuzz_list: dict, search_item: int = 0
+        ) -> dict:
             """Fuzzy dictionary search, on item given first match
 
             Parameters
@@ -115,13 +124,14 @@ class ReadAwesome:
                 returns filtered dictionary
             """
             return {
-                name: desc['desc']
+                name: desc["desc"]
                 for name, desc, in dict_set.items()
                 for i in range(len(fuzz_list))
-                if fuzz_list[i][0] == (name if search_item == 1 else desc['desc']) and fuzz_list[i][1] > 80
+                if fuzz_list[i][0] == (name if search_item == 1 else desc["desc"])
+                and fuzz_list[i][1] > 80
             }
 
         return {
             **_fuzzy_dict_search(item, fuzzy_list, 1),
-            **_fuzzy_dict_search(item, fuuzzy_dict_search)
+            **_fuzzy_dict_search(item, fuuzzy_dict_search),
         }
