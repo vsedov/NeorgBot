@@ -1,4 +1,5 @@
 import discord
+
 # yapf: disable
 from discord.ext.commands import (
     BadArgument, CheckFailure, Cog, CommandNotFound, Context, MissingRequiredArgument, command, has_any_role
@@ -24,12 +25,18 @@ class BotControl(Cog):
     async def shutdown(self, ctx: Context) -> None:
         """Shutdown the bot."""
 
-        await ctx.send(embed=discord.Embed(description="Shutting down...", colour=discord.Color.red()))
+        await ctx.send(
+            embed=discord.Embed(
+                description="Shutting down...", colour=discord.Color.red()
+            )
+        )
         await self.bot.close()
         if self.bot.is_closed():
             log.info(ic.format(f"{ctx.author} has shut down the bot."))
         else:
-            log.warning(ic.format(f"{ctx.author} tried to shut down the bot but it failed."))
+            log.warning(
+                ic.format(f"{ctx.author} tried to shut down the bot but it failed.")
+            )
 
         log.info("Bot shutdown.")
 
@@ -41,19 +48,30 @@ class BotControl(Cog):
                 for extension in extensions.EXTENSIONS:
                     self.bot.reload_extension(extension)
                 await ctx.send(
-                    embed=discord.Embed(description="Reloaded all extensions.", colour=discord.Color.green(),
-                                       ))
+                    embed=discord.Embed(
+                        description="Reloaded all extensions.",
+                        colour=discord.Color.green(),
+                    )
+                )
                 return
 
             ext_name = extensions.find_extension(cog)
             if ext_name is None:
                 raise CommandNotFound(f"Extension {cog} not found.")
             self.bot.reload_extension(ext_name)
-            await ctx.send(embed=discord.Embed(description=f"Reloaded extension {cog}.", colour=discord.Color.green(),))
+            await ctx.send(
+                embed=discord.Embed(
+                    description=f"Reloaded extension {cog}.",
+                    colour=discord.Color.green(),
+                )
+            )
         except Exception as e:
             await ctx.send(
-                embed=discord.Embed(description=f"Failed to reload extension {cog}.", colour=discord.Color.red(),
-                                   ))
+                embed=discord.Embed(
+                    description=f"Failed to reload extension {cog}.",
+                    colour=discord.Color.red(),
+                )
+            )
             log.error(ic.format(f"Failed to reload extension {cog}."))
             log.error(ic.format(e))
 
@@ -72,9 +90,15 @@ class BotControl(Cog):
 
         for error_type, error_message in error_dict.items():
             if isinstance(error, error_type):
-                await ctx.send(embed=discord.Embed(description=error_message, colour=discord.Color.red()))
+                await ctx.send(
+                    embed=discord.Embed(
+                        description=error_message, colour=discord.Color.red()
+                    )
+                )
 
-        log.warning(ic.format(f"{ctx.author} tried to run {ctx.command} but got {error}"))
+        log.warning(
+            ic.format(f"{ctx.author} tried to run {ctx.command} but got {error}")
+        )
 
 
 def setup(bot: Neorg) -> None:

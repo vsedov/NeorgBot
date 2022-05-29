@@ -41,9 +41,13 @@ def weak_lru(maxsize: int = 128, typed: bool = False) -> callable:
 class ReadAwesome:
     """Read Awesome neovim github page to retrieve all the plugins"""
 
-    def __init__(self,) -> None:
+    def __init__(
+        self,
+    ) -> None:
         self.soup = BeautifulSoup(
-            requests.get("https://raw.githubusercontent.com/rockerBOO/awesome-neovim/main/README.md").text,
+            requests.get(
+                "https://raw.githubusercontent.com/rockerBOO/awesome-neovim/main/README.md"
+            ).text,
             "html.parser",
         )
 
@@ -57,17 +61,16 @@ class ReadAwesome:
             return a dictionary of {name: {'link': link, 'desc': description}}
         """
         names = defaultdict(dict)
-        pattern = re.compile(r"- \[(.*?)\]\((.*?)\)\s*(.*?)\.", re.DOTALL | re.MULTILINE)
+        pattern = re.compile(
+            r"- \[(.*?)\]\((.*?)\)\s*(.*?)\.", re.DOTALL | re.MULTILINE
+        )
         # regex matching for [user/repo](link) description .
         name_url = pattern.findall(self.soup.text)
         for j in name_url:
             name = j[0]
             # check if name contains /
             if "/" in name:
-                names[name] = {
-                    "link": j[1],
-                    "desc": j[2]
-                }
+                names[name] = {"link": j[1], "desc": j[2]}
             continue
         return names
 
@@ -85,11 +88,13 @@ class ReadAwesome:
             return a dictionary of {name: {'link': link, 'desc': description}}
         """
         dict_set = self.get_from_header()
-        fuzzy_list = process.extract(item, dict_set.keys(), scorer=fuzz.token_set_ratio, limit=len(dict_set))
+        fuzzy_list = process.extract(
+            item, dict_set.keys(), scorer=fuzz.token_set_ratio, limit=len(dict_set)
+        )
 
         fuuzzy_dict_search = process.extract(
-            item, ({name: desc["desc"]
-                    for name, desc in dict_set.items()}).values(),
+            item,
+            ({name: desc["desc"] for name, desc in dict_set.items()}).values(),
             scorer=fuzz.token_set_ratio,
             limit=len(dict_set),
         )
@@ -97,7 +102,9 @@ class ReadAwesome:
         # __import__('pdb').set_trace()
 
         # reduce return repeating code
-        def _fuzzy_dict_search(item: dict, fuzz_list: dict, search_item: int = 0) -> dict:
+        def _fuzzy_dict_search(
+            item: dict, fuzz_list: dict, search_item: int = 0
+        ) -> dict:
             """Fuzzy dictionary search, on item given first match
 
             Parameters
@@ -120,7 +127,8 @@ class ReadAwesome:
                 name: desc["desc"]
                 for name, desc, in dict_set.items()
                 for i in range(len(fuzz_list))
-                if fuzz_list[i][0] == (name if search_item == 1 else desc["desc"]) and fuzz_list[i][1] > 80
+                if fuzz_list[i][0] == (name if search_item == 1 else desc["desc"])
+                and fuzz_list[i][1] > 80
             }
 
         return {
@@ -138,10 +146,15 @@ class ReadAwesome:
         """
         recent_soup = BeautifulSoup(
             requests.get(
-                "https://github.com/rockerBOO/awesome-neovim/pulls?q=is%3Apr+sort%3Aupdated-desc+is%3Aclosed").text,
+                "https://github.com/rockerBOO/awesome-neovim/pulls?q=is%3Apr+sort%3Aupdated-desc+is%3Aclosed"
+            ).text,
             "html.parser",
         )
 
         recent_issues = recent_soup.find_all("div", class_="Box-row")
         regex_pattern = re.compile(r"<a aria-label=\"Link to Issue. Add `(.*?)`")
-        return [re.findall(regex_pattern, str(i))[0] for i in recent_issues if re.findall(regex_pattern, str(i))]
+        return [
+            re.findall(regex_pattern, str(i))[0]
+            for i in recent_issues
+            if re.findall(regex_pattern, str(i))
+        ]
