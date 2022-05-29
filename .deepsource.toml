@@ -16,7 +16,15 @@ enabled = true
 [[transformers]]
 name = "yapf"
 enabled = true
+dependency_file_paths = [
+  "pyproject.toml",
+  "tox.ini"
+]
 
 [[transformers]]
 name = "isort"
 enabled = true
+dependency_file_paths = [
+  "pyproject.toml",
+  "tox.ini"
+]
