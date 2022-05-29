@@ -52,9 +52,7 @@ class FunListen(Cog):
             await message.channel.send(self.send_message_id[emoji])
 
     @Cog.listener()
-    async def on_raw_reaction_add(
-        self, payload: discord.RawReactionActionEvent
-    ) -> None:
+    async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent) -> None:
         """on raw reaction add listens to events and checks payload. it checks if a message has a reaction.
 
         Parameters
@@ -63,9 +61,7 @@ class FunListen(Cog):
             The payload of the event.
         """
         if payload.emoji.name in "📑🔖":
-            msg = await self.bot.get_channel(payload.channel_id).fetch_message(
-                payload.message_id
-            )
+            msg = await self.bot.get_channel(payload.channel_id).fetch_message(payload.message_id)
             author = msg.author
 
             if msg.content != "":
