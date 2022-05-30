@@ -18,7 +18,7 @@
   -- [-] Refactor neorg wiki search
   -- [-] Move all soup based objects into utils maybe
   - [-] Create Youtube cog
-  - [ ] Make help cog better : Maybe have a custom one ?
+  - [x] Make help cog better : Maybe have a custom one ?
 
 * Completed
   - [x] Refactor and type hint all current cogs

@@ -47,3 +47,6 @@ NEGATIVE_REPLIES: list[str] = []
 POSITIVE_REPLIES: list[str] = []
 # bot error replies
 ERROR_REPLIES: list[str] = []
+
+# Social_credit file
+SOCIAL_CREDIT_FILE = os.path.join(BOT_DIR, "utils/database/user.json")
