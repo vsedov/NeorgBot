@@ -128,12 +128,12 @@ class ReadAwesome:
             **_fuzzy_dict_search(item, fuuzzy_dict_search),
         }
 
-    def get_most_recent_plugin(self) -> dict:
+    def get_most_recent_plugin(self) -> list:
         """Get most recent plugin from the merge table
 
         Returns
         -------
-        dict
+        list
             List of the most recent added plugins, based on  first page of the closed pr page.
         """
         recent_soup = BeautifulSoup(

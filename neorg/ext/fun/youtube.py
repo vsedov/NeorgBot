@@ -65,30 +65,6 @@ class YoutubeSearch(Cog):
                 table.set_thumbnail(url=valid[0]["thumbnails"][0]["url"])
             await ctx.send(embed=table)
 
-    @command()
-    async def playlist(self, ctx: Context, query: str = "Neovim") -> None:
-        """
-        Neorg: Youtube Playlist
-        To Search:
-        `n.neorg playlist <query>`
-        For example :
-            n.neorg playlist neovim -> will search 1 playlist based on neovim
-        """
-        pass
-
-    @command()
-    async def suggestion(self, ctx: Context) -> None:
-        """
-        Neorg: Youtube Suggestion
-        To Search:
-        `n.neorg suggestion <query>`
-        For example :
-            n.neorg suggestion neovim -> will first get a random suggestion based on topic so neovim ->
-            [neovim vs vim, neovim vs emacs ...] and will pick a random suggestion based on topic and send
-            a single video based on it .
-        """
-        pass
-
 
 def setup(bot: discord.ext.commands.Bot) -> None:
     """Add cog to bot."""
