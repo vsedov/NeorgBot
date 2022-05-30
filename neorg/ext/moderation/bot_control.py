@@ -41,24 +41,21 @@ class BotControl(Cog):
                 for extension in extensions.EXTENSIONS:
                     self.bot.reload_extension(extension)
                 await ctx.send(
-                    embed=discord.Embed(description="Reloaded all extensions.", colour=discord.Color.green()))
+                    embed=discord.Embed(description="Reloaded all extensions.", colour=discord.Color.green(),
+                                       ))
                 return
 
             ext_name = extensions.find_extension(cog)
             if ext_name is None:
                 raise CommandNotFound(f"Extension {cog} not found.")
             self.bot.reload_extension(ext_name)
-            await ctx.send(embed=discord.Embed(description=f"Reloaded extension {cog}.", colour=discord.Color.green()))
+            await ctx.send(embed=discord.Embed(description=f"Reloaded extension {cog}.", colour=discord.Color.green(),))
         except Exception as e:
             await ctx.send(
-                embed=discord.Embed(description=f"Failed to reload extension {cog}.", colour=discord.Color.red()))
+                embed=discord.Embed(description=f"Failed to reload extension {cog}.", colour=discord.Color.red(),
+                                   ))
             log.error(ic.format(f"Failed to reload extension {cog}."))
             log.error(ic.format(e))
-
-    @command()
-    async def count(self, ctx: Context) -> None:
-        """Get the number of members in the server."""
-        await ctx.send(embed=discord.Embed(description=f"There are {len(ctx.guild.members)} members in the server."))
 
     async def cog_check(self, ctx: Context) -> bool:
         """Only allow moderators to invoke the commands in this cog."""
@@ -70,7 +67,7 @@ class BotControl(Cog):
             CommandNotFound: "Command not found.",
             CheckFailure: "You do not have permission to run this command.",
             MissingRequiredArgument: "You are missing a required argument.",
-            BadArgument: "You have provided an invalid argument."
+            BadArgument: "You have provided an invalid argument.",
         }
 
         for error_type, error_message in error_dict.items():

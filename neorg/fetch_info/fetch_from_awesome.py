@@ -15,17 +15,17 @@ from rapidfuzz import fuzz, process
 
 
 def weak_lru(maxsize: int = 128, typed: bool = False) -> callable:
-    """ A weakref.WeakKeyDictionary with a limited size.
+    """A weakref.WeakKeyDictionary with a limited size.
     If maxsize is 0, the cache has no limit.
     It also is a wrapper due to the fact that the cache is weak.
     """
 
     def wrapper(func: callable) -> callable:
-        """ The wrapper function."""
+        """The wrapper function."""
 
         @functools.lru_cache(maxsize, typed)
         def _func(_self: callable, *args, **kwargs) -> callable:
-            """ funct that is being wrapped"""
+            """funct that is being wrapped"""
             return func(_self(), *args, **kwargs)
 
         @functools.wraps(func)
@@ -44,7 +44,8 @@ class ReadAwesome:
     def __init__(self,) -> None:
         self.soup = BeautifulSoup(
             requests.get("https://raw.githubusercontent.com/rockerBOO/awesome-neovim/main/README.md").text,
-            'html.parser')
+            "html.parser",
+        )
 
     @weak_lru(maxsize=None)
     def get_from_header(self) -> dict:
@@ -62,10 +63,10 @@ class ReadAwesome:
         for j in name_url:
             name = j[0]
             # check if name contains /
-            if '/' in name:
+            if "/" in name:
                 names[name] = {
-                    'link': j[1],
-                    'desc': j[2]
+                    "link": j[1],
+                    "desc": j[2]
                 }
             continue
         return names
@@ -87,10 +88,11 @@ class ReadAwesome:
         fuzzy_list = process.extract(item, dict_set.keys(), scorer=fuzz.token_set_ratio, limit=len(dict_set))
 
         fuuzzy_dict_search = process.extract(
-            item, ({name: desc['desc']
+            item, ({name: desc["desc"]
                     for name, desc in dict_set.items()}).values(),
             scorer=fuzz.token_set_ratio,
-            limit=len(dict_set))
+            limit=len(dict_set),
+        )
 
         # __import__('pdb').set_trace()
 
@@ -115,13 +117,31 @@ class ReadAwesome:
                 returns filtered dictionary
             """
             return {
-                name: desc['desc']
+                name: desc["desc"]
                 for name, desc, in dict_set.items()
                 for i in range(len(fuzz_list))
-                if fuzz_list[i][0] == (name if search_item == 1 else desc['desc']) and fuzz_list[i][1] > 80
+                if fuzz_list[i][0] == (name if search_item == 1 else desc["desc"]) and fuzz_list[i][1] > 80
             }
 
         return {
             **_fuzzy_dict_search(item, fuzzy_list, 1),
-            **_fuzzy_dict_search(item, fuuzzy_dict_search)
+            **_fuzzy_dict_search(item, fuuzzy_dict_search),
         }
+
+    def get_most_recent_plugin(self) -> dict:
+        """Get most recent plugin from the merge table
+
+        Returns
+        -------
+        dict
+            List of the most recent added plugins, based on  first page of the closed pr page.
+        """
+        recent_soup = BeautifulSoup(
+            requests.get(
+                "https://github.com/rockerBOO/awesome-neovim/pulls?q=is%3Apr+sort%3Aupdated-desc+is%3Aclosed").text,
+            "html.parser",
+        )
+
+        recent_issues = recent_soup.find_all("div", class_="Box-row")
+        regex_pattern = re.compile(r"<a aria-label=\"Link to Issue. Add `(.*?)`")
+        return [re.findall(regex_pattern, str(i))[0] for i in recent_issues if re.findall(regex_pattern, str(i))]

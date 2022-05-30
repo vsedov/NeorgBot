@@ -17,7 +17,7 @@
   - [-] Better loading for scrapping
   -- [-] Refactor neorg wiki search
   -- [-] Move all soup based objects into utils maybe
-  - [ ] Create Youtube cog
+  - [-] Create Youtube cog
   - [ ] Make help cog better : Maybe have a custom one ?
 
 * Completed

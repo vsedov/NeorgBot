@@ -13,12 +13,14 @@ __import__("dotenv").load_dotenv()
 @dataclass
 class Keys:
     """Neorg Guild confgis"""
-    prefix: list[str] = "n."
+
+    prefix: str = "n."
 
 
 class Guild:
     """Guid Configs settings"""
-    section = "guild"
+
+    section: str = "guild"
     moderation_channels: List[int] = [834857574850625586]
     moderation_roles: List[int] = [834325554131369995, 834325701892636672]
 
