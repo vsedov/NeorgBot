@@ -3,13 +3,15 @@ from discord.ext import commands
 from requests import get
 from requests.models import Response
 
+
 class Meme(commands.Cog):
     """Random Memes from reddit."""
+
     def __init__(self, bot: commands.Bot) -> None:
         self.bot = bot
 
     @commands.command(aliases=["memes"])
-    async def meme(self, ctx: commands.Context, *, sub: str='') -> None:
+    async def meme(self, ctx: commands.Context, *, sub: str = '') -> None:
         """
         Neorg: Reddit memes
         using: https://github.com/D3vd/Meme_Api
@@ -29,10 +31,10 @@ class Meme(commands.Cog):
         img = data["url"]
         ups = data["ups"]
 
-        em = Embed(title=title, color=0x2f3136).set_image(url=img).set_footer(text=f" 👍{ups}  | r/{sub}") # 0x4878BE
+        em = Embed(title=title, color=0x2f3136).set_image(url=img).set_footer(text=f" 👍{ups}  | r/{sub}")  # 0x4878BE
         await ctx.send(embed=em)
+
 
 def setup(bot):
     """Add cog to bot."""
     bot.add_cog(Meme(bot))
-

@@ -1,9 +1,12 @@
+import re
+
 from discord import Embed
 from discord.ext import commands
-import re
+
 
 class Hex(commands.Cog):
     """Show hex colors preview"""
+
     def __init__(self, bot: commands.Bot) -> None:
         self.bot = bot
 
@@ -26,6 +29,6 @@ class Hex(commands.Cog):
                 em.set_author(name=hex, icon_url=url)
                 await mess.channel.send(embed=em)
 
+
 def setup(bot):
     bot.add_cog(Hex(bot))
-
