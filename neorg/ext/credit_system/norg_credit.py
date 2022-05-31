@@ -155,7 +155,7 @@ class NorgCredit(Cog):
 
         # lol fuck it, if you talk about java even if you say its shit, it will reduce 1 :kekw:
         if any(word in message.content.lower() for word in constants.NEGATIVE_WORDS):
-            data[str(message.author.id)]['norg_credit_xp'] -= 1
+            data[str(message.author.id)]['norg_credit_xp'] -= 100
 
         # increase xp and level and credit based on how much the user tpes in the server
         data[str(message.author.id)]['norg_credit_xp'] += data[str(message.author.id)]['norg_credit_level']

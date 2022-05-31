@@ -1,8 +1,8 @@
 {
     "255807969806123011": {
-        "norg_credit": -58991.97,
-        "norg_credit_level": 2,
-        "norg_credit_xp": 28.02
+        "norg_credit": 10076,
+        "norg_credit_level": 10,
+        "norg_credit_xp": 50
     },
     "908880722004168745": {
         "norg_credit": 1000,
@@ -10,8 +10,13 @@
         "norg_credit_xp": 10
     },
     "845674119391477820": {
-        "norg_credit": 11030,
+        "norg_credit": 11040,
         "norg_credit_level": 1,
-        "norg_credit_xp": 10
+        "norg_credit_xp": 20
+    },
+    "829024113296539658": {
+        "norg_credit": 1011,
+        "norg_credit_level": 1,
+        "norg_credit_xp": 21
     }
 }
