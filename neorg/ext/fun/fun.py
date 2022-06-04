@@ -40,7 +40,7 @@ class FunListen(Cog):
             list
                 new list that is filtered of the keys and values that are required for the output
             """
-            return list(filter(lambda x: x in message.content, list_type))
+            return list(filter(lambda x: x in message.content.lower(), list_type))
 
         reaction_call = generate_list(self.reaction_id)
         send_call = generate_list(self.send_message_id)
