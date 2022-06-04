@@ -40,7 +40,7 @@ class TestYoutube(unittest.TestCase):
         """
         test video limit from 1 , 10 on getting valid videos
         """
-        for i in range(1, 10):
+        for i in range(1, 8):
             valid = Youtube().get_video("Star Wars", i)
             self.assertTrue(len(list(valid.values())[0]) == i)
 
