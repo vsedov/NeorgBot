@@ -48,7 +48,7 @@ class NeorgCreditMod(Cog):
         with open(constants.SOCIAL_CREDIT_FILE, "r") as f:
             social_credits = json.load(f)
 
-        social_credits[user.id] += amount
+        social_credits[str(user.id)]["norg_credit"] += amount
 
         with open(constants.SOCIAL_CREDIT_FILE, "w") as f:
             json.dump(social_credits, f)
