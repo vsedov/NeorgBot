@@ -1,5 +1,6 @@
 import discord
 from discord.ext.commands import Cog, Context, command
+from disputils import BotEmbedPaginator
 
 from neorg.fetch_info.fetch_from_awesome import ReadAwesome
 from neorg.log import get_logger
@@ -20,12 +21,15 @@ class AwesomeSearch(Cog):
         """Active search for plugins on awesome-neorg."""
         query = query.strip().lower()
         search_result = self.awesome.fuzzy(query)
-        em = discord.Embed(title="Search result", color=0x00ff00)
-
+        embeds = []
         for result in search_result.items():
-            link = f"https://github.com/{result[1]}"
+            em = discord.Embed(title="Search result", color=0x00ff00)
+            link = f"https://github.com/{result[0]}"
             em.add_field(name=result[0], value=f"{result[1]}, {link}", inline=False)
-        await ctx.send(embed=em)
+            embeds.append(em)
+
+        paginator = BotEmbedPaginator(ctx, embeds)
+        await paginator.run()
 
     @command()
     async def recent_plugin(self, ctx: Context) -> None:

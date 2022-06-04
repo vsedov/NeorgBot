@@ -257,6 +257,17 @@ docs = ["sphinx (==3.0.3)", "sphinxcontrib-trio (==1.1.2)", "sphinxcontrib-websu
 voice = ["PyNaCl (>=1.3.0,<1.5)"]
 
 [[package]]
+name = "disputils"
+version = "0.2.0"
+description = "Some utilities for discord.py. Making Discord bot development easier."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+"discord.py" = ">=1,<2"
+
+[[package]]
 name = "distlib"
 version = "0.3.4"
 description = "Distribution utilities"
@@ -1240,7 +1251,7 @@ httpx = ">=0.14.2"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10.2"
-content-hash = "71797282a150c7213a17f04f94d5b29e706666ea939b394cda72631022ccb890"
+content-hash = "b8f28d90767b096f83686e273af826d9bc363a30b5ab695f03d72ddba9962a79"
 
 [metadata.files]
 aiohttp = [
@@ -1451,6 +1462,10 @@ decli = [
 "discord.py" = [
     {file = "discord.py-1.7.3-py3-none-any.whl", hash = "sha256:c6f64db136de0e18e090f6752ea68bdd4ab0a61b82dfe7acecefa22d6477bb0c"},
     {file = "discord.py-1.7.3.tar.gz", hash = "sha256:462cd0fe307aef8b29cbfa8dd613e548ae4b2cb581d46da9ac0d46fb6ea19408"},
+]
+disputils = [
+    {file = "disputils-0.2.0-py3-none-any.whl", hash = "sha256:750b55b97b1d27b045b5f9675c43ec6c0042cac857de95fa4dd916ded34d47e1"},
+    {file = "disputils-0.2.0.tar.gz", hash = "sha256:d0a2671a16a6bf3cfffd962421fe8e6f196d199a7112ee6e8c78b57f4c85a021"},
 ]
 distlib = [
     {file = "distlib-0.3.4-py2.py3-none-any.whl", hash = "sha256:6564fe0a8f51e734df6333d08b8b94d4ea8ee6b99b5ed50613f731fd4089f34b"},
