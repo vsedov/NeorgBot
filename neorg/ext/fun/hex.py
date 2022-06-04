@@ -1,6 +1,6 @@
 import re
 
-from discord import Embed
+from discord import Embed, Message
 from discord.ext import commands
 
 
@@ -11,7 +11,7 @@ class Hex(commands.Cog):
         self.bot = bot
 
     @commands.Cog.listener()
-    async def on_message(self, mess) -> None:
+    async def on_message(self, mess: Message) -> None:
         """
         Neorg: Hex color preview
         using: https://singlecolorimage.com/api.html
@@ -30,5 +30,5 @@ class Hex(commands.Cog):
                 await mess.channel.send(embed=em)
 
 
-def setup(bot):
+def setup(bot: commands.Bot) -> None:
     bot.add_cog(Hex(bot))

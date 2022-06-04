@@ -35,6 +35,6 @@ class Meme(commands.Cog):
         await ctx.send(embed=em)
 
 
-def setup(bot):
+def setup(bot: commands.Bot) -> None:
     """Add cog to bot."""
     bot.add_cog(Meme(bot))
