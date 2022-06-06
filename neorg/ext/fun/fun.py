@@ -11,14 +11,36 @@ class FunListen(Cog):
 
     def __init__(self, bot: discord.ext.commands.Bot):
         self.bot = bot
-        self.reaction_id = {
+        self.reaction_types = {
+            "ree": "<:reee:948636504224329759>",
             "sus": "<:sus:867395030988881921>",
-            "neorg": "<:neorg:949327974442889277>",
-            "are you dumb": "<:reee:948636504224329759>",
+            "neorg": "<:neorg:949327974442889277>"
         }
+        self.reaction_id = {
+            "sus": self.reaction_types["sus"],
+            "neorg": self.reaction_types["neorg"],
+        }
+
+        self.reaction_id_normalizer(["dumb", "idiot", "stupid", "moron", "dumbass"], "ree")
+
         self.send_message_id = {
             "rtfm": "<:RTFM:945925360028090368>",
+            "based": "<:based:946814517566930954>",
         }
+
+    def reaction_id_normalizer(self, list_of_words: list[str], type: str) -> None:
+        """reaction id normaliser allows reduce reptetion of code, we use this if a emoji is used more than once.
+        this needs to be called within the init method.
+
+        Parameters
+        ----------
+        list_of_words : list[str]
+            list of words, this can be a hard coded list or something from the constants file.
+        type : str
+            str type needs to be a key from the reaction_types dictionary.
+        """
+        for word in list_of_words:
+            self.reaction_id[word] = self.reaction_types[type]
 
     @Cog.listener()
     async def on_message(self, message: discord.Message) -> None:
