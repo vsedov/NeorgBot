@@ -76,7 +76,7 @@ class DatabaseSearch(Cog):
         for i in range(len(search_results)):
 
             name = search_results[i]["full_name"]
-            em = discord.Embed(title=name, color=0x00ff00)
+            em = discord.embed(title=name, color=0x00ff00)
             for name, value in search_results[i].items():
                 if name == "full_name":
                     continue
@@ -89,7 +89,22 @@ class DatabaseSearch(Cog):
     @command()
     async def recent_update_db(self, ctx: Context) -> None:
         """searches most recently updated plugins / within the database."""
-        pass
+        search_results = self.database_search.open_database()
+
+        sorted_result = sorted(search_results.keys(), key=lambda test: search_results[test]["updated_at"], reverse=True)
+
+        embeds = []
+        for i in range(0, 10):
+            data = search_results[sorted_result[i]]
+            em = discord.Embed(title=data["full_name"], color=0x00ff00)
+            for name, value in data.items():
+                if name == "full_name":
+                    continue
+                em.add_field(name=name, value=value)
+            embeds.append(em)
+
+        paginator = BotEmbedPaginator(ctx, embeds)
+        await paginator.run()
 
 
 def setup(bot: Neorg) -> None:
