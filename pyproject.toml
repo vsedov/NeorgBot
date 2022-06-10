@@ -35,6 +35,7 @@ pure-eval = "^0.2.2"
 youtube-search-python = "^1.6.4"
 yapf = "^0.32.0"
 disputils = "^0.2.0"
+aiofiles = "^0.8.0"
 
 
 [tool.poetry.dev-dependencies]
