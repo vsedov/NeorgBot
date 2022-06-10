@@ -14,6 +14,33 @@ from bs4 import BeautifulSoup
 from rapidfuzz import fuzz, process
 
 
+def fuzzy_dict_search(data_set: dict, fuzz_list: dict, des: str = "desc", search_item: int = 0) -> dict:
+    """fuzzy dictionary search, on item given first match
+
+            parameters
+            ----------
+            item : dict
+                item is search value to fuzzy search and filter from both name and dictionary search items
+            fuzz_list : dict
+                fuzz_list is the filtered list between the name and descroption that are searched through this function
+                allows us to filter the matching items and get a valid match
+            search_item : int
+                search item is a integer value to distringuish between desc[desc] search which searchs descroptions and
+                1 where it searches the name of the item
+
+            returns
+            -------
+            dict
+                returns filtered dictionary
+            """
+    return {
+        name: desc[des]
+        for name, desc, in data_set.items()
+        for i in range(len(fuzz_list))
+        if fuzz_list[i][0] == (name if search_item == 1 else desc[des]) and fuzz_list[i][1] > 80
+    }
+
+
 def weak_lru(maxsize: int = 128, typed: bool = False) -> callable:
     """A weakref.WeakKeyDictionary with a limited size.
     If maxsize is 0, the cache has no limit.
@@ -97,35 +124,9 @@ class ReadAwesome:
         # __import__('pdb').set_trace()
 
         # reduce return repeating code
-        def _fuzzy_dict_search(item: dict, fuzz_list: dict, search_item: int = 0) -> dict:
-            """Fuzzy dictionary search, on item given first match
-
-            Parameters
-            ----------
-            item : dict
-                item is search value to fuzzy search and filter from both name and dictionary search items
-            fuzz_list : dict
-                fuzz_list is the filtered list between the name and descroption that are searched through this function
-                allows us to filter the matching items and get a valid match
-            search_item : int
-                search item is a integer value to distringuish between desc[desc] search which searchs descroptions and
-                1 where it searches the name of the item
-
-            Returns
-            -------
-            dict
-                returns filtered dictionary
-            """
-            return {
-                name: desc["desc"]
-                for name, desc, in dict_set.items()
-                for i in range(len(fuzz_list))
-                if fuzz_list[i][0] == (name if search_item == 1 else desc["desc"]) and fuzz_list[i][1] > 80
-            }
-
         return {
-            **_fuzzy_dict_search(item, fuzzy_list, 1),
-            **_fuzzy_dict_search(item, fuuzzy_dict_search),
+            **fuzzy_dict_search(dict_set, fuzzy_list, "desc", 1),
+            **fuzzy_dict_search(dict_set, fuuzzy_dict_search, "desc"),
         }
 
     def get_most_recent_plugin(self) -> list:

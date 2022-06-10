@@ -11,7 +11,7 @@ class Meme(commands.Cog):
         self.bot = bot
 
     @commands.command(aliases=["memes"])
-    async def meme(self, ctx: commands.Context, *, sub: str = '') -> None:
+    async def meme_test(self, ctx: commands.Context, *, sub: str = '') -> None:
         """
         Neorg: Reddit memes
         using: https://github.com/D3vd/Meme_Api
@@ -19,12 +19,16 @@ class Meme(commands.Cog):
             n.meme -> will get a meme from a random subreddit
             n.meme dankmemes -> will get a meme from the `dankmemes` subreddit
         """
+
         sauce: Response = get(f"https://meme-api.herokuapp.com/gimme/{sub}")
         if sauce.status_code != 200:
             await ctx.send(embed=Embed(description="Could not get the meme.", color=0x4878BE))
             return
 
         data = sauce.json()
+        if data["nsfw"]:
+            await ctx.send(embed=Embed(description="This meme is NSFW.", color=0x4878BE))
+            return
 
         title: str = data["title"]
         sub = data["subreddit"]
