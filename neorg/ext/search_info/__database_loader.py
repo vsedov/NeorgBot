@@ -6,6 +6,7 @@ import aiohttp
 from icecream import ic
 from rapidfuzz import fuzz, process
 
+from neorg import constants
 from neorg.fetch_info.fetch_from_awesome import fuzzy_dict_search
 from neorg.log import get_logger
 
@@ -39,12 +40,12 @@ class FetchDatabase(object):
     async def write_to_file(self) -> None:
         """ write to file : database.json but with filtered values to reduce stress and save data. """
         log.info(ic.format("Writing to file"))
-        async with aiofiles.open("database.json", "w") as f:
+        async with aiofiles.open(constants.PNP_DATABAS_FILE, "w") as f:
             await f.write(json.dumps(self.database, sort_keys=True, indent=4))
 
     def open_database(self) -> None:
         """ open the database.json file and return the database. """
-        with open("database.json") as f:
+        with open(constants.PNP_DATABAS_FILE) as f:
             database = json.load(f)
         return database
 

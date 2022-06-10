@@ -46,6 +46,7 @@ ERROR_REPLIES: list[str] = []
 
 # Social_credit file
 SOCIAL_CREDIT_FILE = os.path.join(BOT_DIR, "utils/database/user.json")
+PNP_DATABAS_FILE = os.path.join(BOT_DIR, "utils/database/database.json")
 
 # If someone says something good about this, their score will be reduced .
 NEGATIVE_WORDS = ["java", "prolog"]

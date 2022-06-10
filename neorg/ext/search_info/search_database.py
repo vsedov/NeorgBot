@@ -51,6 +51,7 @@ class DatabaseSearch(Cog):
     def __init__(self, bot: Neorg):
         self.bot = Neorg
         self.database_search = FetchDatabase()
+        self.database_search.run_async()
         self.loop = self.update_database()
 
     #  TODO(vsedov) (14:25:06 - 10/06/22): This can break : If it does, create a class instead of function.
