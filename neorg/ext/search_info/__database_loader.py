@@ -16,6 +16,7 @@ class FetchDatabase(object):
     """Fetch information from the pnp database, and return a dictionary of information. """
 
     def __init__(self):
+        log.info(ic.format("Init being used thing woosh"))
         self.database_link = "https://raw.githubusercontent.com/nvim-plugnplay/database/main/database.json"
         self.database = {}
 

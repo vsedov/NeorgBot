@@ -11,7 +11,7 @@ class Meme(commands.Cog):
         self.bot = bot
 
     @commands.command(aliases=["memes"])
-    async def meme_test(self, ctx: commands.Context, *, sub: str = '') -> None:
+    async def meme(self, ctx: commands.Context, *, sub: str = '') -> None:
         """
         Neorg: Reddit memes
         using: https://github.com/D3vd/Meme_Api
