@@ -26,6 +26,7 @@ class FunListen(Cog):
         self.send_message_id = {
             "rtfm": "<:RTFM:945925360028090368>",
             "based": "<:based:946814517566930954>",
+            "kek": "<:kek:858389543647576104>",
         }
 
     def reaction_id_normalizer(self, list_of_words: list[str], type: str) -> None:
