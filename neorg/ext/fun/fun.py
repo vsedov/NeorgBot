@@ -7,25 +7,26 @@ log = get_logger(__name__)
 
 
 class FunListen(Cog):
-    """General Commansd and event inspection"""
+    """General Commands and event inspection"""
 
     def __init__(self, bot: discord.ext.commands.Bot):
         self.bot = bot
         self.reaction_types = {
             "ree": "<:reee:948636504224329759>",
             "sus": "<:sus:867395030988881921>",
-            "neorg": "<:neorg:949327974442889277>"
+            "neorg": "<:neorg:949327974442889277>",
+            "based": "<:based:946814517566930954>",
         }
         self.reaction_id = {
             "sus": self.reaction_types["sus"],
             "neorg": self.reaction_types["neorg"],
+            "based": self.reaction_types["based"]
         }
 
         self.reaction_id_normalizer(["dumb", "idiot", "stupid", "moron", "dumbass"], "ree")
 
         self.send_message_id = {
             "rtfm": "<:RTFM:945925360028090368>",
-            "based": "<:based:946814517566930954>",
         }
 
     def reaction_id_normalizer(self, list_of_words: list[str], type: str) -> None:
@@ -50,7 +51,7 @@ class FunListen(Cog):
         """
 
         def generate_list(list_type: list[str]) -> list:
-            """Generate_list, creats a list based on the filter of the content and list_type
+            """Generate_list, creates a list based on the filter of the content and list_type
 
             Parameters
             ----------
