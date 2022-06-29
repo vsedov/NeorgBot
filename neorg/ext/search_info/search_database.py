@@ -1,3 +1,4 @@
+import random
 import threading
 from typing import NewType
 
@@ -62,7 +63,7 @@ class DatabaseSearch(Cog):
         self.database_search = FetchDatabase()
         self.database_search.run_async()
 
-    @command()
+    @command(alias="db")
     async def db_search(self, ctx: Context, *, query: str = "neorg") -> None:
         """
         Search for a package in the database.
@@ -86,7 +87,7 @@ class DatabaseSearch(Cog):
         paginator = BotEmbedPaginator(ctx, embeds)
         await paginator.run()
 
-    @command()
+    @command(alias="db_recent")
     async def recent_update_db(self, ctx: Context) -> None:
         """searches most recently updated plugins / within the database."""
         search_results = self.database_search.open_database()
@@ -105,6 +106,19 @@ class DatabaseSearch(Cog):
 
         paginator = BotEmbedPaginator(ctx, embeds)
         await paginator.run()
+
+    @command()
+    async def db_random(self, ctx: Context) -> None:
+        """Fetches a random plugin within the database."""
+        search_results = self.database_search.open_database()
+        random_result = random.choice(list(search_results.keys()))
+        data = search_results[random_result]
+        em = discord.Embed(title=data["full_name"], color=0x00ff00)
+        for name, value in data.items():
+            if name == "full_name":
+                continue
+            em.add_field(name=name, value=value)
+        await ctx.send(embed=em)
 
 
 def setup(bot: Neorg) -> None:
