@@ -3,6 +3,7 @@ from typing import Any, List, Tuple
 
 from fuzzywuzzy import process
 
+from neorg import constants
 from neorg.log import get_logger
 
 log = get_logger(__name__)
@@ -15,7 +16,7 @@ class NeovimDocs:
     """
 
     def __init__(self):
-        self.conn = sqlite3.connect("data/tags.db")
+        self.conn = sqlite3.connect(constants.DATABASE_PATH + "/tags.db")
         self.cursor = self.conn.cursor()
         self.all_tags = self.get_all_tags()
         self.tag_file = dict(list(map(lambda x: (x[1], x[0]), self.all_tags)))
