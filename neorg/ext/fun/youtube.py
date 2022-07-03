@@ -56,6 +56,7 @@ class YoutubeSearch(Cog):
             table = discord.Embed(title="Youtube Search")
             table.set_author(name=ctx.author.name, icon_url=ctx.author.avatar_url)
             table.set_footer(text=f"Requested by {ctx.author.name}")
+
             for video in valid:
                 id = video["id"]
                 title = video["title"]
