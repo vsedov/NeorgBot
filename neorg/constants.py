@@ -28,6 +28,7 @@ class Guild:
 BOT_TRACE_LOGGERS: list[str] = [f"!{__name__}"]
 
 USE_SENTRY: bool = True
+TAG_SETUP: bool = False
 
 PREFIX = Keys.prefix
 
@@ -50,3 +51,7 @@ PNP_DATABAS_FILE = os.path.join(BOT_DIR, "utils/database/database.json")
 
 # If someone says something good about this, their score will be reduced .
 NEGATIVE_WORDS = ["java", "prolog"]
+
+DATABASE_PATH = os.path.join(BOT_DIR, "fetch_info/data/")
+THIRD_PARTY_PATH = os.path.join(BOT_DIR, "fetch_info/third_party/")
+FETCH_INFO_PATH = os.path.join(BOT_DIR, "fetch_info/")

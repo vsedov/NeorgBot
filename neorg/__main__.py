@@ -5,11 +5,15 @@
 # File Name: __main__.py
 
 from neorg import neorg
+from neorg.fetch_info.tag_gen import inital_tag_setup
 from neorg.log import get_logger, setup_sentry
 from neorg.neorg import Neorg, StartupError, constants
 
 if constants.USE_SENTRY:
     setup_sentry()
+
+if constants.TAG_SETUP:
+    inital_tag_setup()
 
 try:
     neorg.instance = Neorg.create()

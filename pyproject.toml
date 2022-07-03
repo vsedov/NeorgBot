@@ -37,6 +37,10 @@ yapf = "^0.32.0"
 disputils = "^0.2.0"
 aiofiles = "^0.8.0"
 debugpy = "^1.6.0"
+fuzzywuzzy = "^0.18.0"
+python-Levenshtein = "^0.12.2"
+thefuzz = "^0.19.0"
+validators = "^0.20.0"
 
 
 [tool.poetry.dev-dependencies]
