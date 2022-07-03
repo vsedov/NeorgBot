@@ -28,6 +28,7 @@ class Guild:
 BOT_TRACE_LOGGERS: list[str] = [f"!{__name__}"]
 
 USE_SENTRY: bool = True
+TAG_SETUP: bool = False
 
 PREFIX = Keys.prefix
 

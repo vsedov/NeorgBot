@@ -77,7 +77,7 @@ class DatabaseSearch(Cog):
         for i in range(len(search_results)):
 
             name = search_results[i]["full_name"]
-            em = discord.embed(title=name, color=0x00ff00)
+            em = discord.Embed(title=name, color=0x00ff00)
             for name, value in search_results[i].items():
                 if name == "full_name":
                     continue

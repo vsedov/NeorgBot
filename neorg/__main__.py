@@ -12,8 +12,10 @@ from neorg.neorg import Neorg, StartupError, constants
 if constants.USE_SENTRY:
     setup_sentry()
 
-try:
+if constants.TAG_SETUP:
     inital_tag_setup()
+
+try:
     neorg.instance = Neorg.create()
     neorg.instance.load_cogs()
     neorg.instance.run(constants.TOKEN)
