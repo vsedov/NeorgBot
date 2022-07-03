@@ -16,7 +16,7 @@ log = get_logger(__name__)
 
 def set_interval(interval: int) -> threading.Event:
     """
-    Decorator Function, with internal wrapper: Set_interval, ammount of seconds
+    Decorator Function, with internal wrapper: Set_interval, amount of seconds
     you want to loop over a function.
     Decorator function, is used to sepcify what function is being parsed down
     """
@@ -75,7 +75,6 @@ class DatabaseSearch(Cog):
             return
         embeds = []
         for i in range(len(search_results)):
-
             name = search_results[i]["full_name"]
             em = discord.Embed(title=name, color=0x00ff00)
             for name, value in search_results[i].items():
