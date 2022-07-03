@@ -33,8 +33,8 @@ class TestNeovimDocs(unittest.TestCase):
             for tags, limit in tag_list:
                 tag_link_list = self.neovim_docs.get_link(
                     self.neovim_docs.fuzzy_search_tags(search_term=tags, limit=limit))
-                for url in tag_link_list:
-                    log.info(f"search item {tags} with url {url}")
+                for url, tag_value in tag_link_list:
+                    log.info(f"search item {tags} with url {url}, with {tag_value}")
                     self.assertTrue(validators.url(url))
 
         search(accurate_one_item_return_list)

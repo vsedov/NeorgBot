@@ -52,4 +52,4 @@ class NeovimDocs:
 
     def get_link(self, list_of_tags: List[Tuple[str, str]]) -> List[Any]:
         """Get link to a tag"""
-        return ["https://neovim.io/doc/user/" + f"{file_name}#{tag}" for file_name, tag in list_of_tags]
+        return [("https://neovim.io/doc/user/" + f"{file_name}#{tag}", tag) for file_name, tag in list_of_tags]
