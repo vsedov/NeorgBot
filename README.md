@@ -42,4 +42,4 @@ Start by cloning the repository with `git clone git@github.com:vsedov/NeorgBot.g
 
 After installation of the dependencies, run the bot with `poetry run task start`.
 
-**IMPORTANT:** Before making a pull request, test whether your code works as intended with `poetry run task test`. For additional information we recommended reading the [readme.md](https://github.com/vsedov/NeorgBot/blob/master/tests/readme.md) file found in the `tests` folder.
+**IMPORTANT:** Before making a pull request, test whether your code works as intended and has passed all checks from the linters with `poetry run task test`. For additional information we recommend reading the [readme.md](https://github.com/vsedov/NeorgBot/blob/master/tests/readme.md) file found in the `tests` folder.
