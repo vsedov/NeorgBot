@@ -45,9 +45,3 @@ repos:
       - id: interrogate
         args: [-vv, --config=pyproject.toml, --generate-badge, "./docs/_static/"]
         pass_filenames: false
-  # Git commit is valid
-  - repo: https://github.com/commitizen-tools/commitizen
-    rev: v2.23.0
-    hooks:
-      - id: commitizen
-        stages: [commit-msg]
