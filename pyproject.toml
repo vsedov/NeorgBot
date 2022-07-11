@@ -61,7 +61,6 @@ pytest-cov = "^3.0.0"
 pytest-xdist = { version = "~=2.3.0", extras = ["psutil"] }
 taskipy = "~=1.7.0"
 pdoc = "^11.0.0"
-commitizen = "^2.23.0"
 pre-commit = "^2.18.1"
 ipython = "^8.4.0"
 
@@ -184,17 +183,3 @@ case_sensitive = true
 combine_as_imports = true
 line_length = 120
 atomic = true
-
-[tool.commitizen]
-name = "cz_conventional_commits"
-version = ""
-version_files = []
-tag_format = ""
-update_changelog_on_bump = false
-annotated_tag = false
-bump_message = ""
-changelog_file = ""
-changelog_incremental = false
-changelog_start_rev = ""
-customize = {}
-use_shortcuts = false
