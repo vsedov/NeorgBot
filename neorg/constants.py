@@ -38,15 +38,13 @@ MODERATION_ROLES: list[str] = Guild.moderation_roles
 # Keys
 TOKEN: Optional[str] = os.getenv("TOKEN")
 SENTRY: Optional[str] = os.getenv("SENTRY_DSN") if USE_SENTRY else ""
+CLIENT_ID: Optional[str] = os.getenv("CLIENT_ID")
+CLIENT_SECRET: Optional[str] = os.getenv("CLIENT_SECRET")
 
 # paths
 BOT_DIR: Optional[str] = os.path.dirname(__file__)
 PROJECT_ROOT: Optional[str]
-# bot error replies
-ERROR_REPLIES: list[str] = []
 
-# Social_credit file
-SOCIAL_CREDIT_FILE = os.path.join(BOT_DIR, "utils/database/user.json")
 PNP_DATABAS_FILE = os.path.join(BOT_DIR, "utils/database/database.json")
 
 # If someone says something good about this, their score will be reduced .
