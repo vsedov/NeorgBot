@@ -1,0 +1,14 @@
+@document.meta
+title: focus
+description:
+authors: viv
+categories:
+created: 2022-07-11
+version: 0.0.11
+@end
+* TODO
+** Possible Methods
+   - Use github api
+     [Python api link](https://github.com/gitpython-developers/GitPython)
+     - Using requests and beautiful soup - this can use something similar to how pnp db is used - this would require
+       another request handler -> new github app.
