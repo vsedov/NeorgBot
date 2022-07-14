@@ -39,38 +39,29 @@ class Test:
     def __init__(self, user: str = "neovim"):
         self.user = user
         self.user_fmt = ic.format(self.user)
-        self.base_url = f"https://api.github.com/repos/neovim/{self.user}/pulls?state=open&per_page="
+        self.base_url = "https://api.github.com/repos/neovim/neovim/pulls?state=open&per_page=100"
         self.client_id = constants.CLIENT_ID
         self.client_secret = constants.CLIENT_SECRET
         self.batch_size = 10
 
-        # if not self.client_id() or not self.client_secret():
-        #     log.info("Client id or client secret is None, api will fail.")
-        #     return
+        if not self.client_id or not self.client_secret:
+            log.info("Client id or client secret is None, api will fail.")
+            return
 
-    def load_pr_results(self, page: int) -> PRRequestModel:
+    def load_pr_results(self) -> PRRequestModel:
         """Load pr results / requests through batches of 10: this is a request to the page it self
-
-        Parameters
-        ----------
-        page : int
-            page number to take requestion from :
-            example : https://api.github.com/repos/neovim/neovim/pulls?state=open&per_page=100
 
         Returns
         -------
         PRRequestModel
             Pydantic Base model
         """
-        log.debug(f"Querying for pull request {self.user_fmt}, {page}")
-        response = requests.get(self.base_url + str(page), auth=(self.client_id, self.client_secret))
-        response.raise_for_status()
-        if response.status_code == 200:
-            output_response = PRRequestModel(response=response.json())
-            if len(output_response.response) == 0:
-                log.info(f"No pages were found {self.user_fmt}, {page}")
-
-        return output_response
+        log.debug(f"Querying for pull request {self.user_fmt}, page -> 100")
+        # log.info(self.base_url + str(page))
+        response = requests.get(self.base_url, auth=(self.client_id, self.client_secret))
+        if response.status_code != 200:
+            log.critical(f"Bad request {response.status_code}")
+        return PRRequestModel(response=response.json())
 
     async def get_pages(self) -> PRRequestModel:
         """
@@ -82,25 +73,14 @@ class Test:
         loop = get_or_create_eventloop()
         results = []
         finished = False
-        start = 0
-        batch_size = self.batch_size
         while not finished:
-            temp = await asyncio.gather(
-                *[
-                    loop.run_in_executor(
-                        None,
-                        functools.partial(self.load_pr_results, start + i),
-                    ) for i in range(1, batch_size + 1)
-                ])
-
+            temp = await asyncio.gather(*[loop.run_in_executor(None, functools.partial(self.load_pr_results),)])
             temp = PRRequestModel(response=list(it.chain(*[value.response for value in temp])))
-            log.info(len(temp.response))
-
-            if len(temp.response) == 1000:
-                log.info("temp response == 0 Finish batch result")
+            log.info(value := (temp.response))
+            if len(value) == 100:
+                log.info("finished batch jobs")
                 finished = True
             results += temp.response
-            start += batch_size
         return PRRequestModel(response=results)
 
     def make_jobs(self, base: PRRequestModel) -> None:
@@ -114,10 +94,9 @@ class Test:
         base : PRRequestModel
             PRRequestModel : Pydantic Model
         """
-        log.info(base)
-        breakpoint()
-
-        # creation_jobs= Parallel(-1)(delayed())
+        import json
+        with open("test_file.json", "w") as f:
+            json.dump(base.json(), f)
 
     def __call__(self):
         """Temp documentation."""
