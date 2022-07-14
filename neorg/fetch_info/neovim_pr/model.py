@@ -4,8 +4,20 @@ from typing import Any, List, Optional
 from pydantic import BaseModel
 
 
+def get_pr_number(pr: str) -> str:
+    """Get pr number"""
+    return pr.split("/")[-1]
+
+
+class ID(BaseModel):
+    """Temp documentation"""
+    number: Optional[int] = None
+
+
 class PRRequestModelItem(BaseModel):
     """Temp documentation."""
+    number: Optional[int] = None
+    title: Optional[str] = None
     url: Optional[str] = None
     id: Optional[int] = None
     node_id: Optional[str] = None
@@ -13,10 +25,8 @@ class PRRequestModelItem(BaseModel):
     diff_url: Optional[str] = None
     patch_url: Optional[str] = None
     issues_url: Optional[Any] = None
-    pr_number: Optional[int] = None
     state: Optional[str] = None
     locked: Optional[bool]
-    title: Optional[str] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
     closed_at: Optional[datetime] = None
@@ -26,4 +36,11 @@ class PRRequestModelItem(BaseModel):
 
 class PRRequestModel(BaseModel):
     """Temp documentation."""
+    total_count: Optional[int] = None
     response: List[PRRequestModelItem]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # sort by number
+        self.response.sort(key=lambda x: x.number)
+        self.total_count = len(self.response)
