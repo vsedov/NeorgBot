@@ -39,8 +39,13 @@ class PRRequestModel(BaseModel):
     total_count: Optional[int] = None
     response: List[PRRequestModelItem]
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        # sort by number
-        self.response.sort(key=lambda x: x.number)
-        self.total_count = len(self.response)
+
+class DictPRRequestModel(BaseModel):
+    """Temp documentation."""
+    response: dict[int, List[PRRequestModelItem]] = None
+
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     # sort by number
+    #     self.response.sort(key=lambda x: x.number)
+    #     self.total_count = len(self.response)
