@@ -44,6 +44,8 @@ validators = "^0.20.0"
 PyGithub = "^1.55"
 pydantic = "^1.9.1"
 joblib = "^1.1.0"
+psycopg2 = "^2.9.3"
+psycopg2-binary = "^2.9.3"
 
 
 [tool.poetry.dev-dependencies]
