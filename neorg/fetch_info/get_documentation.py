@@ -18,6 +18,3 @@ def doc_setup() -> None:
     os.system('vim --clean -e --cmd "helptags' + constants.THIRD_PARTY_PATH + '/neovim/runtime/doc | quit"')
     if not os.path.exists(constants.DATABASE_PATH):
         os.mkdir(constants.DATABASE_PATH)
-
-
-doc_setup()

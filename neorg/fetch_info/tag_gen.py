@@ -42,4 +42,4 @@ def tag_setup() -> None:
 def inital_tag_setup() -> None:
     """Initial setup for the tag database"""
     doc_setup()
-    # tag_setup()
+    tag_setup()
