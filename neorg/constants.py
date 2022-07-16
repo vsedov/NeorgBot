@@ -53,3 +53,10 @@ NEGATIVE_WORDS = ["java", "prolog"]
 DATABASE_PATH = os.path.join(BOT_DIR, "fetch_info/data/")
 THIRD_PARTY_PATH = os.path.join(BOT_DIR, "fetch_info/third_party/")
 FETCH_INFO_PATH = os.path.join(BOT_DIR, "fetch_info/")
+
+# Database
+DB_HOST = os.getenv("DB_HOST")
+DB_PORT = os.getenv("DB_PORT")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_URL = os.getenv("DB_URI")
