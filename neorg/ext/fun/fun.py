@@ -16,11 +16,13 @@ class FunListen(Cog):
             "sus": "<:sus:867395030988881921>",
             "neorg": "<:neorg:949327974442889277>",
             "based": "<:based:946814517566930954>",
+            "troll": "<:trollar:968455084604276816>",
         }
         self.reaction_id = {
             "sus": self.reaction_types["sus"],
             "neorg": self.reaction_types["neorg"],
-            "based": self.reaction_types["based"]
+            "based": self.reaction_types["based"],
+            "troll": self.reaction_types["troll"]
         }
 
         self.reaction_id_normalizer(["dumb", "idiot", "stupid", "moron", "dumbass"], "ree")
