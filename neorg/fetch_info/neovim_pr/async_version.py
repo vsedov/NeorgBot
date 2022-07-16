@@ -4,6 +4,8 @@ import itertools as it
 import json
 from collections import defaultdict
 
+import psycopg2
+import psycopg2.extras
 import requests
 from icecream import ic
 
@@ -35,7 +37,7 @@ def get_or_create_eventloop() -> asyncio:
             return asyncio.get_event_loop()
 
 
-class Test:
+class GetNeovimPR:
     """Temp documentation."""
 
     def __init__(self, user: str = "neovim"):
@@ -101,23 +103,45 @@ class Test:
         base : PRRequestModel
             PRRequestModel : Pydantic Model
         """
-        # import json
-        # with open("test_file.json", "w") as f:
-        #     json.dump(base.json(), f)
-        #
-        # make base id : int -> list of prs
-        log.info(base.dict())
         with open("test_file.json", "w") as f:
             json.dump(base.dict(), f, indent=4, sort_keys=True, default=str)
 
-    def __call__(self):
-        """Temp documentation."""
+    def startup(self) -> asyncio:
+        """Inital startup to fetch data using github api"""
         loop = get_or_create_eventloop()  # noqa: ignore
         log.info(f"Creting event loop for {self.user_fmt}")
         base = asyncio.run(self.get_pages())
         self.make_jobs(base)
 
+        return base
 
-if __name__ == "__main__":
-    test = Test()
-    test_2 = test()
+
+class NeovimPrUserDatabase:
+    """Neovim PR User Database"""
+
+    def __init__(self):
+        self.curr = self.connect_db()
+
+    def connect_db(self) -> psycopg2:
+        """
+        Create a database connection and return a cursor.
+        """
+        database_url = constants.DB_URL
+        curr = psycopg2.connect(database_url, sslmode='require')
+        curr.autocommit = True
+        return curr.cursor()
+
+    def create_neovim_database(self) -> None:
+        """
+        Create a database connection and return a cursor.
+        """
+        database_url = constants.DB_URL
+        curr = psycopg2.connect(database_url, sslmode='require')
+        curr.autocommit = True
+        self.curr.execute("CREATE TABLE IF NOT EXISTS neovim_pr (discord_id TEXT, pr_id TEXT)")
+
+    def insert_pr(self, discord_id: str, pr_id: str) -> None:
+        """
+        Insert a pr into the database
+        """
+        self.curr.execute("INSERT INTO neovim_pr (discord_id, pr_id) VALUES (%s, %s)", (discord_id, pr_id))
