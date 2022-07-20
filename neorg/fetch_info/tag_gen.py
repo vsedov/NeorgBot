@@ -12,7 +12,7 @@ log = get_logger(__name__)
 tag_re = re.compile(r'^(\S+)\s*(\S+).txt', re.MULTILINE)
 
 
-def add_tags(software: str, c: sqlite3.Connection) -> None:
+def add_tags(software: str, c: sqlite3.Cursor) -> None:
     """Add tags to the tag database"""
     if not os.path.exists(constants.THIRD_PARTY_PATH + 'neovim'):
         doc_setup()
