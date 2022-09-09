@@ -81,6 +81,7 @@ class FunListen(Cog):
             for emoji in send_call:
                 await message.channel.send(self.send_message_id[emoji])
 
+    # TODO: a way to delete a sent message in dm.
     @Cog.listener()
     async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent) -> None:
         """on raw reaction add listens to events and checks payload. it checks if a message has a reaction.
@@ -99,6 +100,10 @@ class FunListen(Cog):
                 bookmark.set_author(name=author.name, icon_url=author.avatar_url)
                 user = await self.bot.fetch_user(payload.user_id)
                 await user.send(embed=bookmark)
+
+            if len(msg.attachments) > 0:
+                for att in msg.attachments:
+                    await author.send(att.url)
 
     @command(name="ping", brief="Get the bot's ping")
     async def ping(self, ctx: Context) -> None:

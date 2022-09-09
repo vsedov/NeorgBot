@@ -1,5 +1,4 @@
 import re
-
 from discord import Embed, Message
 from discord.ext import commands
 
@@ -20,14 +19,13 @@ class Hex(commands.Cog):
             #000000 #ffffff -> will get color previews for both colors.
         NOTE: the message must start with the hex codes.
         """
-        matched = re.search(r"^#[A-Fa-f0-9]{6}", mess.content)
+        matched = re.findall(r"#[A-Fa-f0-9]{6}", mess.content)
 
-        if matched:
-            for hex in matched.string.split():
-                em = Embed(description="", color=0x2f3136)
-                url = f"https://singlecolorimage.com/get/{hex[1:]}/20x20"
-                em.set_author(name=hex, icon_url=url)
-                await mess.channel.send(embed=em)
+        for hex in matched:
+            em = Embed(description="", color=0x2f3136)
+            url = f"https://singlecolorimage.com/get/{hex[1:]}/20x20"
+            em.set_author(name=hex, icon_url=url)
+            await mess.channel.send(embed=em)
 
 
 def setup(bot: commands.Bot) -> None:

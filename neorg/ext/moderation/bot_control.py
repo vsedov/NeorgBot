@@ -33,13 +33,13 @@ class BotControl(Cog):
 
         log.info("Bot shutdown.")
 
-    @command()
+    @command(aliases=["r"])
     async def reload(self, ctx: Context, *, cog: str) -> None:
         """Reload a cog."""
         try:
             if cog == "all":
                 for extension in extensions.EXTENSIONS:
-                    self.bot.reload_extension(extension)
+                    await self.bot.reload_extension(extension)
                 await ctx.send(
                     embed=discord.Embed(description="Reloaded all extensions.", colour=discord.Color.green(),
                                        ))
