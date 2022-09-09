@@ -63,7 +63,7 @@ class DatabaseSearch(Cog):
         self.database_search = FetchDatabase()
         self.database_search.run_async()
 
-    @command(alias="db")
+    @command(aliases=["db"])
     async def db_search(self, ctx: Context, *, query: str = "neorg") -> None:
         """
         Search for a package in the database.
@@ -86,7 +86,7 @@ class DatabaseSearch(Cog):
         paginator = BotEmbedPaginator(ctx, embeds)
         await paginator.run()
 
-    @command(alias="db_recent")
+    @command(aliases=["db_recent", "recent_db"])
     async def recent_update_db(self, ctx: Context) -> None:
         """searches most recently updated plugins / within the database."""
         search_results = self.database_search.open_database()
@@ -106,7 +106,7 @@ class DatabaseSearch(Cog):
         paginator = BotEmbedPaginator(ctx, embeds)
         await paginator.run()
 
-    @command()
+    @command(aliases=["random_db", "random"])
     async def db_random(self, ctx: Context) -> None:
         """Fetches a random plugin within the database."""
         search_results = self.database_search.open_database()

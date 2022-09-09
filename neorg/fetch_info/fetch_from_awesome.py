@@ -84,7 +84,7 @@ class ReadAwesome:
             return a dictionary of {name: {'link': link, 'desc': description}}
         """
         names = defaultdict(dict)
-        pattern = re.compile(r"- \[(.*?)\]\((.*?)\)\s*(.*?)\.", re.DOTALL | re.MULTILINE)
+        pattern = re.compile(r"- \[(.*?)\]\((.*?)\)\s*(.*?)(\.|!)", re.DOTALL | re.MULTILINE)
         # regex matching for [user/repo](link) description .
         name_url = pattern.findall(self.soup.text)
         for j in name_url:

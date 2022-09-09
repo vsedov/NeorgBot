@@ -16,7 +16,7 @@ class AwesomeSearch(Cog):
         self.bot = Neorg
         self.awesome = ReadAwesome()
 
-    @command()
+    @command(aliases=["awesome", "search_awesome"])
     async def awesome_search(self, ctx: Context, *, query: str = "neorg") -> None:
         """Active search for plugins on awesome-neorg."""
         query = query.strip().lower()
@@ -31,7 +31,7 @@ class AwesomeSearch(Cog):
         paginator = BotEmbedPaginator(ctx, embeds)
         await paginator.run()
 
-    @command()
+    @command(aliases=["plugin_recent"])
     async def recent_plugin(self, ctx: Context) -> None:
         """Get most recent plugins added."""
         recent_plugins = self.awesome.get_most_recent_plugin()

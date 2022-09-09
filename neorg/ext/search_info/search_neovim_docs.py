@@ -18,7 +18,7 @@ class NeovimDocSearch(Cog):
         self.bot = Neorg
         self.neovim = NeovimDocs()
 
-    @command()
+    @command(aliases=["docs"])
     async def doc(self, ctx: Context, *, query: str = "api highlights") -> None:
         """
         Neovim Documentation

@@ -69,7 +69,6 @@ if __name__ == "__main__":
     query = "text"
 
     search = Youtube().get_search_suggestion()
-    print(search)
 
 else:
     pass
