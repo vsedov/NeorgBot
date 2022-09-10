@@ -1,0 +1,2004 @@
+{
+    "response": {
+        "16826": [
+            {
+                "closed_at": null,
+                "created_at": "2021-12-29 14:00:49+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/16826.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/16826",
+                "id": 811497803,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "88cd629a737fac1e1d52f452660c37d8412b9668",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM4wXnlL",
+                "number": 16826,
+                "patch_url": "https://github.com/neovim/neovim/pull/16826.patch",
+                "state": "open",
+                "title": "fix(tutor): Allow duplicate tutor loading",
+                "updated_at": "2021-12-29 14:12:32+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/16826"
+            }
+        ],
+        "16929": [
+            {
+                "closed_at": null,
+                "created_at": "2022-01-04 23:59:01+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/16929.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/16929",
+                "id": 814282825,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "293a9ebbb459a5a4ef66c79cc92670ac935e33c0",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM4wiPhJ",
+                "number": 16929,
+                "patch_url": "https://github.com/neovim/neovim/pull/16929.patch",
+                "state": "open",
+                "title": "[RFC] Call CursorHold events even if events are available",
+                "updated_at": "2022-03-30 01:21:43+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/16929"
+            }
+        ],
+        "16989": [
+            {
+                "closed_at": null,
+                "created_at": "2022-01-08 02:28:56+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/16989.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/16989",
+                "id": 816779276,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "f970f3b212856abdb984aa83cd781df76836d8c5",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM4wrxAM",
+                "number": 16989,
+                "patch_url": "https://github.com/neovim/neovim/pull/16989.patch",
+                "state": "open",
+                "title": "feat(autochdir): extract CWD from term:// URI",
+                "updated_at": "2022-02-05 21:06:49+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/16989"
+            }
+        ],
+        "16990": [
+            {
+                "closed_at": null,
+                "created_at": "2022-01-08 02:42:24+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/16990.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/16990",
+                "id": 816781081,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "e337a8ce2f3d0ca8e567187ccf4bdb26f86fb492",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM4wrxcZ",
+                "number": 16990,
+                "patch_url": "https://github.com/neovim/neovim/pull/16990.patch",
+                "state": "open",
+                "title": "Allow nvim -es to be used interactively with a TTY",
+                "updated_at": "2022-05-27 19:56:51+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/16990"
+            }
+        ],
+        "17099": [
+            {
+                "closed_at": null,
+                "created_at": "2022-01-15 11:10:21+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/17099.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/17099",
+                "id": 823608831,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "8622267d3ec7156bcc9ca46c83248d2d38ef2c78",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM4xF0X_",
+                "number": 17099,
+                "patch_url": "https://github.com/neovim/neovim/pull/17099.patch",
+                "state": "open",
+                "title": "Change api for Query:iter_matches()",
+                "updated_at": "2022-07-13 09:09:27+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/17099"
+            }
+        ],
+        "17117": [
+            {
+                "closed_at": null,
+                "created_at": "2022-01-16 17:27:33+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/17117.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/17117",
+                "id": 823952815,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "8e8a96deda0cb8cbb2638db4d86bfdeee8e803d4",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM4xHIWv",
+                "number": 17117,
+                "patch_url": "https://github.com/neovim/neovim/pull/17117.patch",
+                "state": "open",
+                "title": "Use weak tables in tree-sitter code",
+                "updated_at": "2022-04-02 18:06:51+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/17117"
+            }
+        ],
+        "17127": [
+            {
+                "closed_at": null,
+                "created_at": "2022-01-17 20:28:52+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/17127.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/17127",
+                "id": 824918701,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "8ba40dfc6414b99c956b09e3ff77bc88c90b8033",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM4xK0Kt",
+                "number": 17127,
+                "patch_url": "https://github.com/neovim/neovim/pull/17127.patch",
+                "state": "open",
+                "title": "tree-sitter: injection language base on filetype.lua",
+                "updated_at": "2022-06-23 21:41:40+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/17127"
+            }
+        ],
+        "17197": [
+            {
+                "closed_at": null,
+                "created_at": "2022-01-25 23:57:30+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/17197.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/17197",
+                "id": 831967435,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "c6490a9835f4bc3f30fd4f04ec06ef3ffde271b3",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM4xltDL",
+                "number": 17197,
+                "patch_url": "https://github.com/neovim/neovim/pull/17197.patch",
+                "state": "open",
+                "title": "feat(terminal): respond to OSC background and foreground request",
+                "updated_at": "2022-05-19 15:19:30+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/17197"
+            }
+        ],
+        "17218": [
+            {
+                "closed_at": null,
+                "created_at": "2022-01-28 09:35:37+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/17218.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/17218",
+                "id": 834260979,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "ee6761f5054a6179e21086e5ec698dfe79b1b5b9",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM4xuc_z",
+                "number": 17218,
+                "patch_url": "https://github.com/neovim/neovim/pull/17218.patch",
+                "state": "open",
+                "title": "refactor(lsp): move completion logic into a completion module",
+                "updated_at": "2022-06-27 21:32:15+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/17218"
+            }
+        ],
+        "17329": [
+            {
+                "closed_at": null,
+                "created_at": "2022-02-08 08:12:27+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/17329.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/17329",
+                "id": 842523537,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "2f4926a2074a34e6e5c794c214d20781935aa1bf",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM4yN-OR",
+                "number": 17329,
+                "patch_url": "https://github.com/neovim/neovim/pull/17329.patch",
+                "state": "open",
+                "title": "Test experimental reflow branch of libvterm",
+                "updated_at": "2022-05-16 09:12:46+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/17329"
+            }
+        ],
+        "17336": [
+            {
+                "closed_at": null,
+                "created_at": "2022-02-08 19:13:05+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/17336.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/17336",
+                "id": 843156231,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "a08147e52cfd28f08d55d9627a3b3b7e86839792",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM4yQYsH",
+                "number": 17336,
+                "patch_url": "https://github.com/neovim/neovim/pull/17336.patch",
+                "state": "open",
+                "title": "[WIP] winbar",
+                "updated_at": "2022-05-25 00:56:49+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/17336"
+            }
+        ],
+        "17398": [
+            {
+                "closed_at": null,
+                "created_at": "2022-02-13 21:50:26+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/17398.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/17398",
+                "id": 851325885,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "867f4093c1f395c4884bedf4da45f04e0d04228a",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM4yvjO9",
+                "number": 17398,
+                "patch_url": "https://github.com/neovim/neovim/pull/17398.patch",
+                "state": "open",
+                "title": "feat: fine-grained control over diff chunks (#17210)",
+                "updated_at": "2022-02-28 21:17:45+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/17398"
+            }
+        ],
+        "17446": [
+            {
+                "closed_at": null,
+                "created_at": "2022-02-17 20:59:23+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/17446.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/17446",
+                "id": 855948088,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "c6664db60492494ad72e2e82a705ecb63207483d",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM4zBLs4",
+                "number": 17446,
+                "patch_url": "https://github.com/neovim/neovim/pull/17446.patch",
+                "state": "open",
+                "title": "feat(folds): add 'foldoptions' option",
+                "updated_at": "2022-07-15 17:49:54+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/17446"
+            }
+        ],
+        "17536": [
+            {
+                "closed_at": null,
+                "created_at": "2022-02-27 05:07:55+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/17536.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/17536",
+                "id": 865665865,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "6f6c1ed9e7cace2d633454381bb290534af79777",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM4zmQNJ",
+                "number": 17536,
+                "patch_url": "https://github.com/neovim/neovim/pull/17536.patch",
+                "state": "open",
+                "title": "vim-patch:8.2.{0188,4463,4465}: fuzzy command line completion",
+                "updated_at": "2022-03-09 01:12:03+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/17536"
+            }
+        ],
+        "17537": [
+            {
+                "closed_at": null,
+                "created_at": "2022-02-27 10:05:58+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/17537.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/17537",
+                "id": 865959838,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "e5c9eea22540103372c624e4ae56dd17e6334ce9",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM4znX-e",
+                "number": 17537,
+                "patch_url": "https://github.com/neovim/neovim/pull/17537.patch",
+                "state": "open",
+                "title": " [WIP] feat(lua): nvim-lua interpreter mode (for lua co-processes, etc etc)",
+                "updated_at": "2022-03-11 17:09:11+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/17537"
+            }
+        ],
+        "17543": [
+            {
+                "closed_at": null,
+                "created_at": "2022-02-27 19:16:40+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/17543.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/17543",
+                "id": 866155597,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "a69825086eb89bf5b0502d839479fc4aa44b9187",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM4zoHxN",
+                "number": 17543,
+                "patch_url": "https://github.com/neovim/neovim/pull/17543.patch",
+                "state": "open",
+                "title": "Open with quick fix from stdin -  a first attempt.",
+                "updated_at": "2022-02-28 08:49:37+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/17543"
+            }
+        ],
+        "17633": [
+            {
+                "closed_at": null,
+                "created_at": "2022-03-07 01:54:32+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/17633.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/17633",
+                "id": 872612603,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "121a9e3c446d8276ed164cd39c58cddaaeafc965",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM40AwL7",
+                "number": 17633,
+                "patch_url": "https://github.com/neovim/neovim/pull/17633.patch",
+                "state": "open",
+                "title": "chore(treesitter): show filetype associated with parser",
+                "updated_at": "2022-04-03 11:59:19+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/17633"
+            }
+        ],
+        "17736": [
+            {
+                "closed_at": null,
+                "created_at": "2022-03-15 20:44:26+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/17736.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/17736",
+                "id": 880676757,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "ba12649ac2e8d42c9d085dea7300c020fa4ac2b2",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM40fg-V",
+                "number": 17736,
+                "patch_url": "https://github.com/neovim/neovim/pull/17736.patch",
+                "state": "open",
+                "title": "fix(mouse): check that mouse support is enabled for visual mode",
+                "updated_at": "2022-05-23 14:06:03+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/17736"
+            }
+        ],
+        "17802": [
+            {
+                "closed_at": null,
+                "created_at": "2022-03-21 12:49:05+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/17802.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/17802",
+                "id": 884790616,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "7e29a07a0ece733e29c832c79f252265439abeba",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM40vNVY",
+                "number": 17802,
+                "patch_url": "https://github.com/neovim/neovim/pull/17802.patch",
+                "state": "open",
+                "title": "Draft: feat(query): support setting a parsed query",
+                "updated_at": "2022-03-30 17:10:18+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/17802"
+            }
+        ],
+        "17856": [
+            {
+                "closed_at": null,
+                "created_at": "2022-03-25 18:55:19+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/17856.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/17856",
+                "id": 889790437,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "abc62bf0b0a6ca77c4c34ecb29977aea64edba72",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM41CR_l",
+                "number": 17856,
+                "patch_url": "https://github.com/neovim/neovim/pull/17856.patch",
+                "state": "open",
+                "title": "feat(remote): add wait subcommands",
+                "updated_at": "2022-05-04 14:25:31+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/17856"
+            }
+        ],
+        "17894": [
+            {
+                "closed_at": null,
+                "created_at": "2022-03-28 06:00:46+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/17894.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/17894",
+                "id": 891368649,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "6b5196ba2525171e107e8a675f217c5be03d1d24",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM41ITTJ",
+                "number": 17894,
+                "patch_url": "https://github.com/neovim/neovim/pull/17894.patch",
+                "state": "open",
+                "title": "Refactoring buf_do_map()",
+                "updated_at": "2022-04-02 12:05:02+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/17894"
+            }
+        ],
+        "17950": [
+            {
+                "closed_at": null,
+                "created_at": "2022-04-01 10:36:58+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/17950.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/17950",
+                "id": 897225439,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "3875dfeba29d33e0f807e28291a8c4f9fa9f34fb",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM41epLf",
+                "number": 17950,
+                "patch_url": "https://github.com/neovim/neovim/pull/17950.patch",
+                "state": "open",
+                "title": "vim-patch:8.2.{4029,4093,4100}: breakindent patches",
+                "updated_at": "2022-04-01 10:38:36+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/17950"
+            }
+        ],
+        "17976": [
+            {
+                "closed_at": null,
+                "created_at": "2022-04-03 00:09:55+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/17976.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/17976",
+                "id": 898164935,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "bf2b6824993d84540a3473b3781f95d37adb320d",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM41iOjH",
+                "number": 17976,
+                "patch_url": "https://github.com/neovim/neovim/pull/17976.patch",
+                "state": "open",
+                "title": "feat(lsp): add before_init_async field to lsp client",
+                "updated_at": "2022-05-19 01:33:41+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/17976"
+            }
+        ],
+        "17984": [
+            {
+                "closed_at": null,
+                "created_at": "2022-04-03 12:54:40+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/17984.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/17984",
+                "id": 898283728,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "a5212fa1e0c5759a5ac6fffcc8717f68283108ec",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM41irjQ",
+                "number": 17984,
+                "patch_url": "https://github.com/neovim/neovim/pull/17984.patch",
+                "state": "open",
+                "title": "feat(treesitter): use better error messages in query",
+                "updated_at": "2022-04-03 12:59:41+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/17984"
+            }
+        ],
+        "18049": [
+            {
+                "closed_at": null,
+                "created_at": "2022-04-09 06:13:48+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18049.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18049",
+                "id": 904644539,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "2c12466e60525cd3cd852af63dcb7d0875a93e0b",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM4168e7",
+                "number": 18049,
+                "patch_url": "https://github.com/neovim/neovim/pull/18049.patch",
+                "state": "open",
+                "title": "feat(QuitPre): allow aborting window closure with v:event.abort_close",
+                "updated_at": "2022-04-11 17:39:36+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18049"
+            }
+        ],
+        "18096": [
+            {
+                "closed_at": null,
+                "created_at": "2022-04-12 22:22:00+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18096.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18096",
+                "id": 908224509,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "925294ca2f7ed3578ad5b10287fdfd3a37396d7e",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM42Imf9",
+                "number": 18096,
+                "patch_url": "https://github.com/neovim/neovim/pull/18096.patch",
+                "state": "open",
+                "title": "feat(api): add nvim_(set|get)_cmdline",
+                "updated_at": "2022-04-25 01:21:57+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18096"
+            }
+        ],
+        "18109": [
+            {
+                "closed_at": null,
+                "created_at": "2022-04-14 12:24:01+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18109.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18109",
+                "id": 909907547,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "d6f9d2b91e49f0bec508a35aa6d547e1d7db7099",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM42PBZb",
+                "number": 18109,
+                "patch_url": "https://github.com/neovim/neovim/pull/18109.patch",
+                "state": "open",
+                "title": "refactor(treesitter): rely more on ts correctness",
+                "updated_at": "2022-06-17 07:02:44+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18109"
+            }
+        ],
+        "18130": [
+            {
+                "closed_at": null,
+                "created_at": "2022-04-16 04:07:12+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18130.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18130",
+                "id": 911196469,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "d8e989926669597fe87a4a00faa94fd0dddc5de6",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM42T8E1",
+                "number": 18130,
+                "patch_url": "https://github.com/neovim/neovim/pull/18130.patch",
+                "state": "open",
+                "title": "Enable hyperlinks in TUI (OSC-8)",
+                "updated_at": "2022-04-24 11:41:59+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18130"
+            }
+        ],
+        "18161": [
+            {
+                "closed_at": null,
+                "created_at": "2022-04-18 13:59:49+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18161.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18161",
+                "id": 912063852,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "54e910cf13831521ab7e56e52f814c1f1d1ce1a9",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM42XP1s",
+                "number": 18161,
+                "patch_url": "https://github.com/neovim/neovim/pull/18161.patch",
+                "state": "open",
+                "title": "feat(ui): add vim.ui.select_many",
+                "updated_at": "2022-04-30 14:45:00+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18161"
+            }
+        ],
+        "18232": [
+            {
+                "closed_at": null,
+                "created_at": "2022-04-23 09:55:18+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18232.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18232",
+                "id": 917169761,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "17e31107281df67836e73c8bb39661ecb7320282",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM42quZh",
+                "number": 18232,
+                "patch_url": "https://github.com/neovim/neovim/pull/18232.patch",
+                "state": "open",
+                "title": "Upstream nvim-treesitter utils to Neovim",
+                "updated_at": "2022-07-15 18:19:00+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18232"
+            }
+        ],
+        "18233": [
+            {
+                "closed_at": null,
+                "created_at": "2022-04-23 10:16:09+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18233.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18233",
+                "id": 917172738,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "08d81867a021e7f7bd0e3187dc2bd1b85890d7fa",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM42qvIC",
+                "number": 18233,
+                "patch_url": "https://github.com/neovim/neovim/pull/18233.patch",
+                "state": "open",
+                "title": "CI: debug issue with bump API version",
+                "updated_at": "2022-04-25 14:39:46+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18233"
+            }
+        ],
+        "18286": [
+            {
+                "closed_at": null,
+                "created_at": "2022-04-27 13:14:57+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18286.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18286",
+                "id": 920640099,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "0de98bc439f8528ce9ee077581fc0c6a9fec2597",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM4239pj",
+                "number": 18286,
+                "patch_url": "https://github.com/neovim/neovim/pull/18286.patch",
+                "state": "open",
+                "title": "feat(lua): add vim.iconv",
+                "updated_at": "2022-07-05 13:47:24+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18286"
+            }
+        ],
+        "18304": [
+            {
+                "closed_at": null,
+                "created_at": "2022-04-29 12:45:45+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18304.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18304",
+                "id": 923708305,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "7bfddefeb5ebdcc2652712a942082c1b1be99736",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM43DquR",
+                "number": 18304,
+                "patch_url": "https://github.com/neovim/neovim/pull/18304.patch",
+                "state": "open",
+                "title": "feat(lsp): support dynamic registration of didChangeConfiguration",
+                "updated_at": "2022-06-13 10:44:21+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18304"
+            }
+        ],
+        "18317": [
+            {
+                "closed_at": null,
+                "created_at": "2022-04-30 11:15:53+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18317.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18317",
+                "id": 924639810,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "12f2d977553c8dab245fc5f0539876f32c8d8463",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM43HOJC",
+                "number": 18317,
+                "patch_url": "https://github.com/neovim/neovim/pull/18317.patch",
+                "state": "open",
+                "title": "feat(treesitter): make resolving of injection `@language` configurable",
+                "updated_at": "2022-04-30 11:26:18+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18317"
+            }
+        ],
+        "18361": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-02 10:47:13+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18361.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18361",
+                "id": 925430366,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "4d13c00102b9d2c99cf641fb73cda31f05bed9b3",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM43KPJe",
+                "number": 18361,
+                "patch_url": "https://github.com/neovim/neovim/pull/18361.patch",
+                "state": "open",
+                "title": "fix(executor): port luaL_tolstring from Lua 5.2 (#18359)",
+                "updated_at": "2022-05-05 10:54:53+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18361"
+            }
+        ],
+        "18372": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-02 16:30:48+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18372.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18372",
+                "id": 925733280,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "a94b5f002e2c73415c95bd6aaa51cc2a5edc7c8d",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM43LZGg",
+                "number": 18372,
+                "patch_url": "https://github.com/neovim/neovim/pull/18372.patch",
+                "state": "open",
+                "title": "feat(lsp): return result of buf_request() in LSP functions",
+                "updated_at": "2022-05-03 13:16:35+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18372"
+            }
+        ],
+        "18375": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-02 19:50:12+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18375.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18375",
+                "id": 925899490,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "dc44bdda829ecc67813835a258680c6cbe21bad2",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM43MBri",
+                "number": 18375,
+                "patch_url": "https://github.com/neovim/neovim/pull/18375.patch",
+                "state": "open",
+                "title": "feat(ui): refactor TUI from thread to separate process",
+                "updated_at": "2022-05-10 15:55:36+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18375"
+            }
+        ],
+        "18388": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-03 13:19:35+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18388.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18388",
+                "id": 926553260,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "d2f00616c9844a7ef184fba8371da4a01697b17d",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM43OhSs",
+                "number": 18388,
+                "patch_url": "https://github.com/neovim/neovim/pull/18388.patch",
+                "state": "open",
+                "title": "feat(job,terminal): unset Vim/Nvim-owned env vars",
+                "updated_at": "2022-07-01 21:23:03+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18388"
+            }
+        ],
+        "18414": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-04 14:22:03+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18414.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18414",
+                "id": 927687258,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "8f55e547350086f87a8d4d978e8c08db06a8fedd",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM43S2Ja",
+                "number": 18414,
+                "patch_url": "https://github.com/neovim/neovim/pull/18414.patch",
+                "state": "open",
+                "title": "docs: --remote alternatives",
+                "updated_at": "2022-05-12 00:00:39+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18414"
+            }
+        ],
+        "18426": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-05 09:45:28+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18426.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18426",
+                "id": 928495758,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "b42890e040a19b80e39580bebda4c7ab0de7b353",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM43V7iO",
+                "number": 18426,
+                "patch_url": "https://github.com/neovim/neovim/pull/18426.patch",
+                "state": "open",
+                "title": "fix(runtime): correct load order for ftplugin/*",
+                "updated_at": "2022-06-19 16:11:18+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18426"
+            }
+        ],
+        "18476": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-08 01:30:06+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18476.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18476",
+                "id": 930384397,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "baf2546ee0fbd7bcdc43c7a4786c95f1c2c168a3",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM43dIoN",
+                "number": 18476,
+                "patch_url": "https://github.com/neovim/neovim/pull/18476.patch",
+                "state": "open",
+                "title": "feat(lsp): implement :lsp command",
+                "updated_at": "2022-05-12 00:39:49+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18476"
+            }
+        ],
+        "18506": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-09 19:48:59+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18506.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18506",
+                "id": 931578517,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "216bac4002ad829e8eb813ae93b1623a71d9fa2b",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM43hsKV",
+                "number": 18506,
+                "patch_url": "https://github.com/neovim/neovim/pull/18506.patch",
+                "state": "open",
+                "title": "feat(lsp): add vim.lsp.config",
+                "updated_at": "2022-05-15 18:24:22+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18506"
+            }
+        ],
+        "18514": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-10 14:51:26+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18514.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18514",
+                "id": 932536026,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "1e721fb3d23f7e017561820b9ee3813405e43d98",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM43lV7a",
+                "number": 18514,
+                "patch_url": "https://github.com/neovim/neovim/pull/18514.patch",
+                "state": "open",
+                "title": "fix(clang: 'Uninitialized argument value')",
+                "updated_at": "2022-05-11 10:14:42+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18514"
+            }
+        ],
+        "18559": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-13 13:42:39+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18559.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18559",
+                "id": 935946632,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "b4cb43038c365067fb43ccc84d7eadd8013bbf4b",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM43yWmI",
+                "number": 18559,
+                "patch_url": "https://github.com/neovim/neovim/pull/18559.patch",
+                "state": "open",
+                "title": "refactor(displatcher): remove unused headers",
+                "updated_at": "2022-05-13 13:45:18+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18559"
+            }
+        ],
+        "18561": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-13 14:48:28+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18561.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18561",
+                "id": 936016908,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "4fa3edf3047e4033bf642ce185fbef8511e7b6c7",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM43ynwM",
+                "number": 18561,
+                "patch_url": "https://github.com/neovim/neovim/pull/18561.patch",
+                "state": "open",
+                "title": "feat(channels): introduce v:parent",
+                "updated_at": "2022-07-01 21:28:28+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18561"
+            }
+        ],
+        "18579": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-15 14:08:05+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18579.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18579",
+                "id": 936757616,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "9b48b169b32e2111d3195a6325aba7501f6b1287",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM431clw",
+                "number": 18579,
+                "patch_url": "https://github.com/neovim/neovim/pull/18579.patch",
+                "state": "open",
+                "title": "docs: .git-blame-ignore-revs",
+                "updated_at": "2022-07-13 13:01:26+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18579"
+            }
+        ],
+        "18651": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-20 09:57:51+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18651.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18651",
+                "id": 942516931,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "3cd4df86ef31b80085a31c8bd7c74c00fca9e182",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM44LarD",
+                "number": 18651,
+                "patch_url": "https://github.com/neovim/neovim/pull/18651.patch",
+                "state": "open",
+                "title": "Add API functions for starting and stopping terminal ui input for use with e.g. OSC52 copy/paste to system clipboard",
+                "updated_at": "2022-05-22 05:37:36+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18651"
+            }
+        ],
+        "18665": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-20 21:43:58+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18665.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18665",
+                "id": 943213852,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "f54b3d7d2347317f6c1c019fa196fa7e3c1dac2b",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM44OE0c",
+                "number": 18665,
+                "patch_url": "https://github.com/neovim/neovim/pull/18665.patch",
+                "state": "open",
+                "title": "fixed w! displaying a message when the file was uptated externally",
+                "updated_at": "2022-07-02 00:24:51+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18665"
+            }
+        ],
+        "18674": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-21 12:29:43+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18674.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18674",
+                "id": 943426034,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "4da07f0df24a23ddca66b901c6f11fa11b771866",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM44O4ny",
+                "number": 18674,
+                "patch_url": "https://github.com/neovim/neovim/pull/18674.patch",
+                "state": "open",
+                "title": "feat(cmake): run busted tests with ctest",
+                "updated_at": "2022-07-02 14:18:16+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18674"
+            }
+        ],
+        "18678": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-21 14:25:01+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18678.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18678",
+                "id": 943444820,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "e39ef59c5fec1215433067016afe2cf868caf1c4",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM44O9NU",
+                "number": 18678,
+                "patch_url": "https://github.com/neovim/neovim/pull/18678.patch",
+                "state": "open",
+                "title": "fix(treesitter): use regions for `LanguageTree:contains`",
+                "updated_at": "2022-06-16 09:02:42+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18678"
+            }
+        ],
+        "18690": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-22 10:31:47+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18690.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18690",
+                "id": 943620843,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "d50957d2defe8e83feb8a14408b50659baa680ae",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM44PoLr",
+                "number": 18690,
+                "patch_url": "https://github.com/neovim/neovim/pull/18690.patch",
+                "state": "open",
+                "title": "fix(charset): don't consider chars above 0x10FFFF printable",
+                "updated_at": "2022-05-22 12:34:05+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18690"
+            }
+        ],
+        "18704": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-22 19:32:26+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18704.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18704",
+                "id": 943725352,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "14ac8b602ccc8584941f1d288e392d2526156a76",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM44QBso",
+                "number": 18704,
+                "patch_url": "https://github.com/neovim/neovim/pull/18704.patch",
+                "state": "open",
+                "title": "Fix #11349 and #18659",
+                "updated_at": "2022-05-23 01:24:59+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18704"
+            }
+        ],
+        "18705": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-22 19:47:14+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18705.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18705",
+                "id": 943727766,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "13afa43f7be64eeba99510815f7837bfe004a4ab",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM44QCSW",
+                "number": 18705,
+                "patch_url": "https://github.com/neovim/neovim/pull/18705.patch",
+                "state": "open",
+                "title": "fix: assertion failure when requiring missing module in autocmd",
+                "updated_at": "2022-06-14 12:58:40+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18705"
+            }
+        ],
+        "18706": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-22 20:57:23+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18706.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18706",
+                "id": 943739485,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "a889579ca74d2c6bf18915249718272ef162d12c",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM44QFJd",
+                "number": 18706,
+                "patch_url": "https://github.com/neovim/neovim/pull/18706.patch",
+                "state": "open",
+                "title": "feat(lua)!: repurpose \"-l\" to execute Lua",
+                "updated_at": "2022-06-19 21:49:54+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18706"
+            }
+        ],
+        "18723": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-23 19:58:26+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18723.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18723",
+                "id": 944851207,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "bd3ec226b643ac3a78b8bbd3b5f8906405907628",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM44UUkH",
+                "number": 18723,
+                "patch_url": "https://github.com/neovim/neovim/pull/18723.patch",
+                "state": "open",
+                "title": "fix: paste registers in powershell normally (non-reversed)",
+                "updated_at": "2022-05-25 11:07:14+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18723"
+            }
+        ],
+        "18769": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-27 14:45:31+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18769.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18769",
+                "id": 949384704,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "349af6dc9f6439ac6d4db8efef5efa0823970200",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM44lnYA",
+                "number": 18769,
+                "patch_url": "https://github.com/neovim/neovim/pull/18769.patch",
+                "state": "open",
+                "title": "vim-patch:8.2.5028: syntax regexp matching can be slow",
+                "updated_at": "2022-05-28 17:46:50+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18769"
+            }
+        ],
+        "18772": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-27 16:07:43+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18772.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18772",
+                "id": 949452304,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "1807a8abe5c0c97956f058c1377ea81be2c04a33",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM44l34Q",
+                "number": 18772,
+                "patch_url": "https://github.com/neovim/neovim/pull/18772.patch",
+                "state": "open",
+                "title": "Expose API for snippet parser.",
+                "updated_at": "2022-07-08 21:51:30+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18772"
+            }
+        ],
+        "18777": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-28 08:16:57+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18777.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18777",
+                "id": 949982561,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "d518575b480913bf6c6211481c1b68548daf7fee",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM44n5Vh",
+                "number": 18777,
+                "patch_url": "https://github.com/neovim/neovim/pull/18777.patch",
+                "state": "open",
+                "title": "feat(api): add bdelete to nvim_buf_delete",
+                "updated_at": "2022-06-04 11:34:59+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18777"
+            }
+        ],
+        "18815": [
+            {
+                "closed_at": null,
+                "created_at": "2022-05-31 16:17:04+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18815.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18815",
+                "id": 952174162,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "9f103f711ee44ecdadb6bc07fd99a461b4027610",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM44wQZS",
+                "number": 18815,
+                "patch_url": "https://github.com/neovim/neovim/pull/18815.patch",
+                "state": "open",
+                "title": "feat: 'inccommand' support for :normal",
+                "updated_at": "2022-06-01 02:39:22+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18815"
+            }
+        ],
+        "18839": [
+            {
+                "closed_at": null,
+                "created_at": "2022-06-02 14:40:46+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18839.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18839",
+                "id": 955993635,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "5f754383b97a0b0e617c36479f3ba63760f13a31",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM44-04j",
+                "number": 18839,
+                "patch_url": "https://github.com/neovim/neovim/pull/18839.patch",
+                "state": "open",
+                "title": "fix(lsp): fix multi client handling workspace_folder methods",
+                "updated_at": "2022-06-07 16:28:36+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18839"
+            }
+        ],
+        "18924": [
+            {
+                "closed_at": null,
+                "created_at": "2022-06-11 04:04:46+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18924.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18924",
+                "id": 964667702,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "fa99912e66cac300a659c733ba7d506f08acdf6e",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM45f6k2",
+                "number": 18924,
+                "patch_url": "https://github.com/neovim/neovim/pull/18924.patch",
+                "state": "open",
+                "title": "Increase the maximum search index shown in the statusline",
+                "updated_at": "2022-06-11 11:01:08+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18924"
+            }
+        ],
+        "18930": [
+            {
+                "closed_at": null,
+                "created_at": "2022-06-11 21:40:18+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18930.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18930",
+                "id": 964842536,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "ab1c9a2f89b1d48f55915969cfb5093c8fbb21e6",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM45glQo",
+                "number": 18930,
+                "patch_url": "https://github.com/neovim/neovim/pull/18930.patch",
+                "state": "open",
+                "title": "fix(lsp): log messages using vim.notify",
+                "updated_at": "2022-06-14 23:40:15+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18930"
+            }
+        ],
+        "18935": [
+            {
+                "closed_at": null,
+                "created_at": "2022-06-12 14:45:23+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18935.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18935",
+                "id": 965018760,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "fef2becf680181f763ce0eea7544c972627fc960",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM45hQSI",
+                "number": 18935,
+                "patch_url": "https://github.com/neovim/neovim/pull/18935.patch",
+                "state": "open",
+                "title": "feat(lsp): add WARN logs for spawn failures and non-OK exits",
+                "updated_at": "2022-06-12 16:00:47+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18935"
+            }
+        ],
+        "18992": [
+            {
+                "closed_at": null,
+                "created_at": "2022-06-16 23:29:11+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/18992.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/18992",
+                "id": 969885744,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "5d4322e26655702ddadb167cf942541ac03b80a5",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM45z0gw",
+                "number": 18992,
+                "patch_url": "https://github.com/neovim/neovim/pull/18992.patch",
+                "state": "open",
+                "title": "fix(input): do no reinterpret mouse keys with ALT modifiers",
+                "updated_at": "2022-06-17 10:32:21+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/18992"
+            }
+        ],
+        "19024": [
+            {
+                "closed_at": null,
+                "created_at": "2022-06-19 16:16:45+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19024.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19024",
+                "id": 971519345,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "d8649479247b78184d1cbf013b309fce9c548857",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM456DVx",
+                "number": 19024,
+                "patch_url": "https://github.com/neovim/neovim/pull/19024.patch",
+                "state": "open",
+                "title": "docs: fix typos",
+                "updated_at": "2022-07-15 07:57:17+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19024"
+            }
+        ],
+        "19032": [
+            {
+                "closed_at": null,
+                "created_at": "2022-06-20 15:29:33+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19032.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19032",
+                "id": 972377172,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "36b7470b9e155718abeefb6314723745466e1f3d",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM459UxU",
+                "number": 19032,
+                "patch_url": "https://github.com/neovim/neovim/pull/19032.patch",
+                "state": "open",
+                "title": "feat(nvim_exec2): Implement `nvim_exec2()`",
+                "updated_at": "2022-06-21 11:30:48+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19032"
+            }
+        ],
+        "19035": [
+            {
+                "closed_at": null,
+                "created_at": "2022-06-21 00:07:33+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19035.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19035",
+                "id": 972745988,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "bf7eb9c064956bccd01c80f96f9d22f3beec7742",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM45-u0E",
+                "number": 19035,
+                "patch_url": "https://github.com/neovim/neovim/pull/19035.patch",
+                "state": "open",
+                "title": "feat(getchar): getchar(2) waits for character without moving the cursor",
+                "updated_at": "2022-06-22 02:30:09+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19035"
+            }
+        ],
+        "19062": [
+            {
+                "closed_at": null,
+                "created_at": "2022-06-23 09:31:43+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19062.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19062",
+                "id": 976883533,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "2786fb2f05e769b1494ba37cf392f46b3bd4184e",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM46Og9N",
+                "number": 19062,
+                "patch_url": "https://github.com/neovim/neovim/pull/19062.patch",
+                "state": "open",
+                "title": "test: what the consequences of removing \"simplified\" mappings would be",
+                "updated_at": "2022-06-23 10:13:22+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19062"
+            }
+        ],
+        "19096": [
+            {
+                "closed_at": null,
+                "created_at": "2022-06-26 07:28:10+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19096.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19096",
+                "id": 979237483,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "003a56327ba4cfef78c3e5a3a26d2ce2cd00b364",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM46Xfpr",
+                "number": 19096,
+                "patch_url": "https://github.com/neovim/neovim/pull/19096.patch",
+                "state": "open",
+                "title": "feat: allow interrupting lua code",
+                "updated_at": "2022-06-27 15:06:44+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19096"
+            }
+        ],
+        "19111": [
+            {
+                "closed_at": null,
+                "created_at": "2022-06-26 22:20:48+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19111.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19111",
+                "id": 979404644,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "408e904e0ef1edbb6970382ac66e6b9a2d255cf9",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM46YIdk",
+                "number": 19111,
+                "patch_url": "https://github.com/neovim/neovim/pull/19111.patch",
+                "state": "open",
+                "title": "fix: shellslash for exepath and stdpath (#13787)",
+                "updated_at": "2022-07-12 17:30:21+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19111"
+            }
+        ],
+        "19121": [
+            {
+                "closed_at": null,
+                "created_at": "2022-06-27 10:46:33+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19121.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19121",
+                "id": 979893374,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "8401da4fdf251fad66c48a4804a1ace87080f4d1",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM46Z_x-",
+                "number": 19121,
+                "patch_url": "https://github.com/neovim/neovim/pull/19121.patch",
+                "state": "open",
+                "title": "ci(distribution): auto-release on winget",
+                "updated_at": "2022-06-28 10:34:15+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19121"
+            }
+        ],
+        "19128": [
+            {
+                "closed_at": null,
+                "created_at": "2022-06-27 16:30:03+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19128.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19128",
+                "id": 980278904,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "364ca116d7c277b797f0f13965d9583cda733cc8",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM46bd54",
+                "number": 19128,
+                "patch_url": "https://github.com/neovim/neovim/pull/19128.patch",
+                "state": "open",
+                "title": "build: add cmake-presets integration",
+                "updated_at": "2022-07-16 17:42:48+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19128"
+            }
+        ],
+        "19140": [
+            {
+                "closed_at": null,
+                "created_at": "2022-06-28 18:03:28+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19140.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19140",
+                "id": 981722982,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "ce8fb99a48e52e92023b2789ed3db3683772609a",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM46g-dm",
+                "number": 19140,
+                "patch_url": "https://github.com/neovim/neovim/pull/19140.patch",
+                "state": "open",
+                "title": "Fix leaks detected by coverity",
+                "updated_at": "2022-06-30 15:45:51+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19140"
+            }
+        ],
+        "19155": [
+            {
+                "closed_at": null,
+                "created_at": "2022-06-29 16:00:16+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19155.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19155",
+                "id": 982791801,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "88b779faa4ed8543f8f8389256e53a0efdcfa017",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM46lDZ5",
+                "number": 19155,
+                "patch_url": "https://github.com/neovim/neovim/pull/19155.patch",
+                "state": "open",
+                "title": "feat(api): add nvim_win_get_folds",
+                "updated_at": "2022-07-04 11:15:25+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19155"
+            }
+        ],
+        "19164": [
+            {
+                "closed_at": null,
+                "created_at": "2022-06-30 09:28:53+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19164.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19164",
+                "id": 983594296,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "9488a1f3b059d2e9bd574454744aead2d299aa50",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM46oHU4",
+                "number": 19164,
+                "patch_url": "https://github.com/neovim/neovim/pull/19164.patch",
+                "state": "open",
+                "title": "feat(lua): vim.ui_attach to get ui events from lua",
+                "updated_at": "2022-07-04 06:08:30+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19164"
+            }
+        ],
+        "19167": [
+            {
+                "closed_at": null,
+                "created_at": "2022-06-30 12:52:29+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19167.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19167",
+                "id": 983805934,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "b5917cb69cab13be39def7241803165d74812a72",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM46o6_u",
+                "number": 19167,
+                "patch_url": "https://github.com/neovim/neovim/pull/19167.patch",
+                "state": "open",
+                "title": "refactor: enable -Wconversion warning for memline.c",
+                "updated_at": "2022-06-30 13:29:03+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19167"
+            }
+        ],
+        "19185": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-01 10:44:52+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19185.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19185",
+                "id": 984815690,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "9d04e724c2307cad1340eced53aa2af4daae3cd9",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM46sxhK",
+                "number": 19185,
+                "patch_url": "https://github.com/neovim/neovim/pull/19185.patch",
+                "state": "open",
+                "title": "[WIP] cmdheight=0 fix bugs part2",
+                "updated_at": "2022-07-15 00:57:48+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19185"
+            }
+        ],
+        "19189": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-01 12:11:30+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19189.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19189",
+                "id": 984895341,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "5bdac20b500cd155dd740f414856955b76d3cac4",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM46tE9t",
+                "number": 19189,
+                "patch_url": "https://github.com/neovim/neovim/pull/19189.patch",
+                "state": "open",
+                "title": "feat(cmake): add native support for testing",
+                "updated_at": "2022-07-12 11:37:38+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19189"
+            }
+        ],
+        "19213": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-03 09:49:06+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19213.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19213",
+                "id": 985685047,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "ac805d384745ad2941f623e89f988f4a295e6692",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM46wFw3",
+                "number": 19213,
+                "patch_url": "https://github.com/neovim/neovim/pull/19213.patch",
+                "state": "open",
+                "title": "feat(lsp): allow passing custom list handler to LSP functions that return lists",
+                "updated_at": "2022-07-16 09:53:45+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19213"
+            }
+        ],
+        "19217": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-03 15:00:07+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19217.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19217",
+                "id": 985742869,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "d71e45a0aaa1fbed9ff922d1e1e3268d0df05df3",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM46wT4V",
+                "number": 19217,
+                "patch_url": "https://github.com/neovim/neovim/pull/19217.patch",
+                "state": "open",
+                "title": "fix(lua): make it possible cancel vim.wait with ctrl-c",
+                "updated_at": "2022-07-04 22:03:35+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19217"
+            }
+        ],
+        "19233": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-05 09:59:35+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19233.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19233",
+                "id": 987235146,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "2569c6db38f7af018e6f24f13617f75484f23f5b",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM462ANK",
+                "number": 19233,
+                "patch_url": "https://github.com/neovim/neovim/pull/19233.patch",
+                "state": "open",
+                "title": "vim-patch:8.1.{0342,0425}: can_unload_buffer()",
+                "updated_at": "2022-07-05 10:25:04+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19233"
+            }
+        ],
+        "19238": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-05 14:51:33+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19238.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19238",
+                "id": 987532353,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "515b42f2056b236f4c5aada1908f296f7a3b70af",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM463IxB",
+                "number": 19238,
+                "patch_url": "https://github.com/neovim/neovim/pull/19238.patch",
+                "state": "open",
+                "title": "feat(lua): allow vim.cmd to be indexed",
+                "updated_at": "2022-07-13 08:54:48+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19238"
+            }
+        ],
+        "19239": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-05 17:11:07+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19239.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19239",
+                "id": 987660262,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "e1a55c94a5fa1008ded2c5a4a93f2186e4fc94fa",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM463n_m",
+                "number": 19239,
+                "patch_url": "https://github.com/neovim/neovim/pull/19239.patch",
+                "state": "open",
+                "title": "refactor(lua): Use API objects for Lua stdlib",
+                "updated_at": "2022-07-06 15:43:41+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19239"
+            }
+        ],
+        "19243": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-05 23:50:22+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19243.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19243",
+                "id": 987968117,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "75691f394506762782fa9013e2fe391ca9da3b88",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM464zJ1",
+                "number": 19243,
+                "patch_url": "https://github.com/neovim/neovim/pull/19243.patch",
+                "state": "open",
+                "title": "feat(window/ui): add splitscroll option ",
+                "updated_at": "2022-07-15 23:07:35+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19243"
+            }
+        ],
+        "19246": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-06 03:41:50+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19246.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19246",
+                "id": 988117381,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "b5eca10ac7e75cf860e2c3608524de84451a0f36",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM465XmF",
+                "number": 19246,
+                "patch_url": "https://github.com/neovim/neovim/pull/19246.patch",
+                "state": "open",
+                "title": "version.c: update [skip ci]",
+                "updated_at": "2022-07-16 03:34:24+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19246"
+            }
+        ],
+        "19259": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-06 20:53:09+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19259.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19259",
+                "id": 989349964,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "43442a20f99883f6e23b8a56ac1603d3f15c5b03",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM46-EhM",
+                "number": 19259,
+                "patch_url": "https://github.com/neovim/neovim/pull/19259.patch",
+                "state": "open",
+                "title": "fix: emoji \"Regional Indicator Symbols\" handling",
+                "updated_at": "2022-07-16 03:02:55+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19259"
+            }
+        ],
+        "19268": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-07 13:21:20+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19268.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19268",
+                "id": 990230805,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "1f6f636fd8b27b78e044f50032eabcf3344dd290",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM47BbkV",
+                "number": 19268,
+                "patch_url": "https://github.com/neovim/neovim/pull/19268.patch",
+                "state": "open",
+                "title": "fix (#19250): make_filter_cmd for powershell commands with arguments",
+                "updated_at": "2022-07-13 09:19:16+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19268"
+            }
+        ],
+        "19270": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-07 15:45:11+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19270.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19270",
+                "id": 990445515,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "ba4950cdcb1d8db70d9ded568a4070fc602b40b4",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM47CP_L",
+                "number": 19270,
+                "patch_url": "https://github.com/neovim/neovim/pull/19270.patch",
+                "state": "open",
+                "title": "feat(ui): add scroll_delta to win_viewport event",
+                "updated_at": "2022-07-08 09:54:34+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19270"
+            }
+        ],
+        "19279": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-08 09:30:08+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19279.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19279",
+                "id": 991422510,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "f02ec227542fe8ffa0739acacc4aa6b7f6f422cf",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM47F-gu",
+                "number": 19279,
+                "patch_url": "https://github.com/neovim/neovim/pull/19279.patch",
+                "state": "open",
+                "title": "fix(decoration): slightly better botline guess",
+                "updated_at": "2022-07-08 14:07:26+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19279"
+            }
+        ],
+        "19290": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-08 17:05:15+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19290.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19290",
+                "id": 991875851,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "a21da8e1eae6503f1c1b84e244e10c46db7f3763",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM47HtML",
+                "number": 19290,
+                "patch_url": "https://github.com/neovim/neovim/pull/19290.patch",
+                "state": "open",
+                "title": "feat(defaults): enable mouse support",
+                "updated_at": "2022-07-16 15:18:23+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19290"
+            }
+        ],
+        "19309": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-10 13:07:23+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19309.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19309",
+                "id": 992420584,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "f525f6ccefcbcc1cbf10f0e1b35f999726cb88aa",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM47JyLo",
+                "number": 19309,
+                "patch_url": "https://github.com/neovim/neovim/pull/19309.patch",
+                "state": "open",
+                "title": "refactor(lsp): make the use of local aliases more consistent",
+                "updated_at": "2022-07-15 19:32:37+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19309"
+            }
+        ],
+        "19315": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-11 06:08:45+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19315.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19315",
+                "id": 992700834,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "206374e6d2b575dc7369c3b7d089cad6a8ba2828",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM47K2mi",
+                "number": 19315,
+                "patch_url": "https://github.com/neovim/neovim/pull/19315.patch",
+                "state": "open",
+                "title": "fix (#18501): chansend sending lines to terminal buffer in reverse order in Windows",
+                "updated_at": "2022-07-15 18:23:17+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19315"
+            }
+        ],
+        "19323": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-11 14:26:38+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19323.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19323",
+                "id": 993176462,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "1ea5fe94ce9da750a40d1eafa8fe7c587576520f",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM47MquO",
+                "number": 19323,
+                "patch_url": "https://github.com/neovim/neovim/pull/19323.patch",
+                "state": "open",
+                "title": "fix: Escape path characters in username for tempdir #19240",
+                "updated_at": "2022-07-15 15:35:24+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19323"
+            }
+        ],
+        "19336": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-12 16:00:23+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19336.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19336",
+                "id": 994466551,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "fd0d1c54e3f0c38dd8ac4eefdc323749d4eb93ad",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM47Rlr3",
+                "number": 19336,
+                "patch_url": "https://github.com/neovim/neovim/pull/19336.patch",
+                "state": "open",
+                "title": "ci: refactor build.ps1",
+                "updated_at": "2022-07-16 18:40:15+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19336"
+            }
+        ],
+        "19351": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-13 11:07:34+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19351.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19351",
+                "id": 995357737,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "be34f12a5872fa6d25ee262285e466f1f2ca137d",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM47U_Qp",
+                "number": 19351,
+                "patch_url": "https://github.com/neovim/neovim/pull/19351.patch",
+                "state": "open",
+                "title": "feat(ts): upstream spellsitter.nvim",
+                "updated_at": "2022-07-14 12:13:33+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19351"
+            }
+        ],
+        "19360": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-14 08:45:01+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19360.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19360",
+                "id": 996391724,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "86553c7357a88b59d43caa272e2277799420ad47",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM47Y7ss",
+                "number": 19360,
+                "patch_url": "https://github.com/neovim/neovim/pull/19360.patch",
+                "state": "open",
+                "title": "feat: multibuffer preview support for inccommand",
+                "updated_at": "2022-07-15 05:42:50+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19360"
+            }
+        ],
+        "19385": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-16 02:56:52+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19385.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19385",
+                "id": 998333680,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "f9b8b135e130f66e0f022eeecb92c5e219d07639",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM47gVzw",
+                "number": 19385,
+                "patch_url": "https://github.com/neovim/neovim/pull/19385.patch",
+                "state": "open",
+                "title": "Returns nil when vim.fn is indexed with invalid key. Fixes #19271.",
+                "updated_at": "2022-07-16 03:51:03+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19385"
+            }
+        ],
+        "19390": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-16 13:26:58+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19390.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19390",
+                "id": 998426441,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "ccb413eb03a5c6b1a23b949d4abb7d7ada0d126d",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM47gsdJ",
+                "number": 19390,
+                "patch_url": "https://github.com/neovim/neovim/pull/19390.patch",
+                "state": "open",
+                "title": "fix(mouse): click on global statusline with splits",
+                "updated_at": "2022-07-16 13:54:20+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19390"
+            }
+        ],
+        "19392": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-16 17:01:01+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19392.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19392",
+                "id": 998463091,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "b5c9319421d57c87cd4ce84d795296dd39100565",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM47g1Zz",
+                "number": 19392,
+                "patch_url": "https://github.com/neovim/neovim/pull/19392.patch",
+                "state": "open",
+                "title": "vim-patch:9.0.0055",
+                "updated_at": "2022-07-16 22:37:11+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19392"
+            }
+        ],
+        "19395": [
+            {
+                "closed_at": null,
+                "created_at": "2022-07-16 18:11:24+00:00",
+                "diff_url": "https://github.com/neovim/neovim/pull/19395.diff",
+                "html_url": "https://github.com/neovim/neovim/pull/19395",
+                "id": 998474085,
+                "issues_url": null,
+                "locked": false,
+                "merge_commit_sha": "d3f45766ad6c88f9199fa6cbcba5660af1481e92",
+                "merged_at": null,
+                "node_id": "PR_kwDOAPphoM47g4Fl",
+                "number": 19395,
+                "patch_url": "https://github.com/neovim/neovim/pull/19395.patch",
+                "state": "open",
+                "title": "test(job_spec): accept alternate messages for \"append environment\" tests",
+                "updated_at": "2022-07-16 18:11:38+00:00",
+                "url": "https://api.github.com/repos/neovim/neovim/pulls/19395"
+            }
+        ]
+    }
+}
