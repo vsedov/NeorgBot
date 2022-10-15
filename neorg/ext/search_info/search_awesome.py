@@ -1,41 +1,40 @@
 import discord
-from discord.ext.commands import Cog, Context, command
-from disputils import BotEmbedPaginator
+from discord.ext.commands import Cog, Context, hybrid_command
 
 from neorg.fetch_info.fetch_from_awesome import ReadAwesome
 from neorg.log import get_logger
 from neorg.neorg import Neorg
+from neorg.utils.paginator import BotEmbedPaginator
 
 log = get_logger(__name__)
-
 
 class AwesomeSearch(Cog):
     """Search for a plugin in awesome."""
 
     def __init__(self, bot: Neorg):
-        self.bot = Neorg
+        self.bot = bot
         self.awesome = ReadAwesome()
 
-    @command(aliases=["awesome", "search_awesome"])
+    @hybrid_command(aliases=["awesome", "search_awesome"])
     async def awesome_search(self, ctx: Context, *, query: str = "neorg") -> None:
         """Active search for plugins on awesome-neorg."""
         query = query.strip().lower()
         search_result = self.awesome.fuzzy(query)
         embeds = []
         for result in search_result.items():
-            em = discord.Embed(title="Search result", color=0x00ff00)
+            em = discord.Embed(title="Search result", color=0x4878BE)
             link = f"https://github.com/{result[0]}"
             em.add_field(name=result[0], value=f"{result[1]}, {link}", inline=False)
             embeds.append(em)
 
-        paginator = BotEmbedPaginator(ctx, embeds)
-        await paginator.run()
+        paginator = BotEmbedPaginator(embeds)
+        await ctx.send(embed=embeds[0], view=paginator)
 
-    @command(aliases=["plugin_recent"])
+    @hybrid_command(aliases=["plugin_recent"])
     async def recent_plugin(self, ctx: Context) -> None:
         """Get most recent plugins added."""
         recent_plugins = self.awesome.get_most_recent_plugin()
-        em = discord.Embed(title="Recent Plugins", color=0x00ff00)
+        em = discord.Embed(title="Recent Plugins", color=0x4878BE)
         for i, plugin in enumerate(recent_plugins):
             link = f"https://github.com/{plugin}"
             em.add_field(name=plugin, value=link, inline=False)
@@ -43,6 +42,6 @@ class AwesomeSearch(Cog):
         await ctx.send(embed=em)
 
 
-def setup(bot: Neorg) -> None:
+async def setup(bot: Neorg) -> None:
     """Set up the extension."""
-    bot.add_cog(AwesomeSearch(bot))
+    await bot.add_cog(AwesomeSearch(bot))

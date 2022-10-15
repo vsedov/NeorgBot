@@ -174,6 +174,6 @@ class HelpFunc(Cog, name="Help Command"):
         self.bot.help_command = self._original_help_command
 
 
-def setup(bot: Bot) -> None:
+async def setup(bot: Bot) -> None:
     """Add cog to bot."""
-    bot.add_cog(HelpFunc(bot))
+    await bot.add_cog(HelpFunc(bot))

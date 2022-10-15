@@ -1,7 +1,7 @@
 import re
 
 import discord
-from discord.ext.commands import Cog, Context, command
+from discord.ext.commands import Cog, Context, hybrid_command
 from icecream import ic
 
 from neorg.ext.fun._youtube import Youtube
@@ -17,7 +17,7 @@ class YoutubeSearch(Cog):
         self.bot = bot
         self.youtube = Youtube()
 
-    @command(pass_context=True)
+    @hybrid_command(pass_context=True)
     async def search(self, ctx: Context, *, query: str = "rick roll never going to give you up|1  ") -> None:
         """
         Neorg: Youtub Search
@@ -67,6 +67,6 @@ class YoutubeSearch(Cog):
             await ctx.send(embed=table)
 
 
-def setup(bot: discord.ext.commands.Bot) -> None:
+async def setup(bot: discord.ext.commands.Bot) -> None:
     """Add cog to bot."""
-    bot.add_cog(YoutubeSearch(bot))
+    await bot.add_cog(YoutubeSearch(bot))

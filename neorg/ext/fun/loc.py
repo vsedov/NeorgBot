@@ -11,7 +11,7 @@ class Loc(commands.Cog):
     def __init__(self, bot: commands.Bot) -> None:
         self.bot = bot
 
-    @commands.command(aliases=["lines"])
+    @commands.hybrid_command(aliases=["lines"])
     async def loc(self, ctx: commands.Context, *, repo=None) -> None:
         """
         Neorg: Lines of code for a repo
@@ -34,6 +34,6 @@ class Loc(commands.Cog):
         else:
             await ctx.send(embed=Embed(description="Could not get repo details.", color=0x4878BE))
 
-def setup(bot: commands.Bot) -> None:
+async def setup(bot: commands.Bot) -> None:
     """Add cog to bot."""
-    bot.add_cog(Loc(bot))
+    await bot.add_cog(Loc(bot))

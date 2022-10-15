@@ -8,6 +8,7 @@ from neorg import neorg
 from neorg.fetch_info.tag_gen import inital_tag_setup
 from neorg.log import get_logger, setup_sentry
 from neorg.neorg import Neorg, StartupError, constants
+import asyncio
 
 if constants.USE_SENTRY:
     setup_sentry()
@@ -17,7 +18,7 @@ if constants.TAG_SETUP:
 
 try:
     neorg.instance = Neorg.create()
-    neorg.instance.load_cogs()
+    asyncio.run(neorg.instance.load_cogs())
     neorg.instance.run(constants.TOKEN)
 
 except StartupError as e:

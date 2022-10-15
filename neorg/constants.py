@@ -14,7 +14,7 @@ __import__("dotenv").load_dotenv()
 class Keys:
     """Neorg Guild confgis"""
 
-    prefix: str = "n."
+    prefix: str = "."
 
 
 class Guild:
@@ -27,7 +27,7 @@ class Guild:
 
 BOT_TRACE_LOGGERS: list[str] = [f"!{__name__}"]
 
-USE_SENTRY: bool = True
+USE_SENTRY: bool = False
 TAG_SETUP: bool = False
 
 PREFIX = Keys.prefix

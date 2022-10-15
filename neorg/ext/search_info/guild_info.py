@@ -1,5 +1,5 @@
 import discord
-from discord.ext.commands import Cog, Context, command
+from discord.ext.commands import Cog, Context, hybrid_command
 
 from neorg.log import get_logger
 from neorg.neorg import Neorg
@@ -13,22 +13,22 @@ class GuildInfo(Cog):
     def __init__(self, bot: Neorg):
         self.bot = bot
 
-    @command()
+    @hybrid_command()
     async def count(self, ctx: Context) -> None:
         """Get the number of members in the server."""
         await ctx.send(embed=discord.Embed(description=f"There are {len(ctx.guild.members)} members in the server.", color=0x4878BE))
 
-    @command()
+    @hybrid_command()
     async def invite(self, ctx: Context) -> None:
         """Invite me to your server."""
         await ctx.send(f"**{ctx.author.name}**, use this URL to invite others\nhttps://discord.gg/T6EgTAX7ht")
 
-    @command()
+    @hybrid_command()
     async def source(self, ctx: Context) -> None:
         """Check out my source code >.<"""
         await ctx.send(f"**{ctx.bot.user}** is powered by this source code:\nhttps://github.com/vsedov/NeorgBot")
 
-    @command(name="about", aliases=["info", "stats"])
+    @hybrid_command(name="about", aliases=["info", "stats"])
     async def about(self, ctx: Context) -> None:
         """About the bot, what can it do ?"""
 
@@ -45,6 +45,6 @@ class GuildInfo(Cog):
         await ctx.send(content=f"ℹ About **{ctx.bot.user}**", embed=embed)
 
 
-def setup(bot: Neorg) -> None:
+async def setup(bot: Neorg) -> None:
     """Add Cog to Bot."""
-    bot.add_cog(GuildInfo(bot))
+    await bot.add_cog(GuildInfo(bot))

@@ -2,7 +2,7 @@ import re
 from typing import Union
 
 import discord
-from discord.ext.commands import Cog, Context, command
+from discord.ext.commands import Cog, Context, hybrid_command
 
 from neorg.fetch_info.neovim_docs import NeovimDocs
 from neorg.log import get_logger
@@ -18,7 +18,7 @@ class NeovimDocSearch(Cog):
         self.bot = Neorg
         self.neovim = NeovimDocs()
 
-    @command(aliases=["docs"])
+    @hybrid_command(aliases=["docs"])
     async def doc(self, ctx: Context, *, query: str = "api highlights") -> None:
         """
         Neovim Documentation
@@ -80,8 +80,8 @@ class NeovimDocSearch(Cog):
         await ctx.send(embed=table)
 
 
-def setup(bot: Neorg) -> None:
+async def setup(bot: Neorg) -> None:
     """
     setup for NeovimDocSearch
     """
-    bot.add_cog(NeovimDocSearch(bot))
+    await bot.add_cog(NeovimDocSearch(bot))

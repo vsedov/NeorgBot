@@ -10,7 +10,7 @@ class Meme(commands.Cog):
     def __init__(self, bot: commands.Bot) -> None:
         self.bot = bot
 
-    @commands.command(aliases=["memes"])
+    @commands.hybrid_command(aliases=["memes"])
     async def meme(self, ctx: commands.Context, *, sub: str = '') -> None:
         """
         Neorg: Reddit memes
@@ -39,6 +39,6 @@ class Meme(commands.Cog):
         await ctx.send(embed=em)
 
 
-def setup(bot: commands.Bot) -> None:
+async def setup(bot: commands.Bot) -> None:
     """Add cog to bot."""
-    bot.add_cog(Meme(bot))
+    await bot.add_cog(Meme(bot))

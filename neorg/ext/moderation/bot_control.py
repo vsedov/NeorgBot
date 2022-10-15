@@ -1,7 +1,7 @@
 import discord
 # yapf: disable
 from discord.ext.commands import (
-    BadArgument, CheckFailure, Cog, CommandNotFound, Context, MissingRequiredArgument, command, has_any_role
+    BadArgument, CheckFailure, Cog, CommandNotFound, Context, MissingRequiredArgument, hybrid_command, has_any_role
 )
 # yapf: enable
 from icecream import ic
@@ -20,7 +20,7 @@ class BotControl(Cog):
     def __init__(self, bot: Neorg):
         self.bot = bot
 
-    @command()
+    @hybrid_command()
     async def shutdown(self, ctx: Context) -> None:
         """Shutdown the bot."""
 
@@ -33,7 +33,7 @@ class BotControl(Cog):
 
         log.info("Bot shutdown.")
 
-    @command(aliases=["r"])
+    @hybrid_command(aliases=["r"])
     async def reload(self, ctx: Context, *, cog: str) -> None:
         """Reload a cog."""
         try:
@@ -48,7 +48,7 @@ class BotControl(Cog):
             ext_name = extensions.find_extension(cog)
             if ext_name is None:
                 raise CommandNotFound(f"Extension {cog} not found.")
-            self.bot.reload_extension(ext_name)
+            await self.bot.reload_extension(ext_name)
             await ctx.send(embed=discord.Embed(description=f"Reloaded extension {cog}.", colour=discord.Color.green(),))
         except Exception as e:
             await ctx.send(
@@ -77,6 +77,6 @@ class BotControl(Cog):
         log.warning(ic.format(f"{ctx.author} tried to run {ctx.command} but got {error}"))
 
 
-def setup(bot: Neorg) -> None:
+async def setup(bot: Neorg) -> None:
     """Add Cog to Bot."""
-    bot.add_cog(BotControl(bot))
+    await bot.add_cog(BotControl(bot))

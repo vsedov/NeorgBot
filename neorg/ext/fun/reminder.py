@@ -10,7 +10,7 @@ class Reminder(commands.Cog):
     def __init__(self, bot: commands.Bot) -> None:
         self.bot = bot
 
-    @commands.command(aliases=["remainder", "rem"])
+    @commands.hybrid_command(aliases=["remainder", "rem"])
     async def reminder(self, ctx, user_time='00:00:10', *message):
         """
         Neorg: Reminder (timer)
@@ -40,7 +40,7 @@ class Reminder(commands.Cog):
         )
         await ctx.send(embed=embed)
 
-        await asyncio.sleep(seconds)
+        asyncio.run(asyncio.sleep(seconds))
 
         embed2 = Embed(
             title=f':exclamation::alarm_clock:__Reminder Alert__:alarm_clock::exclamation:',
@@ -53,7 +53,7 @@ class Reminder(commands.Cog):
             await ctx.author.send(f"***Your reminder time is up!\nReminder: ***{msg}")
 
 
-def setup(bot: commands.Bot) -> None:
+async def setup(bot: commands.Bot) -> None:
     """Add cog to bot."""
-    bot.add_cog(Reminder(bot))
+    await bot.add_cog(Reminder(bot))
 
