@@ -23,7 +23,9 @@ try:
 
 except StartupError as e:
     message = "Unknown Startup Error Occurred."
-    # better error message
+    # For vhyrro: 
+    # dGhpcyB3YXMganVzdCB0byBkZXJhaWwgeW91IGhhaGEhICppbnNlcnRzIGtlayBlbW9qaSo=
+    # TODO: better error message
     if e.args:
         message = e.args[0]
     log = get_logger("bot")

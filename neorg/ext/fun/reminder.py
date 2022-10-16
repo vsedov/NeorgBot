@@ -2,6 +2,7 @@ from discord import Embed
 from discord.ext import commands
 from datetime import datetime
 import asyncio
+from neorg import constants as c
 
 
 class Reminder(commands.Cog):
@@ -10,7 +11,7 @@ class Reminder(commands.Cog):
     def __init__(self, bot: commands.Bot) -> None:
         self.bot = bot
 
-    @commands.hybrid_command(aliases=["remainder", "rem"])
+    @commands.hybrid_command()
     async def reminder(self, ctx, user_time='00:00:10', *message):
         """
         Neorg: Reminder (timer)
@@ -36,16 +37,16 @@ class Reminder(commands.Cog):
         embed = Embed(
             title=f':alarm_clock:__Reminder Set for {seconds}s from now :alarm_clock:__',
             description=content,
-            color=0x4878BE
+            color=c.NORG_BLUE
         )
         await ctx.send(embed=embed)
 
-        asyncio.run(asyncio.sleep(seconds))
+        await asyncio.sleep(seconds)
 
         embed2 = Embed(
             title=f':exclamation::alarm_clock:__Reminder Alert__:alarm_clock::exclamation:',
             description=f"***User:***{ctx.author.mention}\n***Reminder:*** {msg}",
-            colour=0x4878BE
+            colour=c.NORG_BLUE
         )
         await ctx.send(embed=embed2)
 

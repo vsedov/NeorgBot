@@ -17,7 +17,7 @@ class YoutubeSearch(Cog):
         self.bot = bot
         self.youtube = Youtube()
 
-    @hybrid_command(pass_context=True)
+    @hybrid_command()
     async def search(self, ctx: Context, *, query: str = "rick roll never going to give you up|1  ") -> None:
         """
         Neorg: Youtub Search

@@ -1,5 +1,6 @@
 import discord
 from discord.ext.commands import Cog, Context, hybrid_command
+from neorg import constants as c
 
 from neorg.log import get_logger
 from neorg.neorg import Neorg
@@ -16,7 +17,7 @@ class GuildInfo(Cog):
     @hybrid_command()
     async def count(self, ctx: Context) -> None:
         """Get the number of members in the server."""
-        await ctx.send(embed=discord.Embed(description=f"There are {len(ctx.guild.members)} members in the server.", color=0x4878BE))
+        await ctx.send(embed=discord.Embed(description=f"There are {len(ctx.guild.members)} members in the server.", color=c.NORG_BLUE))
 
     @hybrid_command()
     async def invite(self, ctx: Context) -> None:
@@ -28,7 +29,7 @@ class GuildInfo(Cog):
         """Check out my source code >.<"""
         await ctx.send(f"**{ctx.bot.user}** is powered by this source code:\nhttps://github.com/vsedov/NeorgBot")
 
-    @hybrid_command(name="about", aliases=["info", "stats"])
+    @hybrid_command()
     async def about(self, ctx: Context) -> None:
         """About the bot, what can it do ?"""
 

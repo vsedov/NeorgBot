@@ -33,7 +33,7 @@ class BotControl(Cog):
 
         log.info("Bot shutdown.")
 
-    @hybrid_command(aliases=["r"])
+    @hybrid_command()
     async def reload(self, ctx: Context, *, cog: str) -> None:
         """Reload a cog."""
         try:

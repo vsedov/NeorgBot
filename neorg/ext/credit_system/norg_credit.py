@@ -80,7 +80,7 @@ class NorgCredit(Cog):
         reply += "7. If you like java, you will get instant -10000 score :)\n"
         await ctx.send(embed=discord.Embed(title="Norg Credit Help", description=reply, colour=discord.Colour.purple()))
 
-    @hybrid_command(aliases=['lb', 'top'])
+    @hybrid_command()
     async def leaderboard(self, ctx: Context) -> None:
         """
         Get the norg credit leaderboard.

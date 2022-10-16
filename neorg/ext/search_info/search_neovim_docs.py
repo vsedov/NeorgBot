@@ -1,4 +1,5 @@
 import re
+from neorg import constants as c
 from typing import Union
 
 import discord
@@ -7,6 +8,7 @@ from discord.ext.commands import Cog, Context, hybrid_command
 from neorg.fetch_info.neovim_docs import NeovimDocs
 from neorg.log import get_logger
 from neorg.neorg import Neorg
+from neorg import constants as c
 
 log = get_logger(__name__)
 
@@ -18,7 +20,7 @@ class NeovimDocSearch(Cog):
         self.bot = Neorg
         self.neovim = NeovimDocs()
 
-    @hybrid_command(aliases=["docs"])
+    @hybrid_command()
     async def doc(self, ctx: Context, *, query: str = "api highlights") -> None:
         """
         Neovim Documentation
@@ -73,8 +75,8 @@ class NeovimDocSearch(Cog):
             return
         log.info(len(docs))
         #  TODO(vsedov) (09:59:15 - 03/07/22): Something wrong here, to fix.
-        table = discord.Embed(title="Neovim Documentation")
-        table.set_author(name=ctx.author.name, icon_url=ctx.author.avatar_url)
+        table = discord.Embed(title="Neovim Documentation", color=c.NORG_BLUE)
+        table.set_author(name=ctx.author.name, icon_url=ctx.author.avatar)
         for doc in docs:
             table.add_field(name=doc[1], value=doc[0])
         await ctx.send(embed=table)

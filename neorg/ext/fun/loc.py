@@ -2,6 +2,7 @@ from discord import Embed
 from discord.ext import commands
 from requests import get
 from requests.models import Response
+from neorg import constants as c
 
 
 # TODO: add support for non-github repos
@@ -11,7 +12,7 @@ class Loc(commands.Cog):
     def __init__(self, bot: commands.Bot) -> None:
         self.bot = bot
 
-    @commands.hybrid_command(aliases=["lines"])
+    @commands.hybrid_command()
     async def loc(self, ctx: commands.Context, *, repo=None) -> None:
         """
         Neorg: Lines of code for a repo
@@ -30,9 +31,13 @@ class Loc(commands.Cog):
             for lang in sauce.json():
                 res += f"***{lang['language']}***: {lang['linesOfCode']}\n"
 
-            await ctx.send(embed=Embed(title=f":man_mage: LOC for __***{repo}***__ :man_mage:", description=res, color=0x4878BE))
+            await ctx.send(embed=Embed(title=f":man_mage: LOC for __***{repo}***__ :man_mage:", description=res, color=c.NORG_BLUE))
         else:
-            await ctx.send(embed=Embed(description="Could not get repo details.", color=0x4878BE))
+            if 'Error' in sauce.json().keys():
+                msg = sauce.json()['Error']
+                await ctx.send(embed=Embed(description=msg, color=c.NORG_BLUE))
+            else:
+                await ctx.send(embed=Embed(description="Could not get repo details.", color=c.NORG_BLUE))
 
 async def setup(bot: commands.Bot) -> None:
     """Add cog to bot."""

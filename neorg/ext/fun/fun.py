@@ -2,6 +2,7 @@ import discord
 from discord.ext.commands import Cog, Context, hybrid_command
 
 from neorg.log import get_logger
+from neorg import constants as c
 
 log = get_logger(__name__)
 
@@ -104,7 +105,7 @@ class FunListen(Cog):
             author = msg.author
 
             if msg.content != "":
-                bookmark = discord.Embed(description=msg.content, colour=0x4878BE)
+                bookmark = discord.Embed(description=msg.content, colour=c.NORG_BLUE)
                 bookmark.set_author(name=author.name, icon_url=author.avatar_url)
                 user = await self.bot.fetch_user(payload.user_id)
                 await user.send(embed=bookmark)
@@ -113,12 +114,12 @@ class FunListen(Cog):
                 for att in msg.attachments:
                     await author.send(att.url)
 
-    @hybrid_command(name="ping", brief="Get the bot's ping")
+    @hybrid_command()
     async def ping(self, ctx: Context) -> None:
         """Get the bot's ping"""
         await ctx.send(f"Pong! {round(self.bot.latency * 1000)}ms")
 
-    @hybrid_command(name="sus", aliases=["susy"])
+    @hybrid_command()
     async def sus(self, ctx: Context) -> None:
         """sus command"""
         await ctx.send(self.reaction_id["sus"])
