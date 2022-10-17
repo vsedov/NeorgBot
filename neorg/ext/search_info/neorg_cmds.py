@@ -3,8 +3,9 @@ import re
 import discord
 import requests
 from bs4 import BeautifulSoup
-from discord.ext.commands import Cog, Context, command
+from discord.ext.commands import Cog, Context, hybrid_command
 from icecream import ic
+from neorg import constants as c
 
 from neorg.log import get_logger
 from neorg.neorg import Neorg
@@ -21,8 +22,8 @@ class NeorgCmd(Cog):
     def __init__(self, bot: Neorg):
         self.bot = bot
 
-    @command()
-    async def wiki(self, ctx: Context, *, query: str = None) -> None:
+    @hybrid_command()
+    async def wiki(self, ctx: Context, query: str = '') -> None:
         """
         Neorg Wiki search handle to search neorg wiki for query
         n.wiki <query>
@@ -31,8 +32,8 @@ class NeorgCmd(Cog):
         neorg_wiki = {}
         wiki_url = "https://github.com/nvim-neorg/neorg/wiki"
 
-        stuff = BeautifulSoup(requests.get(wiki_url).text, 'lxml')
-        lis = stuff.find_all("div", {"class": "Box-body wiki-custom-sidebar markdown-body"})[0]
+        soup = BeautifulSoup(requests.get(wiki_url).text, 'lxml')
+        lis = soup.find_all("div", {"class": "Box-body wiki-custom-sidebar markdown-body"})[0]
 
         for li in lis.find_all('li'):
             if li.a is None:
@@ -46,13 +47,14 @@ class NeorgCmd(Cog):
         log.debug(ic.format(wiki))
 
         if len(wiki) == 0:
-            await ctx.send(embed=discord.Embed(description="No Results Found!", colour=0x4878BE))
+            await ctx.send(embed=discord.Embed(description="No Results Found!", colour=c.NORG_BLUE))
             return
         for i in wiki:
-            em = discord.Embed(description=i, colour=0x4878BE)
+            em = discord.Embed(description=i, colour=c.NORG_BLUE)
             await ctx.send(embed=em)
 
-    @command()
+    # TODO: needs complete rewrite from: https://github.com/nvim-neorg/norg-specs
+    @hybrid_command()
     async def spec(self, ctx: Context, *, query: str) -> None:
         """Spec search handle to search neorg spec for query
         n.spec <query>
@@ -71,19 +73,19 @@ class NeorgCmd(Cog):
         spec = [neorg_specs[k] for k in neorg_specs.keys() if query in k.lower()]
 
         if len(spec) == 0:
-            await ctx.send(embed=discord.Embed(description="No Results Found!", colour=0x4878BE))
+            await ctx.send(embed=discord.Embed(description="No Results Found!", colour=c.NORG_BLUE))
             return
 
         for i in spec:
-            em = discord.Embed(description=i, colour=0x4878BE)
+            em = discord.Embed(description=i, colour=c.NORG_BLUE)
             await ctx.send(embed=em)
 
-    @command(aliases=["norg"])
+    @hybrid_command()
     async def neorg(self, ctx: Context) -> None:
         """Fetch the Neorg repository"""
         await ctx.send("Neorg - https://github.com/nvim-neorg/neorg")
 
 
-def setup(bot: Neorg) -> None:
+async def setup(bot: Neorg) -> None:
     """Add Cog to Bot."""
-    bot.add_cog(NeorgCmd(bot))
+    await bot.add_cog(NeorgCmd(bot))

@@ -3,16 +3,15 @@ import threading
 from typing import NewType
 
 import discord
-from discord.ext.commands import Cog, Context, command
-from disputils import BotEmbedPaginator
+from discord.ext.commands import Cog, Context, hybrid_command
 from icecream import ic
+from neorg.utils.paginator import BotEmbedPaginator
 
 from neorg.ext.search_info.__database_loader import FetchDatabase
 from neorg.log import get_logger
 from neorg.neorg import Neorg
 
 log = get_logger(__name__)
-
 
 def set_interval(interval: int) -> threading.Event:
     """
@@ -50,20 +49,19 @@ class DatabaseSearch(Cog):
     """Cog to search pnp database for all neovim plugins."""
 
     def __init__(self, bot: Neorg):
-        self.bot = Neorg
+        self.bot = bot
         self.database_search = FetchDatabase()
-        self.database_search.run_async()
         self.loop = self.update_database()
 
     #  TODO(vsedov) (14:25:06 - 10/06/22): This can break : If it does, create a class instead of function.
     @set_interval(259200)
-    def update_database(self) -> None:
+    async def update_database(self) -> None:
         """ Update Database, refreshes json file. """
         log.info(ic.format('updating database.'))
         self.database_search = FetchDatabase()
-        self.database_search.run_async()
+        await self.database_search.run_async()
 
-    @command(aliases=["db"])
+    @hybrid_command()
     async def db_search(self, ctx: Context, *, query: str = "neorg") -> None:
         """
         Search for a package in the database.
@@ -83,10 +81,10 @@ class DatabaseSearch(Cog):
                 em.add_field(name=name, value=value)
             embeds.append(em)
 
-        paginator = BotEmbedPaginator(ctx, embeds)
-        await paginator.run()
+        paginator = BotEmbedPaginator(embeds)
+        await ctx.send(embed=embeds[0], view=paginator)
 
-    @command(aliases=["db_recent", "recent_db"])
+    @hybrid_command()
     async def recent_update_db(self, ctx: Context) -> None:
         """searches most recently updated plugins / within the database."""
         search_results = self.database_search.open_database()
@@ -103,10 +101,10 @@ class DatabaseSearch(Cog):
                 em.add_field(name=name, value=value)
             embeds.append(em)
 
-        paginator = BotEmbedPaginator(ctx, embeds)
-        await paginator.run()
+        paginator = BotEmbedPaginator(embeds)
+        await ctx.send(embed=embeds[0], view=paginator)
 
-    @command(aliases=["random_db", "random"])
+    @hybrid_command()
     async def db_random(self, ctx: Context) -> None:
         """Fetches a random plugin within the database."""
         search_results = self.database_search.open_database()
@@ -120,8 +118,8 @@ class DatabaseSearch(Cog):
         await ctx.send(embed=em)
 
 
-def setup(bot: Neorg) -> None:
+async def setup(bot: Neorg) -> None:
     """
     Setup the database search cog.
     """
-    bot.add_cog(DatabaseSearch(bot))
+    await bot.add_cog(DatabaseSearch(bot))

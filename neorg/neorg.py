@@ -58,19 +58,20 @@ class Neorg(commands.Bot):
             intents=intents,
         )
 
-    def load_cogs(self) -> None:
+    async def load_cogs(self) -> None:
         """Load all cogs."""
         from neorg.utils.extensions import EXTENSIONS
         log.info(ic.format(EXTENSIONS))
         for extension in EXTENSIONS:
             try:
-                self.load_extension(extension)
+                print(f"Loading extension: {extension}")
+                await self.load_extension(extension)
             except Exception as e:
                 log.error(f"Failed to load extension {extension}", exc_info=e)
 
-    def add_cog(self, cog: commands.Cog) -> None:
+    async def add_cog(self, cog: commands.Cog) -> None:
         """Add cog to the bot"""
-        super().add_cog(cog)
+        await super().add_cog(cog)
         log.info(f"Cog loaded: {cog.qualified_name}")
 
     def add_command(self, command: commands.Command) -> None:
@@ -113,7 +114,7 @@ class Neorg(commands.Bot):
 
     async def wait_till_ready(self) -> None:
         """Wait until the bot is ready."""
-        await super().wait_till_ready()
+        await super().wait_until_ready()
         log.info("Bot is ready")
         await self.change_presence(status=discord.Status.online, activity=discord.Game('the prefix n. | n.help'))
 

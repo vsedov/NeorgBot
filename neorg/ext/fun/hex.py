@@ -28,5 +28,5 @@ class Hex(commands.Cog):
             await mess.channel.send(embed=em)
 
 
-def setup(bot: commands.Bot) -> None:
-    bot.add_cog(Hex(bot))
+async def setup(bot: commands.Bot) -> None:
+    await bot.add_cog(Hex(bot))

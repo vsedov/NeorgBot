@@ -15,6 +15,7 @@ class Keys:
     """Neorg Guild confgis"""
 
     prefix: str = "n."
+    norg_blue: int = 0x4878BE
 
 
 class Guild:
@@ -27,10 +28,11 @@ class Guild:
 
 BOT_TRACE_LOGGERS: list[str] = [f"!{__name__}"]
 
-USE_SENTRY: bool = True
+USE_SENTRY: bool = False
 TAG_SETUP: bool = False
 
 PREFIX = Keys.prefix
+NORG_BLUE = Keys.norg_blue
 
 # Mod roles
 MODERATION_ROLES: list[str] = Guild.moderation_roles

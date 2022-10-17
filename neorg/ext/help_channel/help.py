@@ -5,6 +5,7 @@ import discord
 from discord.ext.commands import Bot, Cog, Command, Group, HelpCommand, MissingAnyRole, MissingPermissions, MissingRole
 
 from neorg.log import get_logger
+from neorg import constants as c
 
 log = get_logger(__name__)
 
@@ -17,14 +18,14 @@ class Help(HelpCommand):
 
     def embedify(self, title: str, description: str) -> discord.Embed:
         """Returns the default embed used for our HelpCommand"""
-        embed = discord.Embed(title=title, description=description, color=0x4878BE, timestamp=dt.utcnow())
-        embed.set_author(name=self.context.bot.user, icon_url=self.context.bot.user.avatar_url)
-        embed.set_footer(icon_url=self.context.bot.user.avatar_url, text=f'Called by: {self.context.author}')
+        embed = discord.Embed(title=title, description=description, color=c.NORG_BLUE, timestamp=dt.utcnow())
+        embed.set_author(name=self.context.bot.user, icon_url=self.context.bot.user.avatar)
+        embed.set_footer(icon_url=self.context.bot.user.avatar, text=f'Called by: {self.context.author}')
         return embed
 
     def command_not_found(self, string: str) -> str:
         """Function to override the default command not found message"""
-        return f'Command or category `{self.clean_prefix}{string}` not found. Try again...'
+        return f'Command or category `{self.context.clean_prefix}{string}` not found. Try again...'
 
     def subcommand_not_found(self, command: Command, string: str) -> str:
         """
@@ -44,8 +45,8 @@ class Help(HelpCommand):
     def get_opening_note(self) -> str:
         """Returns the opening note for the help command"""
         return 'A discord bot.\n'\
-                f'Use **`{self.clean_prefix}help "command name"`** for more info on a command\n'\
-                f'You can also use **`{self.clean_prefix}help "category name"`** for more info on a category\n'  # noqa:
+                f'Use **`{self.context.clean_prefix}help "command name"`** for more info on a command\n'\
+                f'You can also use **`{self.context.clean_prefix}help "category name"`** for more info on a category\n'  # noqa:
 
     @staticmethod
     def command_or_group(*obj) -> str:
@@ -69,7 +70,7 @@ class Help(HelpCommand):
             string += ', '.join(f'`{alias}`' for alias in command.aliases)
 
         if include_prefix:
-            string = self.clean_prefix + string
+            string = self.context.clean_prefix + string
 
         return string
 
@@ -174,6 +175,6 @@ class HelpFunc(Cog, name="Help Command"):
         self.bot.help_command = self._original_help_command
 
 
-def setup(bot: Bot) -> None:
+async def setup(bot: Bot) -> None:
     """Add cog to bot."""
-    bot.add_cog(HelpFunc(bot))
+    await bot.add_cog(HelpFunc(bot))

@@ -2,7 +2,7 @@ import asyncio
 import json
 
 import discord
-from discord.ext.commands import Cog, Context, command
+from discord.ext.commands import Cog, Context, hybrid_command
 
 from neorg import constants
 from neorg.log import get_logger
@@ -17,7 +17,7 @@ class NorgCredit(Cog):
     def __init__(self, bot: Neorg):
         self.bot = bot
 
-    @command()
+    @hybrid_command()
     async def register(self, ctx: Context) -> None:
         """
         Register a user to the norg credit system.
@@ -43,7 +43,7 @@ class NorgCredit(Cog):
 
         await ctx.send("You have been registered.")
 
-    @command()
+    @hybrid_command()
     async def balance(self, ctx: Context, user: discord.Member = None) -> None:
         """Get your norg credit balance."""
         with open(constants.SOCIAL_CREDIT_FILE, 'r') as f:
@@ -66,7 +66,7 @@ class NorgCredit(Cog):
             em.add_field(name=key, value=value)
         await ctx.send(embed=em)
 
-    @command()
+    @hybrid_command()
     async def credit_help(self, ctx: Context) -> None:
         """
         Get information on how to get norg credit.
@@ -80,7 +80,7 @@ class NorgCredit(Cog):
         reply += "7. If you like java, you will get instant -10000 score :)\n"
         await ctx.send(embed=discord.Embed(title="Norg Credit Help", description=reply, colour=discord.Colour.purple()))
 
-    @command(aliases=['lb', 'top'])
+    @hybrid_command()
     async def leaderboard(self, ctx: Context) -> None:
         """
         Get the norg credit leaderboard.
@@ -95,7 +95,7 @@ class NorgCredit(Cog):
                 name=f"{i+1}. {self.bot.get_user(int(data[i][0])).name}", value=data[i][1]['norg_credit'], inline=False)
         await ctx.send(embed=reply)
 
-    @command()
+    @hybrid_command()
     async def praise(self, ctx: Context, user: discord.Member) -> None:
         """Praise another user"""
 
@@ -173,6 +173,6 @@ class NorgCredit(Cog):
             json.dump(data, f, indent=4)
 
 
-def setup(bot: Neorg) -> None:
+async def setup(bot: Neorg) -> None:
     """Add Cog to Bot."""
-    bot.add_cog(NorgCredit(bot))
+    await bot.add_cog(NorgCredit(bot))

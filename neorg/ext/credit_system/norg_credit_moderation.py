@@ -3,7 +3,7 @@ import json
 import discord
 # yapf: disable
 from discord.ext.commands import (
-    BadArgument, CheckFailure, Cog, CommandNotFound, Context, MissingRequiredArgument, command, has_any_role
+    BadArgument, CheckFailure, Cog, CommandNotFound, Context, MissingRequiredArgument, hybrid_command, has_any_role
 )
 # yapf: enable
 from icecream import ic
@@ -40,7 +40,7 @@ class NeorgCreditMod(Cog):
 
         log.warning(ic.format(f"{ctx.author} tried to run {ctx.command} but got {error}"))
 
-    @command()
+    @hybrid_command()
     async def add_credit(self, ctx: Context, user: discord.Member, amount: int) -> None:
         """Add credits to a user."""
         await ctx.send(embed=discord.Embed(description=f"{user} has been given {amount} credits."))
@@ -53,7 +53,7 @@ class NeorgCreditMod(Cog):
         with open(constants.SOCIAL_CREDIT_FILE, "w") as f:
             json.dump(social_credits, f)
 
-    @command()
+    @hybrid_command()
     async def remove_credit(self, ctx: Context, user: discord.Member, amount: int) -> None:
         """Remove credits from a user."""
 
@@ -67,7 +67,7 @@ class NeorgCreditMod(Cog):
 
         await ctx.send(embed=discord.Embed(description=f"{user} has been taken {amount} credits."))
 
-    @command()
+    @hybrid_command()
     async def set_credit(self, ctx: Context, user: discord.Member, amount: int) -> None:
         """Set credits to a user."""
 
@@ -81,7 +81,7 @@ class NeorgCreditMod(Cog):
 
         await ctx.send(embed=discord.Embed(description=f"{user.display_name} has been given {amount} credits."))
 
-    @command()
+    @hybrid_command()
     async def change_all(self, ctx: Context, user: discord.Member) -> None:
         """Changes norg_credit, norg_credit_level and norg_credit_xp."""
 
@@ -118,7 +118,7 @@ class NeorgCreditMod(Cog):
         with open(constants.SOCIAL_CREDIT_FILE, "w") as f:
             json.dump(social_credits, f)
 
-    @command()
+    @hybrid_command()
     async def set_xp(self, ctx: Context, user: discord.Member, amount: int) -> None:
         """Set xp to a user."""
 
@@ -132,7 +132,7 @@ class NeorgCreditMod(Cog):
 
         await ctx.send(embed=discord.Embed(description=f"{user.display_name} has been given {amount} xp."))
 
-    @command()
+    @hybrid_command()
     async def set_level(self, ctx: Context, user: discord.Member, amount: int) -> None:
         """Set level to a user."""
 
@@ -147,6 +147,6 @@ class NeorgCreditMod(Cog):
         await ctx.send(embed=discord.Embed(description=f"{user.display_name} has been given {amount} level."))
 
 
-def setup(bot: Neorg) -> None:
+async def setup(bot: Neorg) -> None:
     """Load the cog."""
-    bot.add_cog(NeorgCreditMod(bot))
+    await bot.add_cog(NeorgCreditMod(bot))
