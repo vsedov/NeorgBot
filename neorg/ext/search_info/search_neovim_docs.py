@@ -17,7 +17,7 @@ class NeovimDocSearch(Cog):
     """Neovim Documentation extension."""
 
     def __init__(self, bot: Neorg):
-        self.bot = Neorg
+        self.bot = bot
         self.neovim = NeovimDocs()
 
     @hybrid_command()

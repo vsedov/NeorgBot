@@ -1,4 +1,3 @@
-import asyncio
 import json
 
 import aiofiles
@@ -76,11 +75,11 @@ class FetchDatabase(object):
         }
         return [database[v] for v in data.keys()]
 
-    def run_async(self) -> None:
+    async def run_async(self) -> None:
         """ run the async functions. """
-        asyncio.run(self.fetch_database())
-        asyncio.run(self.write_to_file())
+        await self.fetch_database()
+        await self.write_to_file()
 
     def __call__(self) -> dict:
         """ call the class and return the database. """
-        self.run_async()
+        _ = self.run_async()

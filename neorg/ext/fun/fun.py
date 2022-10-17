@@ -82,13 +82,15 @@ class FunListen(Cog):
             for emoji in send_call:
                 await message.channel.send(self.send_message_id[emoji])
 
-    # @Cog.listener()
-        # async def on_ready(self):
-        # print("Bot ready to be served!")
-            # try:
-        # synced = await self.bot.tree.sync()
-            # except:
-    # print("Exception on syncing the tree!")
+    # HACK: no idea if this should be called on on_ready()
+    # need to check for the correct way to register the slash commands.
+    @Cog.listener()
+    async def on_ready(self):
+        print("Bot syncing!")
+        try:
+            await self.bot.tree.sync()
+        except:
+            print("Exception on syncing the tree!")
 
     # TODO: a way to delete a sent message in dm.
     @Cog.listener()

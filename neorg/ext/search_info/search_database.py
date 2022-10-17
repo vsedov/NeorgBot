@@ -49,18 +49,17 @@ class DatabaseSearch(Cog):
     """Cog to search pnp database for all neovim plugins."""
 
     def __init__(self, bot: Neorg):
-        self.bot = Neorg
+        self.bot = bot
         self.database_search = FetchDatabase()
-        self.database_search.run_async()
         self.loop = self.update_database()
 
     #  TODO(vsedov) (14:25:06 - 10/06/22): This can break : If it does, create a class instead of function.
     @set_interval(259200)
-    def update_database(self) -> None:
+    async def update_database(self) -> None:
         """ Update Database, refreshes json file. """
         log.info(ic.format('updating database.'))
         self.database_search = FetchDatabase()
-        self.database_search.run_async()
+        await self.database_search.run_async()
 
     @hybrid_command()
     async def db_search(self, ctx: Context, *, query: str = "neorg") -> None:
@@ -82,8 +81,6 @@ class DatabaseSearch(Cog):
                 em.add_field(name=name, value=value)
             embeds.append(em)
 
-        # paginator = BotEmbedPaginator(ctx, embeds)
-        # await paginator.run()
         paginator = BotEmbedPaginator(embeds)
         await ctx.send(embed=embeds[0], view=paginator)
 
@@ -104,8 +101,6 @@ class DatabaseSearch(Cog):
                 em.add_field(name=name, value=value)
             embeds.append(em)
 
-        # paginator = BotEmbedPaginator(ctx, embeds)
-        # await paginator.run()
         paginator = BotEmbedPaginator(embeds)
         await ctx.send(embed=embeds[0], view=paginator)
 
