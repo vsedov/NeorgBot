@@ -20,10 +20,19 @@ class Keys:
 
 class Guild:
     """Guid Configs settings"""
+    id: int = 834325286664929280
 
     section: str = "guild"
     moderation_channels: List[int] = [834857574850625586]
     moderation_roles: List[int] = [834325554131369995, 834325701892636672]
+
+    reaction_channel: int = 1032633634798190644  # channel id for the message
+    reaction_msg_id: int = 1032633967029014628  # message id which is active for reactions
+    # map of reaction emoji: role id
+    reaction_roles = {
+        "📥": 1032634526033248266,
+        "⚡": 1032634280985239662
+    }
 
 
 BOT_TRACE_LOGGERS: list[str] = [f"!{__name__}"]
@@ -34,8 +43,15 @@ TAG_SETUP: bool = False
 PREFIX = Keys.prefix
 NORG_BLUE = Keys.norg_blue
 
+GUILD_ID = Guild.id
+
 # Mod roles
-MODERATION_ROLES: list[str] = Guild.moderation_roles
+MODERATION_ROLES: list[int] = Guild.moderation_roles
+
+# Reaction Roles
+REACTION_ROLES: dict[str, int] = Guild.reaction_roles
+REACTION_MSG_ID: int = Guild.reaction_msg_id
+REACTION_CHANNEL: int = Guild.reaction_channel
 
 # Keys
 TOKEN: Optional[str] = os.getenv("TOKEN")
