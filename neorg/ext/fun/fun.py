@@ -108,7 +108,7 @@ class FunListen(Cog):
 
             if msg.content != "":
                 bookmark = discord.Embed(description=msg.content, colour=c.NORG_BLUE)
-                bookmark.set_author(name=author.name, icon_url=author.avatar_url)
+                bookmark.set_author(name=author.name, icon_url=author.avatar)
                 user = await self.bot.fetch_user(payload.user_id)
                 await user.send(embed=bookmark)
 
