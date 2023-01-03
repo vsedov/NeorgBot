@@ -1,4 +1,4 @@
-import random
+import requests
 import threading
 from typing import NewType
 
@@ -10,6 +10,7 @@ from neorg.utils.paginator import BotEmbedPaginator
 from neorg.ext.search_info.__database_loader import FetchDatabase
 from neorg.log import get_logger
 from neorg.neorg import Neorg
+from neorg import constants as c
 
 log = get_logger(__name__)
 
@@ -68,6 +69,7 @@ class DatabaseSearch(Cog):
         """
         query = query.strip().lower()
         search_results = self.database_search.search_fuzzy(query)
+
         if not search_results:
             await ctx.send("No results found.")
             return
@@ -107,14 +109,15 @@ class DatabaseSearch(Cog):
     @hybrid_command()
     async def db_random(self, ctx: Context) -> None:
         """Fetches a random plugin within the database."""
-        search_results = self.database_search.open_database()
-        random_result = random.choice(list(search_results.keys()))
-        data = search_results[random_result]
-        em = discord.Embed(title=data["full_name"], color=0x00ff00)
-        for name, value in data.items():
-            if name == "full_name":
-                continue
-            em.add_field(name=name, value=value)
+        data = requests.get("https://api.nvimplugnplay.repl.co/random").json()
+        filt_vals = ['created_at', 'updated_at', 'default_branch', 'language', 'open_issues_count', 'stargazers_count', 'description']
+
+        name, d = list(data.items())[0]
+        em = discord.Embed(title=name, url=d['clone_url'], color=c.NORG_BLUE)
+
+        for f in filt_vals:
+            em.add_field(name=f, value=d[f])
+
         await ctx.send(embed=em)
 
 

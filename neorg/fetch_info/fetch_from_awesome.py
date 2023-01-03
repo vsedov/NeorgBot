@@ -69,10 +69,11 @@ class ReadAwesome:
     """Read Awesome neovim github page to retrieve all the plugins"""
 
     def __init__(self,) -> None:
-        self.soup = BeautifulSoup(
-            requests.get("https://raw.githubusercontent.com/rockerBOO/awesome-neovim/main/README.md").text,
-            "html.parser",
-        )
+        # self.soup = BeautifulSoup(
+            # requests.get("https://raw.githubusercontent.com/rockerBOO/awesome-neovim/main/README.md").text,
+            # "html.parser",
+        # )
+        self.soup = requests.get("https://github.com/rockerBOO/awesome-neovim/blob/main/README.md").text
 
     @weak_lru(maxsize=None)
     def get_from_header(self) -> dict:

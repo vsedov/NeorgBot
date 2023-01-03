@@ -21,7 +21,7 @@ class Meme(commands.Cog):
             n.meme dankmemes -> will get a meme from the `dankmemes` subreddit
         """
 
-        sauce: Response = get(f"https://meme-api.herokuapp.com/gimme/{sub}")
+        sauce: Response = get(f"https://meme-api.com/gimme/{sub}")
         'Did you really search for "easter"? look at the filename.'
         "Now who's the real meme? :rofl:"
         if sauce.status_code != 200:

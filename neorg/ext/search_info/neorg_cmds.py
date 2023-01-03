@@ -49,9 +49,13 @@ class NeorgCmd(Cog):
         if len(wiki) == 0:
             await ctx.send(embed=discord.Embed(description="No Results Found!", colour=c.NORG_BLUE))
             return
+
+        wikis_em = []
         for i in wiki:
             em = discord.Embed(description=i, colour=c.NORG_BLUE)
-            await ctx.send(embed=em)
+            wikis_em.append(em)
+
+        await ctx.send(embeds=wikis_em[:5])
 
     # TODO: needs complete rewrite from: https://github.com/nvim-neorg/norg-specs
     @hybrid_command()
