@@ -114,7 +114,8 @@ class FunListen(Cog):
 
             if len(msg.attachments) > 0:
                 for att in msg.attachments:
-                    await author.send(att.url)
+                    user = await self.bot.fetch_user(payload.user_id)
+                    await user.send(att.url)
 
     @hybrid_command()
     async def ping(self, ctx: Context) -> None:
