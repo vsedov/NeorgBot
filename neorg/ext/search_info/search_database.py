@@ -1,18 +1,19 @@
-import requests
 import threading
 from typing import NewType
 
 import discord
+import requests
 from discord.ext.commands import Cog, Context, hybrid_command
 from icecream import ic
-from neorg.utils.paginator import BotEmbedPaginator
 
+from neorg import constants as c
 from neorg.ext.search_info.__database_loader import FetchDatabase
 from neorg.log import get_logger
 from neorg.neorg import Neorg
-from neorg import constants as c
+from neorg.utils.paginator import BotEmbedPaginator
 
 log = get_logger(__name__)
+
 
 def set_interval(interval: int) -> threading.Event:
     """
@@ -57,8 +58,8 @@ class DatabaseSearch(Cog):
     #  TODO(vsedov) (14:25:06 - 10/06/22): This can break : If it does, create a class instead of function.
     @set_interval(259200)
     async def update_database(self) -> None:
-        """ Update Database, refreshes json file. """
-        log.info(ic.format('updating database.'))
+        """Update Database, refreshes json file."""
+        log.info(ic.format("updating database."))
         self.database_search = FetchDatabase()
         await self.database_search.run_async()
 
@@ -76,7 +77,7 @@ class DatabaseSearch(Cog):
         embeds = []
         for i in range(len(search_results)):
             name = search_results[i]["full_name"]
-            em = discord.Embed(title=name, color=0x00ff00)
+            em = discord.Embed(title=name, color=0x00FF00)
             for name, value in search_results[i].items():
                 if name == "full_name":
                     continue
@@ -91,12 +92,14 @@ class DatabaseSearch(Cog):
         """searches most recently updated plugins / within the database."""
         search_results = self.database_search.open_database()
 
-        sorted_result = sorted(search_results.keys(), key=lambda test: search_results[test]["updated_at"], reverse=True)
+        sorted_result = sorted(
+            search_results.keys(), key=lambda test: search_results[test]["updated_at"], reverse=True,
+        )
 
         embeds = []
         for i in range(0, 10):
             data = search_results[sorted_result[i]]
-            em = discord.Embed(title=data["full_name"], color=0x00ff00)
+            em = discord.Embed(title=data["full_name"], color=0x00FF00)
             for name, value in data.items():
                 if name == "full_name":
                     continue
@@ -107,13 +110,16 @@ class DatabaseSearch(Cog):
         await ctx.send(embed=embeds[0], view=paginator)
 
     @hybrid_command()
-    async def db_random(self, ctx: Context) -> None:
+    async def random_db(self, ctx: Context) -> None:
         """Fetches a random plugin within the database."""
         data = requests.get("https://api.nvimplugnplay.repl.co/random").json()
-        filt_vals = ['created_at', 'updated_at', 'default_branch', 'language', 'open_issues_count', 'stargazers_count', 'description']
+        filt_vals = [
+            "created_at", "updated_at", "default_branch", "language", "open_issues_count", "stargazers_count",
+            "description",
+        ]
 
         name, d = list(data.items())[0]
-        em = discord.Embed(title=name, url=d['clone_url'], color=c.NORG_BLUE)
+        em = discord.Embed(title=name, url=d["clone_url"], color=c.NORG_BLUE)
 
         for f in filt_vals:
             em.add_field(name=f, value=d[f])

@@ -17,22 +17,22 @@ from rapidfuzz import fuzz, process
 def fuzzy_dict_search(data_set: dict, fuzz_list: dict, des: str = "desc", search_item: int = 0) -> dict:
     """fuzzy dictionary search, on item given first match
 
-            parameters
-            ----------
-            item : dict
-                item is search value to fuzzy search and filter from both name and dictionary search items
-            fuzz_list : dict
-                fuzz_list is the filtered list between the name and descroption that are searched through this function
-                allows us to filter the matching items and get a valid match
-            search_item : int
-                search item is a integer value to distringuish between desc[desc] search which searchs descroptions and
-                1 where it searches the name of the item
+    parameters
+    ----------
+    item : dict
+        item is search value to fuzzy search and filter from both name and dictionary search items
+    fuzz_list : dict
+        fuzz_list is the filtered list between the name and descroption that are searched through this function
+        allows us to filter the matching items and get a valid match
+    search_item : int
+        search item is a integer value to distringuish between desc[desc] search which searchs descroptions and
+        1 where it searches the name of the item
 
-            returns
-            -------
-            dict
-                returns filtered dictionary
-            """
+    returns
+    -------
+    dict
+        returns filtered dictionary
+    """
     return {
         name: desc[des]
         for name, desc, in data_set.items()
@@ -69,11 +69,10 @@ class ReadAwesome:
     """Read Awesome neovim github page to retrieve all the plugins"""
 
     def __init__(self,) -> None:
-        # self.soup = BeautifulSoup(
-            # requests.get("https://raw.githubusercontent.com/rockerBOO/awesome-neovim/main/README.md").text,
-            # "html.parser",
-        # )
-        self.soup = requests.get("https://github.com/rockerBOO/awesome-neovim/blob/main/README.md").text
+        self.soup = BeautifulSoup(
+            requests.get("https://raw.githubusercontent.com/rockerBOO/awesome-neovim/main/README.md").text,
+            "html.parser",
+        )
 
     @weak_lru(maxsize=None)
     def get_from_header(self) -> dict:
@@ -113,7 +112,7 @@ class ReadAwesome:
             return a dictionary of {name: {'link': link, 'desc': description}}
         """
         dict_set = self.get_from_header()
-        fuzzy_list = process.extract(item, dict_set.keys(), scorer=fuzz.token_set_ratio, limit=len(dict_set))
+        fuzzy_list = process.extract(item, dict_set.keys(), scorer=fuzz.token_set_ratio, limit=len(dict_set),)
 
         fuuzzy_dict_search = process.extract(
             item, ({name: desc["desc"]
