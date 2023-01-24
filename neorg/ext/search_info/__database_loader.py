@@ -1,8 +1,7 @@
-import asyncio
 import json
+from concurrent.futures import ThreadPoolExecutor
 
-import aiofiles
-import aiohttp
+import requests
 from icecream import ic
 from rapidfuzz import fuzz, process
 
@@ -31,26 +30,25 @@ class FetchDatabase(object):
             "open_issues_count",
             "updated_at",
         ]
+        self.fetch_database()
+        self.write_to_file()
 
-    async def fetch_database(self) -> None:
-        """Fetch database from github, using asycio and aiohttp."""
+    def fetch_database(self) -> None:
+        """Fetch database from github."""
         log.info("Fetching database")
-        async with aiohttp.ClientSession() as session:
-            async with session.get(self.database_link) as response:
-                # load directly to items()
-                loaded_data = json.loads(await response.text()).items()
-                for key, value in loaded_data:
-                    self.database[key] = {
-                        k: v
-                        for k, v in value.items()
-                        if k in self.filtered_values
-                    }
+        with requests.Session() as session:
+            response = session.get(self.database_link)
+            # load directly to items()
+            loaded_data = json.loads(response.text).items()
+            for key, value in loaded_data:
+                self.database[key] = {
+                    k: v for k, v in value.items() if k in self.filtered_values
+                }
 
-    async def write_to_file(self) -> None:
-        """write to file : database.json but with filtered values to reduce stress and save data."""
-        log.info(ic.format("Writing to file"))
-        async with aiofiles.open(constants.PNP_DATABAS_FILE, "w") as f:
-            await f.write(json.dumps(self.database, sort_keys=True, indent=4))
+    def write_to_file(self) -> None:
+        log.info("Writing to file")
+        with open(constants.PNP_DATABAS_FILE, "w") as f:
+            f.write(json.dumps(self.database, sort_keys=True, indent=4))
 
     def open_database(self) -> None:
         """open the database.json file and return the database."""
@@ -92,9 +90,3 @@ class FetchDatabase(object):
             ),
         }
         return [database[v] for v in data.keys()]
-
-    def run_async(self) -> None:
-        """run the async functions."""
-        log.info("Writing run async")
-        asyncio.create_task(self.fetch_database())
-        asyncio.create_task(self.write_to_file())

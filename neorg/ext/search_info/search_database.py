@@ -56,13 +56,11 @@ class DatabaseSearch(Cog):
         self.bot = bot
         self.loop = self.update_database()
         self.database_search = FetchDatabase()
-        self.database_search.run_async()
 
     #  TODO(vsedov) (14:25:06 - 10/06/22): This can break : If it does, create a class instead of function.
     @set_interval(259200)
     def update_database(self) -> None:
         self.database_search = FetchDatabase()
-        self.database_search.run_async()
 
     @hybrid_command()
     async def db_search(self, ctx: Context, *, query: str = "neorg") -> None:
