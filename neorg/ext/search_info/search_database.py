@@ -89,8 +89,10 @@ class DatabaseSearch(Cog):
             await ctx.send("No results found.")
 
         paginator = BotEmbedPaginator(embeds)
-        if ctx.interaction:
-            await ctx.send(embed=embeds[0], view=paginator)
+
+        inter = ctx.interaction
+        if inter:
+            await inter.channel.send(embed=embeds[0], view=paginator)
 
     @hybrid_command()
     async def recent_update_db(self, ctx: Context) -> None:
