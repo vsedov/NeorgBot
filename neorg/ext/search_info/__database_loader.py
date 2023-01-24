@@ -1,5 +1,4 @@
 import json
-from concurrent.futures import ThreadPoolExecutor
 
 import requests
 from icecream import ic

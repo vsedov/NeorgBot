@@ -1,8 +1,10 @@
+import asyncio
 import threading
 from typing import NewType
 
 import discord
 import requests
+from discord import Interaction
 from discord.ext.commands import Cog, Context, hybrid_command
 from icecream import ic
 
@@ -72,7 +74,7 @@ class DatabaseSearch(Cog):
 
         if not search_results:
             await ctx.send("No results found.")
-            return
+
         embeds = []
         for i in range(len(search_results)):
             name = search_results[i]["full_name"]
@@ -83,8 +85,12 @@ class DatabaseSearch(Cog):
                 em.add_field(name=name, value=value)
             embeds.append(em)
 
+        if len(embeds) == 0:
+            await ctx.send("No results found.")
+
         paginator = BotEmbedPaginator(embeds)
-        await ctx.send(embed=embeds[0], view=paginator)
+        if ctx.interaction:
+            await ctx.send(embed=embeds[0], view=paginator)
 
     @hybrid_command()
     async def recent_update_db(self, ctx: Context) -> None:
