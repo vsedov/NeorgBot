@@ -63,7 +63,7 @@ class DatabaseSearch(Cog):
         self.database_search = FetchDatabase()
 
     @hybrid_command()
-    async def db_search(self, ctx: Context, *, query: str = "neorg") -> None:
+    async def search_db(self, ctx: Context, *, query: str = "neorg") -> None:
         """
         Search for a package in the database.
         """
