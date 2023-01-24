@@ -22,7 +22,9 @@ def set_interval(interval: int) -> threading.Event:
     Decorator function, is used to sepcify what function is being parsed down
     """
 
-    def decorator(function: NewType("DatabaseSearch.update_database", None)) -> threading.Event:
+    def decorator(
+        function: NewType("DatabaseSearch.update_database", None)
+    ) -> threading.Event:
         """
         This is a function of what you want to be looped over a period of time : based on
         Interval.
@@ -52,16 +54,15 @@ class DatabaseSearch(Cog):
 
     def __init__(self, bot: Neorg):
         self.bot = bot
-        self.database_search = FetchDatabase()
         self.loop = self.update_database()
+        self.database_search = FetchDatabase()
+        self.database_search.run_async()
 
     #  TODO(vsedov) (14:25:06 - 10/06/22): This can break : If it does, create a class instead of function.
     @set_interval(259200)
-    async def update_database(self) -> None:
-        """Update Database, refreshes json file."""
-        log.info(ic.format("updating database."))
+    def update_database(self) -> None:
         self.database_search = FetchDatabase()
-        await self.database_search.run_async()
+        self.database_search.run_async()
 
     @hybrid_command()
     async def db_search(self, ctx: Context, *, query: str = "neorg") -> None:
@@ -93,7 +94,9 @@ class DatabaseSearch(Cog):
         search_results = self.database_search.open_database()
 
         sorted_result = sorted(
-            search_results.keys(), key=lambda test: search_results[test]["updated_at"], reverse=True,
+            search_results.keys(),
+            key=lambda test: search_results[test]["updated_at"],
+            reverse=True,
         )
 
         embeds = []
@@ -114,7 +117,12 @@ class DatabaseSearch(Cog):
         """Fetches a random plugin within the database."""
         data = requests.get("https://api.nvimplugnplay.repl.co/random").json()
         filt_vals = [
-            "created_at", "updated_at", "default_branch", "language", "open_issues_count", "stargazers_count",
+            "created_at",
+            "updated_at",
+            "default_branch",
+            "language",
+            "open_issues_count",
+            "stargazers_count",
             "description",
         ]
 
@@ -131,4 +139,5 @@ async def setup(bot: Neorg) -> None:
     """
     Setup the database search cog.
     """
+
     await bot.add_cog(DatabaseSearch(bot))
