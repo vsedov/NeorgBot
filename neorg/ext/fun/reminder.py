@@ -52,10 +52,10 @@ class Reminder(commands.Cog):
 
 
         done_em = Embed(
-                title=f':exclamation::alarm_clock:__Reminder Alert__:alarm_clock::exclamation:',
-                description=f"***User:***{ctx.author.mention}\n***Reminder:*** {msg}",
-                colour=c.NORG_BLUE
-            )
+            title=':exclamation::alarm_clock:__Reminder Alert__:alarm_clock::exclamation:',
+            description=f"***User:***{ctx.author.mention}\n***Reminder:*** {msg}",
+            colour=c.NORG_BLUE,
+        )
         if "--dm" in message:
             # await ctx.author.send(f"***Your reminder time is up!\nReminder: ***{msg}")
             await ctx.author.send(embed=done_em)

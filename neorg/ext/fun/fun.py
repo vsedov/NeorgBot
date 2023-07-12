@@ -102,20 +102,21 @@ class FunListen(Cog):
         payload : discord.RawReactionActionEvent
             The payload of the event.
         """
-        if payload.emoji.name in "📑🔖":
-            msg = await self.bot.get_channel(payload.channel_id).fetch_message(payload.message_id)
+        if payload.emoji.name not in "📑🔖":
+            return
+        msg = await self.bot.get_channel(payload.channel_id).fetch_message(payload.message_id)
+        if msg.content != "":
+            bookmark = discord.Embed(description=msg.content, colour=c.NORG_BLUE)
             author = msg.author
 
-            if msg.content != "":
-                bookmark = discord.Embed(description=msg.content, colour=c.NORG_BLUE)
-                bookmark.set_author(name=author.name, icon_url=author.avatar)
-                user = await self.bot.fetch_user(payload.user_id)
-                await user.send(embed=bookmark)
+            bookmark.set_author(name=author.name, icon_url=author.avatar)
+            user = await self.bot.fetch_user(payload.user_id)
+            await user.send(embed=bookmark)
 
-            if len(msg.attachments) > 0:
-                for att in msg.attachments:
-                    user = await self.bot.fetch_user(payload.user_id)
-                    await user.send(att.url)
+        if len(msg.attachments) > 0:
+            for att in msg.attachments:
+                user = await self.bot.fetch_user(payload.user_id)
+                await user.send(att.url)
 
     @hybrid_command()
     async def ping(self, ctx: Context) -> None:

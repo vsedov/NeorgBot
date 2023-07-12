@@ -32,8 +32,7 @@ class Youtube:
         dict
             Dictionary returningin information about those videos dict[dict] format similar to json
         """
-        video_result = self.video_search(video_name, limit).result()
-        return video_result
+        return self.video_search(video_name, limit).result()
 
     def search_playlist(self, playlist_name: str = "Neovim", limit: int = 1) -> dict:
         """
@@ -50,8 +49,7 @@ class Youtube:
         'neovim configuration', 'neovim config', 'neovim windows', 'neovim vscode', 'neovim python']}
         """
         suggestions = self.suggestion(language="en", region="US")
-        valid = suggestions.get(query, mode=ResultMode.dict)
-        return valid
+        return suggestions.get(query, mode=ResultMode.dict)
 
     def auto_suggester_search(self, suggestion: str = "Neovim") -> dict:
         """
@@ -69,6 +67,3 @@ if __name__ == "__main__":
     query = "text"
 
     search = Youtube().get_search_suggestion()
-
-else:
-    pass

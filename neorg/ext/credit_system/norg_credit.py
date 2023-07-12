@@ -71,8 +71,10 @@ class NorgCredit(Cog):
         """
         Get information on how to get norg credit.
         """
-        reply = "You can get credit by doing the following:\n"
-        reply += "1. Register with `n.register`\n"
+        reply = (
+            "You can get credit by doing the following:\n"
+            + "1. Register with `n.register`\n"
+        )
         reply += "2. Do `n.help` to get information on how to get norg credit\n"
         reply += "4. Just Keep talking in the server and you will get credit!\n"
         reply += "5. Your Credit Level is a multiplier, it will grow the longer you stay in the server\n"

@@ -14,7 +14,7 @@ tag_re = re.compile(r'^(\S+)\s*(\S+).txt', re.MULTILINE)
 
 def add_tags(software: str, c: sqlite3.Connection) -> None:
     """Add tags to the tag database"""
-    if not os.path.exists(constants.THIRD_PARTY_PATH + 'neovim'):
+    if not os.path.exists(f'{constants.THIRD_PARTY_PATH}neovim'):
         doc_setup()
 
     with open(constants.THIRD_PARTY_PATH + software + '/runtime/doc/tags') as f:
@@ -30,13 +30,13 @@ def add_tags(software: str, c: sqlite3.Connection) -> None:
 
 def tag_setup() -> None:
     """Setup the tag database"""
-    conn = sqlite3.connect(constants.DATABASE_PATH + '/tags.db')
+    conn = sqlite3.connect(f'{constants.DATABASE_PATH}/tags.db')
     c = conn.cursor()
     c.execute("CREATE TABLE IF NOT EXISTS tags(filename text, tag text)")
     add_tags("neovim", c)
     conn.commit()
     conn.close()
-    os.system('rm -rf ' + constants.THIRD_PARTY_PATH)
+    os.system(f'rm -rf {constants.THIRD_PARTY_PATH}')
 
 
 def inital_tag_setup() -> None:

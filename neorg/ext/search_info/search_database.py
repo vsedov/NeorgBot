@@ -85,13 +85,12 @@ class DatabaseSearch(Cog):
                 em.add_field(name=name, value=value)
             embeds.append(em)
 
-        if len(embeds) == 0:
+        if not embeds:
             await ctx.send("No results found.")
 
         paginator = BotEmbedPaginator(embeds)
 
-        inter = ctx.interaction
-        if inter:
+        if inter := ctx.interaction:
             await inter.channel.send(embed=embeds[0], view=paginator)
 
     @hybrid_command()

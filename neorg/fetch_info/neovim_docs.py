@@ -16,7 +16,7 @@ class NeovimDocs:
     """
 
     def __init__(self):
-        self.conn = sqlite3.connect(constants.DATABASE_PATH + "/tags.db")
+        self.conn = sqlite3.connect(f"{constants.DATABASE_PATH}/tags.db")
         self.cursor = self.conn.cursor()
         self.all_tags = self.get_all_tags()
         self.tag_file = dict(list(map(lambda x: (x[1], x[0]), self.all_tags)))
@@ -52,4 +52,7 @@ class NeovimDocs:
 
     def get_link(self, list_of_tags: List[Tuple[str, str]]) -> List[Any]:
         """Get link to a tag"""
-        return [("https://neovim.io/doc/user/" + f"{file_name}#{tag}", tag) for file_name, tag in list_of_tags]
+        return [
+            (f"https://neovim.io/doc/user/{file_name}#{tag}", tag)
+            for file_name, tag in list_of_tags
+        ]

@@ -37,7 +37,12 @@ class RolesSelection(Cog):
     @hybrid_command()
     async def egg(self, ctx: Context):
         """What, you egg? *He stabs him*"""
-        await ctx.send(embed=discord.Embed(description=f"Ha! you've found it! Checkout the source code for more! (Hint: n.source)", color=c.NORG_BLUE))
+        await ctx.send(
+            embed=discord.Embed(
+                description="Ha! you've found it! Checkout the source code for more! (Hint: n.source)",
+                color=c.NORG_BLUE,
+            )
+        )
 
 async def setup(bot: Neorg) -> None:
     """Add Cog to Bot."""

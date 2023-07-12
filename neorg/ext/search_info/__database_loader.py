@@ -88,4 +88,4 @@ class FetchDatabase(object):
                 database, fuzzy_description_search, "description"
             ),
         }
-        return [database[v] for v in data.keys()]
+        return [database[v] for v in data]

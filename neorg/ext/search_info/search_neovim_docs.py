@@ -38,11 +38,7 @@ class NeovimDocSearch(Cog):
         # `n.doc <query>|<amount>(optional)<accuracy>(optional)`
         #  TODO(vsedov) (05:04:22 - 03/07/22): Find a better way around this
         regex = re.compile(r"\|")
-        if regex.search(query):
-            query_list = query.split("|")
-        else:
-            query_list = [query]
-
+        query_list = query.split("|") if regex.search(query) else [query]
         def filter_check(query: str) -> Union[int, int]:
             """
             Filter check will return the limit and percent if they are within the query

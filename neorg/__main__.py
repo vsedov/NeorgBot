@@ -22,12 +22,7 @@ try:
     neorg.instance.run(constants.TOKEN)
 
 except StartupError as e:
-    message = "Unknown Startup Error Occurred."
-    # For vhyrro: 
-    # dGhpcyB3YXMganVzdCB0byBkZXJhaWwgeW91IGhhaGEhICppbnNlcnRzIGtlayBlbW9qaSo=
-    # TODO: better error message
-    if e.args:
-        message = e.args[0]
+    message = e.args[0] if e.args else "Unknown Startup Error Occurred."
     log = get_logger("bot")
     log.fatal("", exc_info=e.exception)
     log.fatal(message)

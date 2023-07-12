@@ -27,17 +27,16 @@ class Loc(commands.Cog):
         sauce: Response = get(url)
 
         if sauce.status_code == 200:
-            res = ""
-            for lang in sauce.json():
-                res += f"***{lang['language']}***: {lang['linesOfCode']}\n"
-
+            res = "".join(
+                f"***{lang['language']}***: {lang['linesOfCode']}\n"
+                for lang in sauce.json()
+            )
             await ctx.send(embed=Embed(title=f":man_mage: LOC for __***{repo}***__ :man_mage:", description=res, color=c.NORG_BLUE))
+        elif 'Error' in sauce.json().keys():
+            msg = sauce.json()['Error']
+            await ctx.send(embed=Embed(description=msg, color=c.NORG_BLUE))
         else:
-            if 'Error' in sauce.json().keys():
-                msg = sauce.json()['Error']
-                await ctx.send(embed=Embed(description=msg, color=c.NORG_BLUE))
-            else:
-                await ctx.send(embed=Embed(description="Could not get repo details.", color=c.NORG_BLUE))
+            await ctx.send(embed=Embed(description="Could not get repo details.", color=c.NORG_BLUE))
 
 async def setup(bot: commands.Bot) -> None:
     """Add cog to bot."""

@@ -34,7 +34,7 @@ class Help(HelpCommand):
 
         ret = f"Command `{self.context.prefix}{command.qualified_name}` has no subcommands."
         if isinstance(command, Group) and len(command.all_commands) > 0:
-            return ret[:-2] + f' named {string}'
+            return f'{ret[:-2]} named {string}'
         return ret
 
     @staticmethod
@@ -54,7 +54,7 @@ class Help(HelpCommand):
         names = []
         for command in obj:
             if isinstance(command, Group):
-                names.append('**Group: **' + f'{command.name}')
+                names.append(f'**Group: **{command.name}')
             else:
                 names.append(f'{command.name}')
         return names
@@ -102,7 +102,7 @@ class Help(HelpCommand):
             for command in filtered:
                 name = self.full_command_path(command)
                 if isinstance(command, Group):
-                    name = '**Group: **' + name
+                    name = f'**Group: **{name}'
 
                 embed.add_field(name=name, value=command.help or "*No specified command description.*", inline=False)
 
@@ -120,7 +120,7 @@ class Help(HelpCommand):
             for command in filtered:
                 name = self.full_command_path(command)
                 if isinstance(command, Group):
-                    name = '**Group: **' + name
+                    name = f'**Group: **{name}'
 
                 embed.add_field(name=name, value=command.help or "*No specified command description.*", inline=False)
 

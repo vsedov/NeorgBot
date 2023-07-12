@@ -43,10 +43,10 @@ class NeorgCmd(Cog):
             #  TODO(vsedov) (13:39:53 - 06/04/22): remove hardcode
             neorg_wiki[part[37:].lower()] = part
 
-        wiki = [neorg_wiki[k] for k in neorg_wiki.keys() if query in k.lower()]
+        wiki = [neorg_wiki[k] for k in neorg_wiki if query in k.lower()]
         log.debug(ic.format(wiki))
 
-        if len(wiki) == 0:
+        if not wiki:
             await ctx.send(embed=discord.Embed(description="No Results Found!", colour=c.NORG_BLUE))
             return
 
@@ -69,14 +69,10 @@ class NeorgCmd(Cog):
         og_url = "https://github.com/nvim-neorg/neorg/blob/main/docs/NFF-0.1-spec.md"
 
         soup = re.findall(r"\[(.+)\]\((.+)\)", requests.get(url).text[:1500])
-        neorg_specs = {}
+        neorg_specs = {k.lower().replace(' ', '-'): og_url + v for k, v in soup}
+        spec = [neorg_specs[k] for k in neorg_specs if query in k.lower()]
 
-        for k, v in soup:
-            neorg_specs[k.lower().replace(' ', '-')] = og_url + v
-
-        spec = [neorg_specs[k] for k in neorg_specs.keys() if query in k.lower()]
-
-        if len(spec) == 0:
+        if not spec:
             await ctx.send(embed=discord.Embed(description="No Results Found!", colour=c.NORG_BLUE))
             return
 
