@@ -28,7 +28,7 @@ class FunListen(Cog):
         }
 
         self.reaction_id_normalizer(["dumb", "idiot", "stupid", "moron", "dumbass"], "ree")
-        self.reaction_id_normalizer(["cupcake", "cup cake" "cake", "cupcakerob", "cupcake rob"], "ree")
+        self.reaction_id_normalizer(["cupcake", "cup cake" "cake", "cupcakerob", "cupcake rob"], "cupcake")
 
         self.send_message_id = {
             "rtfm": "<:RTFM:945925360028090368>",
