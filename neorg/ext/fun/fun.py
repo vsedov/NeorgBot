@@ -18,6 +18,7 @@ class FunListen(Cog):
             "neorg": "<:neorg:949327974442889277>",
             "based": "<:based:946814517566930954>",
             "troll": "<:trollar:968455084604276816>",
+            "cupcake": ":cupcake:",
         }
         self.reaction_id = {
             "sus": self.reaction_types["sus"],
@@ -27,6 +28,7 @@ class FunListen(Cog):
         }
 
         self.reaction_id_normalizer(["dumb", "idiot", "stupid", "moron", "dumbass"], "ree")
+        self.reaction_id_normalizer(["cupcake", "cup cake" "cake", "cupcakerob", "cupcake rob"], "ree")
 
         self.send_message_id = {
             "rtfm": "<:RTFM:945925360028090368>",
