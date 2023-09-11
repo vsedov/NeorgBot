@@ -24,6 +24,11 @@ class Loc(commands.Cog):
 
         repo = repo or 'nvim-neorg/neorg'
         url = f"https://api.codetabs.com/v1/loc/?github={repo}"
+
+        # Make sure to only use slash commands
+        # Defer before calling the API
+        await ctx.interaction.response.defer()
+
         sauce: Response = get(url)
 
         if sauce.status_code == 200:
@@ -31,13 +36,13 @@ class Loc(commands.Cog):
             for lang in sauce.json():
                 res += f"***{lang['language']}***: {lang['linesOfCode']}\n"
 
-            await ctx.send(embed=Embed(title=f":man_mage: LOC for __***{repo}***__ :man_mage:", description=res, color=c.NORG_BLUE))
+            await ctx.interaction.followup.send(embed=Embed(title=f":man_mage: LOC for __***{repo}***__ :man_mage:", description=res, color=c.NORG_BLUE))
         else:
             if 'Error' in sauce.json().keys():
                 msg = sauce.json()['Error']
-                await ctx.send(embed=Embed(description=msg, color=c.NORG_BLUE))
+                await ctx.interaction.followup.send(embed=Embed(description=msg, color=c.NORG_BLUE))
             else:
-                await ctx.send(embed=Embed(description="Could not get repo details.", color=c.NORG_BLUE))
+                await ctx.interaction.followup.send(embed=Embed(description="Could not get repo details.", color=c.NORG_BLUE))
 
 async def setup(bot: commands.Bot) -> None:
     """Add cog to bot."""
