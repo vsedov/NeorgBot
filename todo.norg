@@ -8,20 +8,22 @@
 @end
 
 * Priority
-  - [-] Finnish The test cases
-  -- [!] Create test cases for the mock bot which will test our current Neorg Module
-  -- [!] Create the test cases for the cogs and the search
-  -- [-] Finish the test cases for the side modules and create a path for the beautiful discord and web scrapping modules
+  - (-) Finnish The test cases
+  -- (!) Create test cases for the mock bot which will test our current Neorg Module
+  -- (!) Create the test cases for the cogs and the search
+  -- (-) Finish the test cases for the side modules and create a path for the beautiful discord and web scrapping modules
 
 * Pending
-  - [ ] Create test cases for neovim documentation reader[ high priority]
+  - ( ) Create test cases for neovim documentation reader[ high priority]
+  - ( ) Channel names triggering hex listener.
+  - ( ) Neovim docs not going to the correct sub-url.
 
 * Completed
-  - [x] Refactor and type hint all current cogs
-  - [x] Create the initial state for the bot
-  - [x] Better loading
-  - [x] Better loading for scrapping
-  -- [x] Refactor neorg wiki search
-  -- [x] Move all soup based objects into utils maybe
-  - [x] Create Youtube cog
-  - [x] Make help cog better : Maybe have a custom one ?
+  - (x) Refactor and type hint all current cogs
+  - (x) Create the initial state for the bot
+  - (x) Better loading
+  - (x) Better loading for scrapping
+  -- (x) Refactor neorg wiki search
+  -- (x) Move all soup based objects into utils maybe
+  - (x) Create Youtube cog
+  - (x) Make help cog better : Maybe have a custom one ?

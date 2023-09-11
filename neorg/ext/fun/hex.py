@@ -19,7 +19,7 @@ class Hex(commands.Cog):
             #000000 #ffffff -> will get color previews for both colors.
         NOTE: the message must start with the hex codes.
         """
-        matched = re.findall(r"#[A-Fa-f0-9]{6}", mess.content)
+        matched = re.findall(r"#(?:[0-9A-Fa-f]{6})(?![0-9A-Fa-f])", mess.content)
 
         for hex in matched:
             em = Embed(description="", color=0x2f3136)
