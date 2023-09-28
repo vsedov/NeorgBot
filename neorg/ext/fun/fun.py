@@ -18,7 +18,7 @@ class FunListen(Cog):
             "neorg": "<:neorg:949327974442889277>",
             "based": "<:based:946814517566930954>",
             "troll": "<:trollar:968455084604276816>",
-            "cupcake": ":cupcake:",
+            "cupcake": "🧁",
         }
         self.reaction_id = {
             "sus": self.reaction_types["sus"],
