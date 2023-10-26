@@ -1,7 +1,7 @@
 import discord
 # yapf: disable
 from discord.ext.commands import (
-    BadArgument, CheckFailure, Cog, CommandNotFound, Context, MissingRequiredArgument, hybrid_command, has_any_role
+    BadArgument, CheckFailure, Cog, CommandNotFound, Context, MissingRequiredArgument, command, hybrid_command, has_any_role
 )
 # yapf: enable
 from icecream import ic
@@ -19,6 +19,11 @@ class BotControl(Cog):
 
     def __init__(self, bot: Neorg):
         self.bot = bot
+
+    @command()
+    async def purge(self, ctx: Context, *, limit: int = 0) -> None:
+        await ctx.channel.purge(limit=limit+1)
+        await ctx.send(embed=discord.Embed(description=f"Purged {limit} messages", colour=0x2f3136))
 
     @hybrid_command()
     async def shutdown(self, ctx: Context) -> None:
