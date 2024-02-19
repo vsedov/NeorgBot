@@ -1,4 +1,5 @@
 import discord
+from discord.ext import commands
 from discord.ext.commands import Cog, Context, hybrid_command
 
 from neorg.log import get_logger
@@ -94,7 +95,6 @@ class FunListen(Cog):
         except:
             print("Exception on syncing the tree!")
 
-    # TODO: a way to delete a sent message in dm.
     @Cog.listener()
     async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent) -> None:
         """on raw reaction add listens to events and checks payload. it checks if a message has a reaction.
@@ -104,6 +104,11 @@ class FunListen(Cog):
         payload : discord.RawReactionActionEvent
             The payload of the event.
         """
+        if payload.emoji.name == "❌":
+            msg = await self.bot.get_channel(payload.channel_id).fetch_message(payload.message_id)
+            if msg.author == self.bot.user:
+                await msg.delete()
+
         if payload.emoji.name in "📑🔖":
             msg = await self.bot.get_channel(payload.channel_id).fetch_message(payload.message_id)
             author = msg.author

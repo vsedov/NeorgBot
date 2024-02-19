@@ -12,6 +12,7 @@
   -- (!) Create test cases for the mock bot which will test our current Neorg Module
   -- (!) Create the test cases for the cogs and the search
   -- (-) Finish the test cases for the side modules and create a path for the beautiful discord and web scrapping modules
+  - ( ) Use aiohttp instead of requests.
 
 * Pending
   - ( ) Create test cases for neovim documentation reader[ high priority]

@@ -45,7 +45,6 @@ class Neorg(commands.Bot):
         loop = asyncio.get_event_loop()
         intents = discord.Intents.all()
         intents.dm_typing = False
-        intents.dm_reactions = False
         intents.invites = False
         intents.webhooks = False
         intents.integrations = False
